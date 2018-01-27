@@ -1,0 +1,6 @@
+[info] Test run started
+[info] Test org.imgscalr.ScalrApplyTest.testApplyEX started
+[debug] Test org.imgscalr.ScalrApplyTest.testApplyEX finished, took 0.04 sec
+[info] Test org.imgscalr.ScalrApplyTest.testApply1 started
+[debug] Test org.imgscalr.ScalrApplyTest.testApply1 finished, took 0.33 sec
+[info] Test run finished: 0 failed, 0 ignored, 2 total, 1.156s

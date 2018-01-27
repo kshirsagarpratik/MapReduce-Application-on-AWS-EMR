@@ -1,0 +1,4 @@
+[info] Test run started
+[info] Test org.imgscalr.AsyncScalrMultiThreadTest.test started
+[debug] Test org.imgscalr.AsyncScalrMultiThreadTest.test finished, took 6.93 sec
+[info] Test run finished: 0 failed, 0 ignored, 1 total, 7.668s

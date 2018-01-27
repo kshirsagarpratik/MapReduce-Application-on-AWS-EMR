@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.imgscalr.ScalrResizeTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2017-10-08T19:26:32" hostname="Pratiks-MBP.hsd1.il.comcast.net" time="3.185">
+  <properties/>
+  <testcase name="testResizeAutoVsFitBoth" classname="org.imgscalr.ScalrResizeTest" time="0.534"/>
+  <testcase name="testResizeFitExact" classname="org.imgscalr.ScalrResizeTest" time="0.007"/>
+  <testcase name="testResizeUltraQuality" classname="org.imgscalr.ScalrResizeTest" time="0.006"/>
+  <testcase name="testResizeWHExact" classname="org.imgscalr.ScalrResizeTest" time="0.116"/>
+  <testcase name="testResizeWHSpeed" classname="org.imgscalr.ScalrResizeTest" time="0.068"/>
+  <testcase name="testResizeWHSpeedExact" classname="org.imgscalr.ScalrResizeTest" time="0.071"/>
+  <testcase name="testResizeEX" classname="org.imgscalr.ScalrResizeTest" time="0.0"/>
+  <testcase name="testResizeWH" classname="org.imgscalr.ScalrResizeTest" time="0.071"/>
+  <testcase name="testResizeSizeExact" classname="org.imgscalr.ScalrResizeTest" time="0.033"/>
+  <testcase name="testResizeSizeSpeed" classname="org.imgscalr.ScalrResizeTest" time="0.014"/>
+  <testcase name="testResizeSize" classname="org.imgscalr.ScalrResizeTest" time="0.039"/>
+  <testcase name="testResizeSizeSpeedExact" classname="org.imgscalr.ScalrResizeTest" time="0.019"/>
+  <testcase name="testResizeAutoVsFitBoth" classname="org.imgscalr.ScalrResizeTest" time="0.354"/>
+  <testcase name="testResizeFitExact" classname="org.imgscalr.ScalrResizeTest" time="0.009"/>
+  <testcase name="testResizeUltraQuality" classname="org.imgscalr.ScalrResizeTest" time="0.0"/>
+  <testcase name="testResizeWHExact" classname="org.imgscalr.ScalrResizeTest" time="0.089"/>
+  <testcase name="testResizeWHSpeed" classname="org.imgscalr.ScalrResizeTest" time="0.049"/>
+  <testcase name="testResizeWHSpeedExact" classname="org.imgscalr.ScalrResizeTest" time="0.067"/>
+  <testcase name="testResizeEX" classname="org.imgscalr.ScalrResizeTest" time="0.0"/>
+  <testcase name="testResizeWH" classname="org.imgscalr.ScalrResizeTest" time="0.085"/>
+  <testcase name="testResizeSizeExact" classname="org.imgscalr.ScalrResizeTest" time="0.044"/>
+  <testcase name="testResizeSizeSpeed" classname="org.imgscalr.ScalrResizeTest" time="0.016"/>
+  <testcase name="testResizeSize" classname="org.imgscalr.ScalrResizeTest" time="0.029"/>
+  <testcase name="testResizeSizeSpeedExact" classname="org.imgscalr.ScalrResizeTest" time="0.025"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,25 @@
+[debug] Running TaskDef(org.imgscalr.AllTests, com.novocode.junit.RunWithFingerprint@3c7d7a9a, false, [SuiteSelector])
+[debug] Running TaskDef(org.imgscalr.ScalrRotateTest, com.novocode.junit.JUnitFingerprint@1e0c7596, false, [SuiteSelector])
+[debug] Running TaskDef(org.imgscalr.ScalrPadTest, com.novocode.junit.JUnitFingerprint@1e0c7596, false, [SuiteSelector])
+[debug] Running TaskDef(org.imgscalr.ScalrApplyTest, com.novocode.junit.JUnitFingerprint@1e0c7596, false, [SuiteSelector])
+[debug] Running TaskDef(org.imgscalr.AsyncScalrMultiThreadTest, com.novocode.junit.JUnitFingerprint@1e0c7596, false, [SuiteSelector])
+[debug] Running TaskDef(org.imgscalr.ScalrCropTest, com.novocode.junit.JUnitFingerprint@1e0c7596, false, [SuiteSelector])
+[debug] Running TaskDef(org.imgscalr.AsyncScalrSingleThreadTest, com.novocode.junit.JUnitFingerprint@1e0c7596, false, [SuiteSelector])
+[debug] Running TaskDef(org.imgscalr.ScalrResizeTest, com.novocode.junit.JUnitFingerprint@1e0c7596, false, [SuiteSelector])
+[info] ScalaTest
+[info] Run completed in 14 seconds, 309 milliseconds.
+[info] Total number of tests run: 0
+[info] Suites: completed 0, aborted 0
+[info] Tests: succeeded 0, failed 0, canceled 0, ignored 0, pending 0
+[info] No tests were executed.
+[debug] Summary for JUnit not available.
+[info] Passed: Total 29, Failed 0, Errors 0, Passed 29
+[debug] Passed tests:
+[debug] 	org.imgscalr.AllTests
+[debug] 	org.imgscalr.ScalrRotateTest
+[debug] 	org.imgscalr.AsyncScalrSingleThreadTest
+[debug] 	org.imgscalr.ScalrCropTest
+[debug] 	org.imgscalr.ScalrApplyTest
+[debug] 	org.imgscalr.ScalrPadTest
+[debug] 	org.imgscalr.ScalrResizeTest
+[debug] 	org.imgscalr.AsyncScalrMultiThreadTest

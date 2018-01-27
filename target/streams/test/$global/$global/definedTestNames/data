@@ -1,0 +1,1 @@
+["org.imgscalr.AllTests","org.imgscalr.ScalrRotateTest","org.imgscalr.AsyncScalrSingleThreadTest","org.imgscalr.ScalrCropTest","org.imgscalr.ScalrApplyTest","org.imgscalr.ScalrPadTest","org.imgscalr.ScalrResizeTest","org.imgscalr.AsyncScalrMultiThreadTest"]

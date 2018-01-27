@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.imgscalr.ScalrRotateTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2017-10-08T19:26:33" hostname="Pratiks-MBP.hsd1.il.comcast.net" time="2.967">
+  <properties/>
+  <testcase name="testRotate180" classname="org.imgscalr.ScalrRotateTest" time="0.141"/>
+  <testcase name="testRotate270" classname="org.imgscalr.ScalrRotateTest" time="0.135"/>
+  <testcase name="testRotate90" classname="org.imgscalr.ScalrRotateTest" time="0.165"/>
+  <testcase name="testRotateEX" classname="org.imgscalr.ScalrRotateTest" time="0.0"/>
+  <testcase name="testRotateFlipH" classname="org.imgscalr.ScalrRotateTest" time="0.179"/>
+  <testcase name="testRotateFlipV" classname="org.imgscalr.ScalrRotateTest" time="0.132"/>
+  <testcase name="testRotate180" classname="org.imgscalr.ScalrRotateTest" time="0.156"/>
+  <testcase name="testRotate270" classname="org.imgscalr.ScalrRotateTest" time="0.16"/>
+  <testcase name="testRotate90" classname="org.imgscalr.ScalrRotateTest" time="0.147"/>
+  <testcase name="testRotateEX" classname="org.imgscalr.ScalrRotateTest" time="0.0"/>
+  <testcase name="testRotateFlipH" classname="org.imgscalr.ScalrRotateTest" time="0.125"/>
+  <testcase name="testRotateFlipV" classname="org.imgscalr.ScalrRotateTest" time="0.151"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

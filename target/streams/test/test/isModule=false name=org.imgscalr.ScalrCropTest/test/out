@@ -1,0 +1,8 @@
+[info] Test run started
+[info] Test org.imgscalr.ScalrCropTest.testCropXYWH started
+[debug] Test org.imgscalr.ScalrCropTest.testCropXYWH finished, took 0.042 sec
+[info] Test org.imgscalr.ScalrCropTest.testCropEX started
+[debug] Test org.imgscalr.ScalrCropTest.testCropEX finished, took 0.002 sec
+[info] Test org.imgscalr.ScalrCropTest.testCropWH started
+[debug] Test org.imgscalr.ScalrCropTest.testCropWH finished, took 0.05 sec
+[info] Test run finished: 0 failed, 0 ignored, 3 total, 0.197s

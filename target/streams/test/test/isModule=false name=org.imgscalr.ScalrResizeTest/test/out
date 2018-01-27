@@ -1,0 +1,26 @@
+[info] Test run started
+[info] Test org.imgscalr.ScalrResizeTest.testResizeAutoVsFitBoth started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeAutoVsFitBoth finished, took 0.691 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeFitExact started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeFitExact finished, took 0.013 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeUltraQuality started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeUltraQuality finished, took 0.001 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeWHExact started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeWHExact finished, took 0.157 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeWHSpeed started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeWHSpeed finished, took 0.077 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeWHSpeedExact started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeWHSpeedExact finished, took 0.07 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeEX started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeEX finished, took 0.0 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeWH started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeWH finished, took 0.088 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeSizeExact started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeSizeExact finished, took 0.036 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeSizeSpeed started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeSizeSpeed finished, took 0.012 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeSize started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeSize finished, took 0.027 sec
+[info] Test org.imgscalr.ScalrResizeTest.testResizeSizeSpeedExact started
+[debug] Test org.imgscalr.ScalrResizeTest.testResizeSizeSpeedExact finished, took 0.026 sec
+[info] Test run finished: 0 failed, 0 ignored, 12 total, 1.288s

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.imgscalr.ScalrPadTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2017-10-08T19:26:34" hostname="Pratiks-MBP.hsd1.il.comcast.net" time="13.421">
+  <properties/>
+  <testcase name="testPad" classname="org.imgscalr.ScalrPadTest" time="0.076"/>
+  <testcase name="testPadEX" classname="org.imgscalr.ScalrPadTest" time="0.0"/>
+  <testcase name="testPadAlpha" classname="org.imgscalr.ScalrPadTest" time="0.135"/>
+  <testcase name="testPadColor" classname="org.imgscalr.ScalrPadTest" time="0.077"/>
+  <testcase name="testPad" classname="org.imgscalr.ScalrPadTest" time="0.075"/>
+  <testcase name="testPadEX" classname="org.imgscalr.ScalrPadTest" time="0.0"/>
+  <testcase name="testPadAlpha" classname="org.imgscalr.ScalrPadTest" time="0.09"/>
+  <testcase name="testPadColor" classname="org.imgscalr.ScalrPadTest" time="0.075"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

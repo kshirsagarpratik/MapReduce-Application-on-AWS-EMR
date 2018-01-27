@@ -1,0 +1,2518 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Scalr</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">org.imgscalr</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Scalr (org.imgscalr)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Scalr</td>
+<td class="coverageStat">
+  <span class="percent">
+    34.8%
+  </span>
+  <span class="absValue">
+    (8/ 23)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    27.2%
+  </span>
+  <span class="absValue">
+    (83/ 305)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Scalr$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Scalr$Method</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Scalr$Mode</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Scalr$Rotation</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    41.4%
+  </span>
+  <span class="absValue">
+    (12/ 29)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    29.3%
+  </span>
+  <span class="absValue">
+    (95/ 324)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;/**   
+<i>2</i>&nbsp; * Copyright 2011 The Buzz Media, LLC
+<i>3</i>&nbsp; * 
+<i>4</i>&nbsp; * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<i>5</i>&nbsp; * you may not use this file except in compliance with the License.
+<i>6</i>&nbsp; * You may obtain a copy of the License at
+<i>7</i>&nbsp; *
+<i>8</i>&nbsp; *   http://www.apache.org/licenses/LICENSE-2.0
+<i>9</i>&nbsp; *
+<i>10</i>&nbsp; * Unless required by applicable law or agreed to in writing, software
+<i>11</i>&nbsp; * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<i>12</i>&nbsp; * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<i>13</i>&nbsp; * See the License for the specific language governing permissions and
+<i>14</i>&nbsp; * limitations under the License.
+<i>15</i>&nbsp; */
+<i>16</i>&nbsp;package org.imgscalr;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;import java.awt.Color;
+<i>19</i>&nbsp;import java.awt.Graphics;
+<i>20</i>&nbsp;import java.awt.Graphics2D;
+<i>21</i>&nbsp;import java.awt.Image;
+<i>22</i>&nbsp;import java.awt.RenderingHints;
+<i>23</i>&nbsp;import java.awt.Transparency;
+<i>24</i>&nbsp;import java.awt.color.ColorSpace;
+<i>25</i>&nbsp;import java.awt.geom.AffineTransform;
+<i>26</i>&nbsp;import java.awt.geom.Rectangle2D;
+<i>27</i>&nbsp;import java.awt.image.AreaAveragingScaleFilter;
+<i>28</i>&nbsp;import java.awt.image.BufferedImage;
+<i>29</i>&nbsp;import java.awt.image.BufferedImageOp;
+<i>30</i>&nbsp;import java.awt.image.ColorConvertOp;
+<i>31</i>&nbsp;import java.awt.image.ColorModel;
+<i>32</i>&nbsp;import java.awt.image.ConvolveOp;
+<i>33</i>&nbsp;import java.awt.image.ImagingOpException;
+<i>34</i>&nbsp;import java.awt.image.IndexColorModel;
+<i>35</i>&nbsp;import java.awt.image.Kernel;
+<i>36</i>&nbsp;import java.awt.image.RasterFormatException;
+<i>37</i>&nbsp;import java.awt.image.RescaleOp;
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;import javax.imageio.ImageIO;
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;/**
+<i>42</i>&nbsp; * Class used to implement performant, high-quality and intelligent image
+<i>43</i>&nbsp; * scaling and manipulation algorithms in native Java 2D.
+<i>44</i>&nbsp; * &lt;p/&gt;
+<i>45</i>&nbsp; * This class utilizes the Java2D &quot;best practices&quot; for image manipulation,
+<i>46</i>&nbsp; * ensuring that all operations (even most user-provided {@link BufferedImageOp}
+<i>47</i>&nbsp; * s) are hardware accelerated if provided by the platform and host-VM.
+<i>48</i>&nbsp; * &lt;p/&gt;
+<i>49</i>&nbsp; * &lt;h3&gt;Image Quality&lt;/h3&gt;
+<i>50</i>&nbsp; * This class implements a few different methods for scaling an image, providing
+<i>51</i>&nbsp; * either the best-looking result, the fastest result or a balanced result
+<i>52</i>&nbsp; * between the two depending on the scaling hint provided (see {@link Method}).
+<i>53</i>&nbsp; * &lt;p/&gt;
+<i>54</i>&nbsp; * This class also implements an optimized version of the incremental scaling
+<i>55</i>&nbsp; * algorithm presented by Chris Campbell in his &lt;a href=&quot;http://today.java
+<i>56</i>&nbsp; * .net/pub/a/today/2007/04/03/perils-of-image-getscaledinstance.html&quot;&gt;Perils of
+<i>57</i>&nbsp; * Image.getScaledInstance()&lt;/a&gt; article in order to give the best-looking image
+<i>58</i>&nbsp; * resize results (e.g. generating thumbnails that aren&#39;t blurry or jagged).
+<i>59</i>&nbsp; * &lt;p&gt;
+<i>60</i>&nbsp; * The results generated by imgscalr using this method, as compared to a single
+<i>61</i>&nbsp; * {@link RenderingHints#VALUE_INTERPOLATION_BICUBIC} scale operation look much
+<i>62</i>&nbsp; * better, especially when using the {@link Method#ULTRA_QUALITY} method.
+<i>63</i>&nbsp; * &lt;p/&gt;
+<i>64</i>&nbsp; * Only when scaling using the {@link Method#AUTOMATIC} method will this class
+<i>65</i>&nbsp; * look at the size of the image before selecting an approach to scaling the
+<i>66</i>&nbsp; * image. If {@link Method#QUALITY} is specified, the best-looking algorithm
+<i>67</i>&nbsp; * possible is always used.
+<i>68</i>&nbsp; * &lt;p/&gt;
+<i>69</i>&nbsp; * Minor modifications are made to Campbell&#39;s original implementation in the
+<i>70</i>&nbsp; * form of:
+<i>71</i>&nbsp; * &lt;ol&gt;
+<i>72</i>&nbsp; * &lt;li&gt;Instead of accepting a user-supplied interpolation method,
+<i>73</i>&nbsp; * {@link RenderingHints#VALUE_INTERPOLATION_BICUBIC} interpolation is always
+<i>74</i>&nbsp; * used. This was done after A/B comparison testing with large images
+<i>75</i>&nbsp; * down-scaled to thumbnail sizes showed noticeable &quot;blurring&quot; when BILINEAR
+<i>76</i>&nbsp; * interpolation was used. Given that Campbell&#39;s algorithm is only used in
+<i>77</i>&nbsp; * QUALITY mode when down-scaling, it was determined that the user&#39;s expectation
+<i>78</i>&nbsp; * of a much less blurry picture would require that BICUBIC be the default
+<i>79</i>&nbsp; * interpolation in order to meet the QUALITY expectation.&lt;/li&gt;
+<i>80</i>&nbsp; * &lt;li&gt;After each iteration of the do-while loop that incrementally scales the
+<i>81</i>&nbsp; * source image down, an explicit effort is made to call
+<i>82</i>&nbsp; * {@link BufferedImage#flush()} on the interim temporary {@link BufferedImage}
+<i>83</i>&nbsp; * instances created by the algorithm in an attempt to ensure a more complete GC
+<i>84</i>&nbsp; * cycle by the VM when cleaning up the temporary instances (this is in addition
+<i>85</i>&nbsp; * to disposing of the temporary {@link Graphics2D} references as well).&lt;/li&gt;
+<i>86</i>&nbsp; * &lt;li&gt;Extensive comments have been added to increase readability of the code.&lt;/li&gt;
+<i>87</i>&nbsp; * &lt;li&gt;Variable names have been expanded to increase readability of the code.&lt;/li&gt;
+<i>88</i>&nbsp; * &lt;/ol&gt;
+<i>89</i>&nbsp; * &lt;p/&gt;
+<i>90</i>&nbsp; * &lt;strong&gt;NOTE&lt;/strong&gt;: This class does not call {@link BufferedImage#flush()}
+<i>91</i>&nbsp; * on any of the &lt;em&gt;source images&lt;/em&gt; passed in by calling code; it is up to
+<i>92</i>&nbsp; * the original caller to dispose of their source images when they are no longer
+<i>93</i>&nbsp; * needed so the VM can most efficiently GC them.
+<i>94</i>&nbsp; * &lt;h3&gt;Image Proportions&lt;/h3&gt;
+<i>95</i>&nbsp; * All scaling operations implemented by this class maintain the proportions of
+<i>96</i>&nbsp; * the original image unless a mode of {@link Mode#FIT_EXACT} is specified; in
+<i>97</i>&nbsp; * which case the orientation and proportion of the source image is ignored and
+<i>98</i>&nbsp; * the image is stretched (if necessary) to fit the exact dimensions given.
+<i>99</i>&nbsp; * &lt;p/&gt;
+<i>100</i>&nbsp; * When not using {@link Mode#FIT_EXACT}, in order to maintain the
+<i>101</i>&nbsp; * proportionality of the original images, this class implements the following
+<i>102</i>&nbsp; * behavior:
+<i>103</i>&nbsp; * &lt;ol&gt;
+<i>104</i>&nbsp; * &lt;li&gt;If the image is LANDSCAPE-oriented or SQUARE, treat the
+<i>105</i>&nbsp; * &lt;code&gt;targetWidth&lt;/code&gt; as the primary dimension and re-calculate the
+<i>106</i>&nbsp; * &lt;code&gt;targetHeight&lt;/code&gt; regardless of what is passed in.&lt;/li&gt;
+<i>107</i>&nbsp; * &lt;li&gt;If image is PORTRAIT-oriented, treat the &lt;code&gt;targetHeight&lt;/code&gt; as the
+<i>108</i>&nbsp; * primary dimension and re-calculate the &lt;code&gt;targetWidth&lt;/code&gt; regardless of
+<i>109</i>&nbsp; * what is passed in.&lt;/li&gt;
+<i>110</i>&nbsp; * &lt;li&gt;If a {@link Mode} value of {@link Mode#FIT_TO_WIDTH} or
+<i>111</i>&nbsp; * {@link Mode#FIT_TO_HEIGHT} is passed in to the &lt;code&gt;resize&lt;/code&gt; method,
+<i>112</i>&nbsp; * the image&#39;s orientation is ignored and the scaled image is fit to the
+<i>113</i>&nbsp; * preferred dimension by using the value passed in by the user for that
+<i>114</i>&nbsp; * dimension and recalculating the other (regardless of image orientation). This
+<i>115</i>&nbsp; * is useful, for example, when working with PORTRAIT oriented images that you
+<i>116</i>&nbsp; * need to all be the same width or visa-versa (e.g. showing user profile
+<i>117</i>&nbsp; * pictures in a directory listing).&lt;/li&gt;
+<i>118</i>&nbsp; * &lt;/ol&gt;
+<i>119</i>&nbsp; * &lt;h3&gt;Optimized Image Handling&lt;/h3&gt;
+<i>120</i>&nbsp; * Java2D provides support for a number of different image types defined as
+<i>121</i>&nbsp; * &lt;code&gt;BufferedImage.TYPE_*&lt;/code&gt; variables, unfortunately not all image
+<i>122</i>&nbsp; * types are supported equally in the Java2D rendering pipeline.
+<i>123</i>&nbsp; * &lt;p/&gt;
+<i>124</i>&nbsp; * Some more obscure image types either have poor or no support, leading to
+<i>125</i>&nbsp; * severely degraded quality and processing performance when an attempt is made
+<i>126</i>&nbsp; * by imgscalr to create a scaled instance &lt;em&gt;of the same type&lt;/em&gt; as the
+<i>127</i>&nbsp; * source image. In many cases, especially when applying {@link BufferedImageOp}
+<i>128</i>&nbsp; * s, using poorly supported image types can even lead to exceptions or total
+<i>129</i>&nbsp; * corruption of the image (e.g. solid black image).
+<i>130</i>&nbsp; * &lt;p/&gt;
+<i>131</i>&nbsp; * imgscalr specifically accounts for and automatically hands
+<i>132</i>&nbsp; * &lt;strong&gt;ALL&lt;/strong&gt; of these pain points for you internally by shuffling all
+<i>133</i>&nbsp; * images into one of two types:
+<i>134</i>&nbsp; * &lt;ol&gt;
+<i>135</i>&nbsp; * &lt;li&gt;{@link BufferedImage#TYPE_INT_RGB}&lt;/li&gt;
+<i>136</i>&nbsp; * &lt;li&gt;{@link BufferedImage#TYPE_INT_ARGB}&lt;/li&gt;
+<i>137</i>&nbsp; * &lt;/ol&gt;
+<i>138</i>&nbsp; * depending on if the source image utilizes transparency or not. This is a
+<i>139</i>&nbsp; * recommended approach by the Java2D team for dealing with poorly (or non)
+<i>140</i>&nbsp; * supported image types. More can be read about this issue &lt;a href=
+<i>141</i>&nbsp; * &quot;http://www.mail-archive.com/java2d-interest@capra.eng.sun.com/msg05621.html&quot;
+<i>142</i>&nbsp; * &gt;here&lt;/a&gt;.
+<i>143</i>&nbsp; * &lt;p/&gt;
+<i>144</i>&nbsp; * This is also the reason we recommend using
+<i>145</i>&nbsp; * {@link #apply(BufferedImage, BufferedImageOp...)} to apply your own ops to
+<i>146</i>&nbsp; * images even if you aren&#39;t using imgscalr for anything else.
+<i>147</i>&nbsp; * &lt;h3&gt;GIF Transparency&lt;/h3&gt;
+<i>148</i>&nbsp; * Unfortunately in Java 6 and earlier, support for GIF&#39;s
+<i>149</i>&nbsp; * {@link IndexColorModel} is sub-par, both in accurate color-selection and in
+<i>150</i>&nbsp; * maintaining transparency when moving to an image of type
+<i>151</i>&nbsp; * {@link BufferedImage#TYPE_INT_ARGB}; because of this issue when a GIF image
+<i>152</i>&nbsp; * is processed by imgscalr and the result saved as a GIF file (instead of PNG),
+<i>153</i>&nbsp; * it is possible to lose the alpha channel of a transparent image or in the
+<i>154</i>&nbsp; * case of applying an optional {@link BufferedImageOp}, lose the entire picture
+<i>155</i>&nbsp; * all together in the result (long standing JDK bugs are filed for all of these
+<i>156</i>&nbsp; * issues).
+<i>157</i>&nbsp; * &lt;p/&gt;
+<i>158</i>&nbsp; * imgscalr currently does nothing to work around this manually because it is a
+<i>159</i>&nbsp; * defect in the native platform code itself. Fortunately it looks like the
+<i>160</i>&nbsp; * issues are half-fixed in Java 7 and any manual workarounds we could attempt
+<i>161</i>&nbsp; * internally are relatively expensive, in the form of hand-creating and setting
+<i>162</i>&nbsp; * RGB values pixel-by-pixel with a custom {@link ColorModel} in the scaled
+<i>163</i>&nbsp; * image. This would lead to a very measurable negative impact on performance
+<i>164</i>&nbsp; * without the caller understanding why.
+<i>165</i>&nbsp; * &lt;p&gt;
+<i>166</i>&nbsp; * &lt;strong&gt;Workaround&lt;/strong&gt;: A workaround to this issue with all version of
+<i>167</i>&nbsp; * Java is to simply save a GIF as a PNG; no change to your code needs to be
+<i>168</i>&nbsp; * made except when the image is saved out, e.g. using {@link ImageIO}.
+<i>169</i>&nbsp; * &lt;p&gt;
+<i>170</i>&nbsp; * When a file type of &quot;PNG&quot; is used, both the transparency and high color
+<i>171</i>&nbsp; * quality will be maintained as the PNG code path in Java2D is superior to the
+<i>172</i>&nbsp; * GIF implementation.
+<i>173</i>&nbsp; * &lt;p&gt;
+<i>174</i>&nbsp; * If the issue with optional {@link BufferedImageOp}s destroying GIF image
+<i>175</i>&nbsp; * content is ever fixed in the platform, saving out resulting images as GIFs
+<i>176</i>&nbsp; * should suddenly start working.
+<i>177</i>&nbsp; * &lt;p&gt;
+<i>178</i>&nbsp; * More can be read about the issue &lt;a
+<i>179</i>&nbsp; * href=&quot;http://gman.eichberger.de/2007/07/transparent-gifs-in-java.html&quot;
+<i>180</i>&nbsp; * &gt;here&lt;/a&gt; and &lt;a
+<i>181</i>&nbsp; * href=&quot;http://ubuntuforums.org/archive/index.php/t-1060128.html&quot;&gt;here&lt;/a&gt;.
+<i>182</i>&nbsp; * &lt;h3&gt;Thread Safety&lt;/h3&gt;
+<i>183</i>&nbsp; * The {@link Scalr} class is &lt;strong&gt;thread-safe&lt;/strong&gt; (as all the methods
+<i>184</i>&nbsp; * are &lt;code&gt;static&lt;/code&gt;); this class maintains no internal state while
+<i>185</i>&nbsp; * performing any of the provided operations and is safe to call simultaneously
+<i>186</i>&nbsp; * from multiple threads.
+<i>187</i>&nbsp; * &lt;h3&gt;Logging&lt;/h3&gt;
+<i>188</i>&nbsp; * This class implements all its debug logging via the
+<i>189</i>&nbsp; * {@link #log(int, String, Object...)} method. At this time logging is done
+<i>190</i>&nbsp; * directly to &lt;code&gt;System.out&lt;/code&gt; via the &lt;code&gt;printf&lt;/code&gt; method. This
+<i>191</i>&nbsp; * allows the logging to be light weight and easy to capture (every imgscalr log
+<i>192</i>&nbsp; * message is prefixed with the {@link #LOG_PREFIX} string) while adding no
+<i>193</i>&nbsp; * dependencies to the library.
+<i>194</i>&nbsp; * &lt;p/&gt;
+<i>195</i>&nbsp; * Implementation of logging in this class is as efficient as possible; avoiding
+<i>196</i>&nbsp; * any calls to the logger method or passing of arguments if logging is not
+<i>197</i>&nbsp; * enabled to avoid the (hidden) cost of constructing the Object[] argument for
+<i>198</i>&nbsp; * the varargs-based method call.
+<i>199</i>&nbsp; * 
+<i>200</i>&nbsp; * @author Riyad Kalla (software@thebuzzmedia.com)
+<i>201</i>&nbsp; * @since 1.1
+<i>202</i>&nbsp; */
+<b class="nc"><i>203</i>&nbsp;public class Scalr {</b>
+<i>204</i>&nbsp;	/**
+<i>205</i>&nbsp;	 * System property name used to define the debug boolean flag.
+<i>206</i>&nbsp;	 * &lt;p/&gt;
+<i>207</i>&nbsp;	 * Value is &quot;&lt;code&gt;imgscalr.debug&lt;/code&gt;&quot;.
+<i>208</i>&nbsp;	 */
+<i>209</i>&nbsp;	public static final String DEBUG_PROPERTY_NAME = &quot;imgscalr.debug&quot;;
+<i>210</i>&nbsp;
+<i>211</i>&nbsp;	/**
+<i>212</i>&nbsp;	 * System property name used to define a custom log prefix.
+<i>213</i>&nbsp;	 * &lt;p/&gt;
+<i>214</i>&nbsp;	 * Value is &quot;&lt;code&gt;imgscalr.logPrefix&lt;/code&gt;&quot;.
+<i>215</i>&nbsp;	 */
+<i>216</i>&nbsp;	public static final String LOG_PREFIX_PROPERTY_NAME = &quot;imgscalr.logPrefix&quot;;
+<i>217</i>&nbsp;
+<i>218</i>&nbsp;	/**
+<i>219</i>&nbsp;	 * Flag used to indicate if debugging output has been enabled by setting the
+<i>220</i>&nbsp;	 * &quot;&lt;code&gt;imgscalr.debug&lt;/code&gt;&quot; system property to &lt;code&gt;true&lt;/code&gt;. This
+<i>221</i>&nbsp;	 * value will be &lt;code&gt;false&lt;/code&gt; if the &quot;&lt;code&gt;imgscalr.debug&lt;/code&gt;&quot;
+<i>222</i>&nbsp;	 * system property is undefined or set to &lt;code&gt;false&lt;/code&gt;.
+<i>223</i>&nbsp;	 * &lt;p/&gt;
+<i>224</i>&nbsp;	 * This property can be set on startup with:&lt;br/&gt;
+<i>225</i>&nbsp;	 * &lt;code&gt;
+<i>226</i>&nbsp;	 * -Dimgscalr.debug=true
+<i>227</i>&nbsp;	 * &lt;/code&gt; or by calling {@link System#setProperty(String, String)} to set a
+<i>228</i>&nbsp;	 * new property value for {@link #DEBUG_PROPERTY_NAME} before this class is
+<i>229</i>&nbsp;	 * loaded.
+<i>230</i>&nbsp;	 * &lt;p/&gt;
+<i>231</i>&nbsp;	 * Default value is &lt;code&gt;false&lt;/code&gt;.
+<i>232</i>&nbsp;	 */
+<b class="fc"><i>233</i>&nbsp;	public static final boolean DEBUG = Boolean.getBoolean(DEBUG_PROPERTY_NAME);</b>
+<i>234</i>&nbsp;
+<i>235</i>&nbsp;	/**
+<i>236</i>&nbsp;	 * Prefix to every log message this library logs. Using a well-defined
+<i>237</i>&nbsp;	 * prefix helps make it easier both visually and programmatically to scan
+<i>238</i>&nbsp;	 * log files for messages produced by this library.
+<i>239</i>&nbsp;	 * &lt;p/&gt;
+<i>240</i>&nbsp;	 * This property can be set on startup with:&lt;br/&gt;
+<i>241</i>&nbsp;	 * &lt;code&gt;
+<i>242</i>&nbsp;	 * -Dimgscalr.logPrefix=&amp;lt;YOUR PREFIX HERE&amp;gt;
+<i>243</i>&nbsp;	 * &lt;/code&gt; or by calling {@link System#setProperty(String, String)} to set a
+<i>244</i>&nbsp;	 * new property value for {@link #LOG_PREFIX_PROPERTY_NAME} before this
+<i>245</i>&nbsp;	 * class is loaded.
+<i>246</i>&nbsp;	 * &lt;p/&gt;
+<i>247</i>&nbsp;	 * Default value is &quot;&lt;code&gt;[imgscalr] &lt;/code&gt;&quot; (including the space).
+<i>248</i>&nbsp;	 */
+<b class="fc"><i>249</i>&nbsp;	public static final String LOG_PREFIX = System.getProperty(</b>
+<i>250</i>&nbsp;			LOG_PREFIX_PROPERTY_NAME, &quot;[imgscalr] &quot;);
+<i>251</i>&nbsp;
+<i>252</i>&nbsp;	/**
+<i>253</i>&nbsp;	 * A {@link ConvolveOp} using a very light &quot;blur&quot; kernel that acts like an
+<i>254</i>&nbsp;	 * anti-aliasing filter (softens the image a bit) when applied to an image.
+<i>255</i>&nbsp;	 * &lt;p/&gt;
+<i>256</i>&nbsp;	 * A common request by users of the library was that they wished to &quot;soften&quot;
+<i>257</i>&nbsp;	 * resulting images when scaling them down drastically. After quite a bit of
+<i>258</i>&nbsp;	 * A/B testing, the kernel used by this Op was selected as the closest match
+<i>259</i>&nbsp;	 * for the target which was the softer results from the deprecated
+<i>260</i>&nbsp;	 * {@link AreaAveragingScaleFilter} (which is used internally by the
+<i>261</i>&nbsp;	 * deprecated {@link Image#getScaledInstance(int, int, int)} method in the
+<i>262</i>&nbsp;	 * JDK that imgscalr is meant to replace).
+<i>263</i>&nbsp;	 * &lt;p/&gt;
+<i>264</i>&nbsp;	 * This ConvolveOp uses a 3x3 kernel with the values:
+<i>265</i>&nbsp;	 * &lt;table cellpadding=&quot;4&quot; border=&quot;1&quot;&gt;
+<i>266</i>&nbsp;	 * &lt;tr&gt;
+<i>267</i>&nbsp;	 * &lt;td&gt;.0f&lt;/td&gt;
+<i>268</i>&nbsp;	 * &lt;td&gt;.08f&lt;/td&gt;
+<i>269</i>&nbsp;	 * &lt;td&gt;.0f&lt;/td&gt;
+<i>270</i>&nbsp;	 * &lt;/tr&gt;
+<i>271</i>&nbsp;	 * &lt;tr&gt;
+<i>272</i>&nbsp;	 * &lt;td&gt;.08f&lt;/td&gt;
+<i>273</i>&nbsp;	 * &lt;td&gt;.68f&lt;/td&gt;
+<i>274</i>&nbsp;	 * &lt;td&gt;.08f&lt;/td&gt;
+<i>275</i>&nbsp;	 * &lt;/tr&gt;
+<i>276</i>&nbsp;	 * &lt;tr&gt;
+<i>277</i>&nbsp;	 * &lt;td&gt;.0f&lt;/td&gt;
+<i>278</i>&nbsp;	 * &lt;td&gt;.08f&lt;/td&gt;
+<i>279</i>&nbsp;	 * &lt;td&gt;.0f&lt;/td&gt;
+<i>280</i>&nbsp;	 * &lt;/tr&gt;
+<i>281</i>&nbsp;	 * &lt;/table&gt;
+<i>282</i>&nbsp;	 * &lt;p/&gt;
+<i>283</i>&nbsp;	 * For those that have worked with ConvolveOps before, this Op uses the
+<i>284</i>&nbsp;	 * {@link ConvolveOp#EDGE_NO_OP} instruction to not process the pixels along
+<i>285</i>&nbsp;	 * the very edge of the image (otherwise EDGE_ZERO_FILL would create a
+<i>286</i>&nbsp;	 * black-border around the image). If you have not worked with a ConvolveOp
+<i>287</i>&nbsp;	 * before, it just means this default OP will &quot;do the right thing&quot; and not
+<i>288</i>&nbsp;	 * give you garbage results.
+<i>289</i>&nbsp;	 * &lt;p/&gt;
+<i>290</i>&nbsp;	 * This ConvolveOp uses no {@link RenderingHints} values as internally the
+<i>291</i>&nbsp;	 * {@link ConvolveOp} class only uses hints when doing a color conversion
+<i>292</i>&nbsp;	 * between the source and destination {@link BufferedImage} targets.
+<i>293</i>&nbsp;	 * imgscalr allows the {@link ConvolveOp} to create its own destination
+<i>294</i>&nbsp;	 * image every time, so no color conversion is ever needed and thus no
+<i>295</i>&nbsp;	 * hints.
+<i>296</i>&nbsp;	 * &lt;h3&gt;Performance&lt;/h3&gt;
+<i>297</i>&nbsp;	 * Use of this (and other) {@link ConvolveOp}s are hardware accelerated when
+<i>298</i>&nbsp;	 * possible. For more information on if your image op is hardware
+<i>299</i>&nbsp;	 * accelerated or not, check the source code of the underlying JDK class
+<i>300</i>&nbsp;	 * that actually executes the Op code, &lt;a href=
+<i>301</i>&nbsp;	 * &quot;http://www.docjar.com/html/api/sun/awt/image/ImagingLib.java.html&quot;
+<i>302</i>&nbsp;	 * &gt;sun.awt.image.ImagingLib&lt;/a&gt;.
+<i>303</i>&nbsp;	 * &lt;h3&gt;Known Issues&lt;/h3&gt;
+<i>304</i>&nbsp;	 * In all versions of Java (tested up to Java 7 preview Build 131), running
+<i>305</i>&nbsp;	 * this op against a GIF with transparency and attempting to save the
+<i>306</i>&nbsp;	 * resulting image as a GIF results in a corrupted/empty file. The file must
+<i>307</i>&nbsp;	 * be saved out as a PNG to maintain the transparency.
+<i>308</i>&nbsp;	 * 
+<i>309</i>&nbsp;	 * @since 3.0
+<i>310</i>&nbsp;	 */
+<b class="fc"><i>311</i>&nbsp;	public static final ConvolveOp OP_ANTIALIAS = new ConvolveOp(</b>
+<i>312</i>&nbsp;			new Kernel(3, 3, new float[] { .0f, .08f, .0f, .08f, .68f, .08f,
+<i>313</i>&nbsp;					.0f, .08f, .0f }), ConvolveOp.EDGE_NO_OP, null);
+<i>314</i>&nbsp;
+<i>315</i>&nbsp;	/**
+<i>316</i>&nbsp;	 * A {@link RescaleOp} used to make any input image 10% darker.
+<i>317</i>&nbsp;	 * &lt;p/&gt;
+<i>318</i>&nbsp;	 * This operation can be applied multiple times in a row if greater than 10%
+<i>319</i>&nbsp;	 * changes in brightness are desired.
+<i>320</i>&nbsp;	 * 
+<i>321</i>&nbsp;	 * @since 4.0
+<i>322</i>&nbsp;	 */
+<b class="fc"><i>323</i>&nbsp;	public static final RescaleOp OP_DARKER = new RescaleOp(0.9f, 0, null);</b>
+<i>324</i>&nbsp;
+<i>325</i>&nbsp;	/**
+<i>326</i>&nbsp;	 * A {@link RescaleOp} used to make any input image 10% brighter.
+<i>327</i>&nbsp;	 * &lt;p/&gt;
+<i>328</i>&nbsp;	 * This operation can be applied multiple times in a row if greater than 10%
+<i>329</i>&nbsp;	 * changes in brightness are desired.
+<i>330</i>&nbsp;	 * 
+<i>331</i>&nbsp;	 * @since 4.0
+<i>332</i>&nbsp;	 */
+<b class="fc"><i>333</i>&nbsp;	public static final RescaleOp OP_BRIGHTER = new RescaleOp(1.1f, 0, null);</b>
+<i>334</i>&nbsp;
+<i>335</i>&nbsp;	/**
+<i>336</i>&nbsp;	 * A {@link ColorConvertOp} used to convert any image to a grayscale color
+<i>337</i>&nbsp;	 * palette.
+<i>338</i>&nbsp;	 * &lt;p/&gt;
+<i>339</i>&nbsp;	 * Applying this op multiple times to the same image has no compounding
+<i>340</i>&nbsp;	 * effects.
+<i>341</i>&nbsp;	 * 
+<i>342</i>&nbsp;	 * @since 4.0
+<i>343</i>&nbsp;	 */
+<b class="fc"><i>344</i>&nbsp;	public static final ColorConvertOp OP_GRAYSCALE = new ColorConvertOp(</b>
+<b class="fc"><i>345</i>&nbsp;			ColorSpace.getInstance(ColorSpace.CS_GRAY), null);</b>
+<i>346</i>&nbsp;
+<i>347</i>&nbsp;	/**
+<i>348</i>&nbsp;	 * Static initializer used to prepare some of the variables used by this
+<i>349</i>&nbsp;	 * class.
+<i>350</i>&nbsp;	 */
+<i>351</i>&nbsp;	static {
+<b class="fc"><i>352</i>&nbsp;		log(0, &quot;Debug output ENABLED&quot;);</b>
+<i>353</i>&nbsp;	}
+<i>354</i>&nbsp;
+<i>355</i>&nbsp;	/**
+<i>356</i>&nbsp;	 * Used to define the different scaling hints that the algorithm can use.
+<i>357</i>&nbsp;	 * 
+<i>358</i>&nbsp;	 * @author Riyad Kalla (software@thebuzzmedia.com)
+<i>359</i>&nbsp;	 * @since 1.1
+<i>360</i>&nbsp;	 */
+<b class="fc"><i>361</i>&nbsp;	public static enum Method {</b>
+<i>362</i>&nbsp;		/**
+<i>363</i>&nbsp;		 * Used to indicate that the scaling implementation should decide which
+<i>364</i>&nbsp;		 * method to use in order to get the best looking scaled image in the
+<i>365</i>&nbsp;		 * least amount of time.
+<i>366</i>&nbsp;		 * &lt;p/&gt;
+<i>367</i>&nbsp;		 * The scaling algorithm will use the
+<i>368</i>&nbsp;		 * {@link Scalr#THRESHOLD_QUALITY_BALANCED} or
+<i>369</i>&nbsp;		 * {@link Scalr#THRESHOLD_BALANCED_SPEED} thresholds as cut-offs to
+<i>370</i>&nbsp;		 * decide between selecting the &lt;code&gt;QUALITY&lt;/code&gt;,
+<i>371</i>&nbsp;		 * &lt;code&gt;BALANCED&lt;/code&gt; or &lt;code&gt;SPEED&lt;/code&gt; scaling algorithms.
+<i>372</i>&nbsp;		 * &lt;p/&gt;
+<i>373</i>&nbsp;		 * By default the thresholds chosen will give nearly the best looking
+<i>374</i>&nbsp;		 * result in the fastest amount of time. We intend this method to work
+<i>375</i>&nbsp;		 * for 80% of people looking to scale an image quickly and get a good
+<i>376</i>&nbsp;		 * looking result.
+<i>377</i>&nbsp;		 */
+<b class="fc"><i>378</i>&nbsp;		AUTOMATIC,</b>
+<i>379</i>&nbsp;		/**
+<i>380</i>&nbsp;		 * Used to indicate that the scaling implementation should scale as fast
+<i>381</i>&nbsp;		 * as possible and return a result. For smaller images (800px in size)
+<i>382</i>&nbsp;		 * this can result in noticeable aliasing but it can be a few magnitudes
+<i>383</i>&nbsp;		 * times faster than using the QUALITY method.
+<i>384</i>&nbsp;		 */
+<b class="fc"><i>385</i>&nbsp;		SPEED,</b>
+<i>386</i>&nbsp;		/**
+<i>387</i>&nbsp;		 * Used to indicate that the scaling implementation should use a scaling
+<i>388</i>&nbsp;		 * operation balanced between SPEED and QUALITY. Sometimes SPEED looks
+<i>389</i>&nbsp;		 * too low quality to be useful (e.g. text can become unreadable when
+<i>390</i>&nbsp;		 * scaled using SPEED) but using QUALITY mode will increase the
+<i>391</i>&nbsp;		 * processing time too much. This mode provides a &quot;better than SPEED&quot;
+<i>392</i>&nbsp;		 * quality in a &quot;less than QUALITY&quot; amount of time.
+<i>393</i>&nbsp;		 */
+<b class="fc"><i>394</i>&nbsp;		BALANCED,</b>
+<i>395</i>&nbsp;		/**
+<i>396</i>&nbsp;		 * Used to indicate that the scaling implementation should do everything
+<i>397</i>&nbsp;		 * it can to create as nice of a result as possible. This approach is
+<i>398</i>&nbsp;		 * most important for smaller pictures (800px or smaller) and less
+<i>399</i>&nbsp;		 * important for larger pictures as the difference between this method
+<i>400</i>&nbsp;		 * and the SPEED method become less and less noticeable as the
+<i>401</i>&nbsp;		 * source-image size increases. Using the AUTOMATIC method will
+<i>402</i>&nbsp;		 * automatically prefer the QUALITY method when scaling an image down
+<i>403</i>&nbsp;		 * below 800px in size.
+<i>404</i>&nbsp;		 */
+<b class="fc"><i>405</i>&nbsp;		QUALITY,</b>
+<i>406</i>&nbsp;		/**
+<i>407</i>&nbsp;		 * Used to indicate that the scaling implementation should go above and
+<i>408</i>&nbsp;		 * beyond the work done by {@link Method#QUALITY} to make the image look
+<i>409</i>&nbsp;		 * exceptionally good at the cost of more processing time. This is
+<i>410</i>&nbsp;		 * especially evident when generating thumbnails of images that look
+<i>411</i>&nbsp;		 * jagged with some of the other {@link Method}s (even
+<i>412</i>&nbsp;		 * {@link Method#QUALITY}).
+<i>413</i>&nbsp;		 */
+<b class="fc"><i>414</i>&nbsp;		ULTRA_QUALITY;</b>
+<i>415</i>&nbsp;	}
+<i>416</i>&nbsp;
+<i>417</i>&nbsp;	/**
+<i>418</i>&nbsp;	 * Used to define the different modes of resizing that the algorithm can
+<i>419</i>&nbsp;	 * use.
+<i>420</i>&nbsp;	 * 
+<i>421</i>&nbsp;	 * @author Riyad Kalla (software@thebuzzmedia.com)
+<i>422</i>&nbsp;	 * @since 3.1
+<i>423</i>&nbsp;	 */
+<b class="fc"><i>424</i>&nbsp;	public static enum Mode {</b>
+<i>425</i>&nbsp;		/**
+<i>426</i>&nbsp;		 * Used to indicate that the scaling implementation should calculate
+<i>427</i>&nbsp;		 * dimensions for the resultant image by looking at the image&#39;s
+<i>428</i>&nbsp;		 * orientation and generating proportional dimensions that best fit into
+<i>429</i>&nbsp;		 * the target width and height given
+<i>430</i>&nbsp;		 * 
+<i>431</i>&nbsp;		 * See &quot;Image Proportions&quot; in the {@link Scalr} class description for
+<i>432</i>&nbsp;		 * more detail.
+<i>433</i>&nbsp;		 */
+<b class="fc"><i>434</i>&nbsp;		AUTOMATIC,</b>
+<i>435</i>&nbsp;		/**
+<i>436</i>&nbsp;		 * Used to fit the image to the exact dimensions given regardless of the
+<i>437</i>&nbsp;		 * image&#39;s proportions. If the dimensions are not proportionally
+<i>438</i>&nbsp;		 * correct, this will introduce vertical or horizontal stretching to the
+<i>439</i>&nbsp;		 * image.
+<i>440</i>&nbsp;		 * &lt;p/&gt;
+<i>441</i>&nbsp;		 * It is recommended that you use one of the other &lt;code&gt;FIT_TO&lt;/code&gt;
+<i>442</i>&nbsp;		 * modes or {@link Mode#AUTOMATIC} if you want the image to look
+<i>443</i>&nbsp;		 * correct, but if dimension-fitting is the #1 priority regardless of
+<i>444</i>&nbsp;		 * how it makes the image look, that is what this mode is for.
+<i>445</i>&nbsp;		 */
+<b class="fc"><i>446</i>&nbsp;		FIT_EXACT,</b>
+<i>447</i>&nbsp;		/**
+<i>448</i>&nbsp;		 * Used to indicate that the scaling implementation should calculate
+<i>449</i>&nbsp;		 * dimensions for the largest image that fit within the bounding box,
+<i>450</i>&nbsp;		 * without cropping or distortion, retaining the original proportions.
+<i>451</i>&nbsp;		 */
+<b class="fc"><i>452</i>&nbsp;		BEST_FIT_BOTH,</b>
+<i>453</i>&nbsp;		/**
+<i>454</i>&nbsp;		 * Used to indicate that the scaling implementation should calculate
+<i>455</i>&nbsp;		 * dimensions for the resultant image that best-fit within the given
+<i>456</i>&nbsp;		 * width, regardless of the orientation of the image.
+<i>457</i>&nbsp;		 */
+<b class="fc"><i>458</i>&nbsp;		FIT_TO_WIDTH,</b>
+<i>459</i>&nbsp;		/**
+<i>460</i>&nbsp;		 * Used to indicate that the scaling implementation should calculate
+<i>461</i>&nbsp;		 * dimensions for the resultant image that best-fit within the given
+<i>462</i>&nbsp;		 * height, regardless of the orientation of the image.
+<i>463</i>&nbsp;		 */
+<b class="fc"><i>464</i>&nbsp;		FIT_TO_HEIGHT;</b>
+<i>465</i>&nbsp;	}
+<i>466</i>&nbsp;
+<i>467</i>&nbsp;	/**
+<i>468</i>&nbsp;	 * Used to define the different types of rotations that can be applied to an
+<i>469</i>&nbsp;	 * image during a resize operation.
+<i>470</i>&nbsp;	 * 
+<i>471</i>&nbsp;	 * @author Riyad Kalla (software@thebuzzmedia.com)
+<i>472</i>&nbsp;	 * @since 3.2
+<i>473</i>&nbsp;	 */
+<b class="nc"><i>474</i>&nbsp;	public static enum Rotation {</b>
+<i>475</i>&nbsp;		/**
+<i>476</i>&nbsp;		 * 90-degree, clockwise rotation (to the right). This is equivalent to a
+<i>477</i>&nbsp;		 * quarter-turn of the image to the right; moving the picture on to its
+<i>478</i>&nbsp;		 * right side.
+<i>479</i>&nbsp;		 */
+<b class="nc"><i>480</i>&nbsp;		CW_90,</b>
+<i>481</i>&nbsp;		/**
+<i>482</i>&nbsp;		 * 180-degree, clockwise rotation (to the right). This is equivalent to
+<i>483</i>&nbsp;		 * 1 half-turn of the image to the right; rotating the picture around
+<i>484</i>&nbsp;		 * until it is upside down from the original position.
+<i>485</i>&nbsp;		 */
+<b class="nc"><i>486</i>&nbsp;		CW_180,</b>
+<i>487</i>&nbsp;		/**
+<i>488</i>&nbsp;		 * 270-degree, clockwise rotation (to the right). This is equivalent to
+<i>489</i>&nbsp;		 * a quarter-turn of the image to the left; moving the picture on to its
+<i>490</i>&nbsp;		 * left side.
+<i>491</i>&nbsp;		 */
+<b class="nc"><i>492</i>&nbsp;		CW_270,</b>
+<i>493</i>&nbsp;		/**
+<i>494</i>&nbsp;		 * Flip the image horizontally by reflecting it around the y axis.
+<i>495</i>&nbsp;		 * &lt;p/&gt;
+<i>496</i>&nbsp;		 * This is not a standard rotation around a center point, but instead
+<i>497</i>&nbsp;		 * creates the mirrored reflection of the image horizontally.
+<i>498</i>&nbsp;		 * &lt;p/&gt;
+<i>499</i>&nbsp;		 * More specifically, the vertical orientation of the image stays the
+<i>500</i>&nbsp;		 * same (the top stays on top, and the bottom on bottom), but the right
+<i>501</i>&nbsp;		 * and left sides flip. This is different than a standard rotation where
+<i>502</i>&nbsp;		 * the top and bottom would also have been flipped.
+<i>503</i>&nbsp;		 */
+<b class="nc"><i>504</i>&nbsp;		FLIP_HORZ,</b>
+<i>505</i>&nbsp;		/**
+<i>506</i>&nbsp;		 * Flip the image vertically by reflecting it around the x axis.
+<i>507</i>&nbsp;		 * &lt;p/&gt;
+<i>508</i>&nbsp;		 * This is not a standard rotation around a center point, but instead
+<i>509</i>&nbsp;		 * creates the mirrored reflection of the image vertically.
+<i>510</i>&nbsp;		 * &lt;p/&gt;
+<i>511</i>&nbsp;		 * More specifically, the horizontal orientation of the image stays the
+<i>512</i>&nbsp;		 * same (the left stays on the left and the right stays on the right),
+<i>513</i>&nbsp;		 * but the top and bottom sides flip. This is different than a standard
+<i>514</i>&nbsp;		 * rotation where the left and right would also have been flipped.
+<i>515</i>&nbsp;		 */
+<b class="nc"><i>516</i>&nbsp;		FLIP_VERT;</b>
+<i>517</i>&nbsp;	}
+<i>518</i>&nbsp;
+<i>519</i>&nbsp;	/**
+<i>520</i>&nbsp;	 * Threshold (in pixels) at which point the scaling operation using the
+<i>521</i>&nbsp;	 * {@link Method#AUTOMATIC} method will decide if a {@link Method#BALANCED}
+<i>522</i>&nbsp;	 * method will be used (if smaller than or equal to threshold) or a
+<i>523</i>&nbsp;	 * {@link Method#SPEED} method will be used (if larger than threshold).
+<i>524</i>&nbsp;	 * &lt;p/&gt;
+<i>525</i>&nbsp;	 * The bigger the image is being scaled to, the less noticeable degradations
+<i>526</i>&nbsp;	 * in the image becomes and the faster algorithms can be selected.
+<i>527</i>&nbsp;	 * &lt;p/&gt;
+<i>528</i>&nbsp;	 * The value of this threshold (1600) was chosen after visual, by-hand, A/B
+<i>529</i>&nbsp;	 * testing between different types of images scaled with this library; both
+<i>530</i>&nbsp;	 * photographs and screenshots. It was determined that images below this
+<i>531</i>&nbsp;	 * size need to use a {@link Method#BALANCED} scale method to look decent in
+<i>532</i>&nbsp;	 * most all cases while using the faster {@link Method#SPEED} method for
+<i>533</i>&nbsp;	 * images bigger than this threshold showed no noticeable degradation over a
+<i>534</i>&nbsp;	 * &lt;code&gt;BALANCED&lt;/code&gt; scale.
+<i>535</i>&nbsp;	 */
+<i>536</i>&nbsp;	public static final int THRESHOLD_BALANCED_SPEED = 1600;
+<i>537</i>&nbsp;
+<i>538</i>&nbsp;	/**
+<i>539</i>&nbsp;	 * Threshold (in pixels) at which point the scaling operation using the
+<i>540</i>&nbsp;	 * {@link Method#AUTOMATIC} method will decide if a {@link Method#QUALITY}
+<i>541</i>&nbsp;	 * method will be used (if smaller than or equal to threshold) or a
+<i>542</i>&nbsp;	 * {@link Method#BALANCED} method will be used (if larger than threshold).
+<i>543</i>&nbsp;	 * &lt;p/&gt;
+<i>544</i>&nbsp;	 * The bigger the image is being scaled to, the less noticeable degradations
+<i>545</i>&nbsp;	 * in the image becomes and the faster algorithms can be selected.
+<i>546</i>&nbsp;	 * &lt;p/&gt;
+<i>547</i>&nbsp;	 * The value of this threshold (800) was chosen after visual, by-hand, A/B
+<i>548</i>&nbsp;	 * testing between different types of images scaled with this library; both
+<i>549</i>&nbsp;	 * photographs and screenshots. It was determined that images below this
+<i>550</i>&nbsp;	 * size need to use a {@link Method#QUALITY} scale method to look decent in
+<i>551</i>&nbsp;	 * most all cases while using the faster {@link Method#BALANCED} method for
+<i>552</i>&nbsp;	 * images bigger than this threshold showed no noticeable degradation over a
+<i>553</i>&nbsp;	 * &lt;code&gt;QUALITY&lt;/code&gt; scale.
+<i>554</i>&nbsp;	 */
+<i>555</i>&nbsp;	public static final int THRESHOLD_QUALITY_BALANCED = 800;
+<i>556</i>&nbsp;
+<i>557</i>&nbsp;	/**
+<i>558</i>&nbsp;	 * Used to apply, in the order given, 1 or more {@link BufferedImageOp}s to
+<i>559</i>&nbsp;	 * a given {@link BufferedImage} and return the result.
+<i>560</i>&nbsp;	 * &lt;p/&gt;
+<i>561</i>&nbsp;	 * &lt;strong&gt;Feature&lt;/strong&gt;: This implementation works around &lt;a
+<i>562</i>&nbsp;	 * href=&quot;http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4965606&quot;&gt;a
+<i>563</i>&nbsp;	 * decade-old JDK bug&lt;/a&gt; that can cause a {@link RasterFormatException}
+<i>564</i>&nbsp;	 * when applying a perfectly valid {@link BufferedImageOp}s to images.
+<i>565</i>&nbsp;	 * &lt;p/&gt;
+<i>566</i>&nbsp;	 * &lt;strong&gt;Feature&lt;/strong&gt;: This implementation also works around
+<i>567</i>&nbsp;	 * {@link BufferedImageOp}s failing to apply and throwing
+<i>568</i>&nbsp;	 * {@link ImagingOpException}s when run against a &lt;code&gt;src&lt;/code&gt; image
+<i>569</i>&nbsp;	 * type that is poorly supported. Unfortunately using {@link ImageIO} and
+<i>570</i>&nbsp;	 * standard Java methods to load images provides no consistency in getting
+<i>571</i>&nbsp;	 * images in well-supported formats. This method automatically accounts and
+<i>572</i>&nbsp;	 * corrects for all those problems (if necessary).
+<i>573</i>&nbsp;	 * &lt;p/&gt;
+<i>574</i>&nbsp;	 * It is recommended you always use this method to apply any
+<i>575</i>&nbsp;	 * {@link BufferedImageOp}s instead of relying on directly using the
+<i>576</i>&nbsp;	 * {@link BufferedImageOp#filter(BufferedImage, BufferedImage)} method.
+<i>577</i>&nbsp;	 * &lt;p/&gt;
+<i>578</i>&nbsp;	 * &lt;strong&gt;Performance&lt;/strong&gt;: Not all {@link BufferedImageOp}s are
+<i>579</i>&nbsp;	 * hardware accelerated operations, but many of the most popular (like
+<i>580</i>&nbsp;	 * {@link ConvolveOp}) are. For more information on if your image op is
+<i>581</i>&nbsp;	 * hardware accelerated or not, check the source code of the underlying JDK
+<i>582</i>&nbsp;	 * class that actually executes the Op code, &lt;a href=
+<i>583</i>&nbsp;	 * &quot;http://www.docjar.com/html/api/sun/awt/image/ImagingLib.java.html&quot;
+<i>584</i>&nbsp;	 * &gt;sun.awt.image.ImagingLib&lt;/a&gt;.
+<i>585</i>&nbsp;	 * &lt;p/&gt;
+<i>586</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>587</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>588</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>589</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>590</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>591</i>&nbsp;	 * 
+<i>592</i>&nbsp;	 * @param src
+<i>593</i>&nbsp;	 *            The image that will have the ops applied to it.
+<i>594</i>&nbsp;	 * @param ops
+<i>595</i>&nbsp;	 *            &lt;code&gt;1&lt;/code&gt; or more ops to apply to the image.
+<i>596</i>&nbsp;	 * 
+<i>597</i>&nbsp;	 * @return a new {@link BufferedImage} that represents the &lt;code&gt;src&lt;/code&gt;
+<i>598</i>&nbsp;	 *         with all the given operations applied to it.
+<i>599</i>&nbsp;	 * 
+<i>600</i>&nbsp;	 * @throws IllegalArgumentException
+<i>601</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>602</i>&nbsp;	 * @throws IllegalArgumentException
+<i>603</i>&nbsp;	 *             if &lt;code&gt;ops&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt; or empty.
+<i>604</i>&nbsp;	 * @throws ImagingOpException
+<i>605</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>606</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>607</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>608</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>609</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>610</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>611</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>612</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>613</i>&nbsp;	 *             operations.
+<i>614</i>&nbsp;	 */
+<i>615</i>&nbsp;	public static BufferedImage apply(BufferedImage src, BufferedImageOp... ops)
+<i>616</i>&nbsp;			throws IllegalArgumentException, ImagingOpException {
+<b class="nc"><i>617</i>&nbsp;	  long t = -1;</b>
+<b class="nc"><i>618</i>&nbsp;	  if (DEBUG)</b>
+<b class="nc"><i>619</i>&nbsp;	    t = System.currentTimeMillis();</b>
+<i>620</i>&nbsp;
+<b class="nc"><i>621</i>&nbsp;		if (src == null)</b>
+<b class="nc"><i>622</i>&nbsp;			throw new IllegalArgumentException(&quot;src cannot be null&quot;);</b>
+<b class="nc"><i>623</i>&nbsp;		if (ops == null || ops.length == 0)</b>
+<b class="nc"><i>624</i>&nbsp;			throw new IllegalArgumentException(&quot;ops cannot be null or empty&quot;);</b>
+<i>625</i>&nbsp;
+<b class="nc"><i>626</i>&nbsp;		int type = src.getType();</b>
+<i>627</i>&nbsp;
+<i>628</i>&nbsp;		/*
+<i>629</i>&nbsp;		 * Ensure the src image is in the best supported image type before we
+<i>630</i>&nbsp;		 * continue, otherwise it is possible our calls below to getBounds2D and
+<i>631</i>&nbsp;		 * certainly filter(...) may fail if not.
+<i>632</i>&nbsp;		 * 
+<i>633</i>&nbsp;		 * Java2D makes an attempt at applying most BufferedImageOps using
+<i>634</i>&nbsp;		 * hardware acceleration via the ImagingLib internal library.
+<i>635</i>&nbsp;		 * 
+<i>636</i>&nbsp;		 * Unfortunately may of the BufferedImageOp are written to simply fail
+<i>637</i>&nbsp;		 * with an ImagingOpException if the operation cannot be applied with no
+<i>638</i>&nbsp;		 * additional information about what went wrong or attempts at
+<i>639</i>&nbsp;		 * re-applying it in different ways.
+<i>640</i>&nbsp;		 * 
+<i>641</i>&nbsp;		 * This is assuming the failing BufferedImageOp even returns a null
+<i>642</i>&nbsp;		 * image after failing to apply; some simply return a corrupted/black
+<i>643</i>&nbsp;		 * image that result in no exception and it is up to the user to
+<i>644</i>&nbsp;		 * discover this.
+<i>645</i>&nbsp;		 * 
+<i>646</i>&nbsp;		 * In internal testing, EVERY failure I&#39;ve ever seen was the result of
+<i>647</i>&nbsp;		 * the source image being in a poorly-supported BufferedImage Type like
+<i>648</i>&nbsp;		 * BGR or ABGR (even though it was loaded with ImageIO).
+<i>649</i>&nbsp;		 * 
+<i>650</i>&nbsp;		 * To avoid this nasty/stupid surprise with BufferedImageOps, we always
+<i>651</i>&nbsp;		 * ensure that the src image starts in an optimally supported format
+<i>652</i>&nbsp;		 * before we try and apply the filter.
+<i>653</i>&nbsp;		 */
+<b class="nc"><i>654</i>&nbsp;		if (!(type == BufferedImage.TYPE_INT_RGB || type == BufferedImage.TYPE_INT_ARGB))</b>
+<b class="nc"><i>655</i>&nbsp;			src = copyToOptimalImage(src);</b>
+<i>656</i>&nbsp;
+<b class="nc"><i>657</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>658</i>&nbsp;			log(0, &quot;Applying %d BufferedImageOps...&quot;, ops.length);</b>
+<i>659</i>&nbsp;
+<b class="nc"><i>660</i>&nbsp;		boolean hasReassignedSrc = false;</b>
+<i>661</i>&nbsp;
+<b class="nc"><i>662</i>&nbsp;		for (int i = 0; i &lt; ops.length; i++) {</b>
+<b class="nc"><i>663</i>&nbsp;      long subT = -1;</b>
+<b class="nc"><i>664</i>&nbsp;      if (DEBUG)</b>
+<b class="nc"><i>665</i>&nbsp;        subT = System.currentTimeMillis();</b>
+<b class="nc"><i>666</i>&nbsp;			BufferedImageOp op = ops[i];</b>
+<i>667</i>&nbsp;
+<i>668</i>&nbsp;			// Skip null ops instead of throwing an exception.
+<b class="nc"><i>669</i>&nbsp;			if (op == null)</b>
+<b class="nc"><i>670</i>&nbsp;				continue;</b>
+<i>671</i>&nbsp;
+<b class="nc"><i>672</i>&nbsp;			if (DEBUG)</b>
+<b class="nc"><i>673</i>&nbsp;				log(1, &quot;Applying BufferedImageOp [class=%s, toString=%s]...&quot;,</b>
+<b class="nc"><i>674</i>&nbsp;						op.getClass(), op.toString());</b>
+<i>675</i>&nbsp;
+<i>676</i>&nbsp;			/*
+<i>677</i>&nbsp;			 * Must use op.getBounds instead of src.getWidth and src.getHeight
+<i>678</i>&nbsp;			 * because we are trying to create an image big enough to hold the
+<i>679</i>&nbsp;			 * result of this operation (which may be to scale the image
+<i>680</i>&nbsp;			 * smaller), in that case the bounds reported by this op and the
+<i>681</i>&nbsp;			 * bounds reported by the source image will be different.
+<i>682</i>&nbsp;			 */
+<b class="nc"><i>683</i>&nbsp;			Rectangle2D resultBounds = op.getBounds2D(src);</b>
+<i>684</i>&nbsp;
+<i>685</i>&nbsp;			// Watch out for flaky/misbehaving ops that fail to work right.
+<b class="nc"><i>686</i>&nbsp;			if (resultBounds == null)</b>
+<b class="nc"><i>687</i>&nbsp;				throw new ImagingOpException(</b>
+<i>688</i>&nbsp;						&quot;BufferedImageOp [&quot;
+<b class="nc"><i>689</i>&nbsp;								+ op.toString()</b>
+<i>690</i>&nbsp;								+ &quot;] getBounds2D(src) returned null bounds for the target image; this should not happen and indicates a problem with application of this type of op.&quot;);
+<i>691</i>&nbsp;
+<i>692</i>&nbsp;			/*
+<i>693</i>&nbsp;			 * We must manually create the target image; we cannot rely on the
+<i>694</i>&nbsp;			 * null-destination filter() method to create a valid destination
+<i>695</i>&nbsp;			 * for us thanks to this JDK bug that has been filed for almost a
+<i>696</i>&nbsp;			 * decade:
+<i>697</i>&nbsp;			 * http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4965606
+<i>698</i>&nbsp;			 */
+<b class="nc"><i>699</i>&nbsp;			BufferedImage dest = createOptimalImage(src,</b>
+<b class="nc"><i>700</i>&nbsp;					(int) Math.round(resultBounds.getWidth()),</b>
+<b class="nc"><i>701</i>&nbsp;					(int) Math.round(resultBounds.getHeight()));</b>
+<i>702</i>&nbsp;
+<i>703</i>&nbsp;			// Perform the operation, update our result to return.
+<b class="nc"><i>704</i>&nbsp;			BufferedImage result = op.filter(src, dest);</b>
+<i>705</i>&nbsp;
+<i>706</i>&nbsp;			/*
+<i>707</i>&nbsp;			 * Flush the &#39;src&#39; image ONLY IF it is one of our interim temporary
+<i>708</i>&nbsp;			 * images being used when applying 2 or more operations back to
+<i>709</i>&nbsp;			 * back. We never want to flush the original image passed in.
+<i>710</i>&nbsp;			 */
+<b class="nc"><i>711</i>&nbsp;			if (hasReassignedSrc)</b>
+<b class="nc"><i>712</i>&nbsp;				src.flush();</b>
+<i>713</i>&nbsp;
+<i>714</i>&nbsp;			/*
+<i>715</i>&nbsp;			 * Incase there are more operations to perform, update what we
+<i>716</i>&nbsp;			 * consider the &#39;src&#39; reference to our last result so on the next
+<i>717</i>&nbsp;			 * iteration the next op is applied to this result and not back
+<i>718</i>&nbsp;			 * against the original src passed in.
+<i>719</i>&nbsp;			 */
+<b class="nc"><i>720</i>&nbsp;			src = result;</b>
+<i>721</i>&nbsp;
+<i>722</i>&nbsp;			/*
+<i>723</i>&nbsp;			 * Keep track of when we re-assign &#39;src&#39; to an interim temporary
+<i>724</i>&nbsp;			 * image, so we know when we can explicitly flush it and clean up
+<i>725</i>&nbsp;			 * references on future iterations.
+<i>726</i>&nbsp;			 */
+<b class="nc"><i>727</i>&nbsp;			hasReassignedSrc = true;</b>
+<i>728</i>&nbsp;
+<b class="nc"><i>729</i>&nbsp;			if (DEBUG)</b>
+<b class="nc"><i>730</i>&nbsp;				log(1,</b>
+<i>731</i>&nbsp;						&quot;Applied BufferedImageOp in %d ms, result [width=%d, height=%d]&quot;,
+<b class="nc"><i>732</i>&nbsp;						System.currentTimeMillis() - subT, result.getWidth(),</b>
+<b class="nc"><i>733</i>&nbsp;						result.getHeight());</b>
+<i>734</i>&nbsp;		}
+<i>735</i>&nbsp;
+<b class="nc"><i>736</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>737</i>&nbsp;			log(0, &quot;All %d BufferedImageOps applied in %d ms&quot;, ops.length,</b>
+<b class="nc"><i>738</i>&nbsp;					System.currentTimeMillis() - t);</b>
+<i>739</i>&nbsp;
+<b class="nc"><i>740</i>&nbsp;		return src;</b>
+<i>741</i>&nbsp;	}
+<i>742</i>&nbsp;
+<i>743</i>&nbsp;	/**
+<i>744</i>&nbsp;	 * Used to crop the given &lt;code&gt;src&lt;/code&gt; image from the top-left corner
+<i>745</i>&nbsp;	 * and applying any optional {@link BufferedImageOp}s to the result before
+<i>746</i>&nbsp;	 * returning it.
+<i>747</i>&nbsp;	 * &lt;p/&gt;
+<i>748</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>749</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>750</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>751</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>752</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>753</i>&nbsp;	 * 
+<i>754</i>&nbsp;	 * @param src
+<i>755</i>&nbsp;	 *            The image to crop.
+<i>756</i>&nbsp;	 * @param width
+<i>757</i>&nbsp;	 *            The width of the bounding cropping box.
+<i>758</i>&nbsp;	 * @param height
+<i>759</i>&nbsp;	 *            The height of the bounding cropping box.
+<i>760</i>&nbsp;	 * @param ops
+<i>761</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more ops to apply to the image. If
+<i>762</i>&nbsp;	 *            &lt;code&gt;null&lt;/code&gt; or empty then &lt;code&gt;src&lt;/code&gt; is return
+<i>763</i>&nbsp;	 *            unmodified.
+<i>764</i>&nbsp;	 * 
+<i>765</i>&nbsp;	 * @return a new {@link BufferedImage} representing the cropped region of
+<i>766</i>&nbsp;	 *         the &lt;code&gt;src&lt;/code&gt; image with any optional operations applied
+<i>767</i>&nbsp;	 *         to it.
+<i>768</i>&nbsp;	 * 
+<i>769</i>&nbsp;	 * @throws IllegalArgumentException
+<i>770</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>771</i>&nbsp;	 * @throws IllegalArgumentException
+<i>772</i>&nbsp;	 *             if any coordinates of the bounding crop box is invalid within
+<i>773</i>&nbsp;	 *             the bounds of the &lt;code&gt;src&lt;/code&gt; image (e.g. negative or
+<i>774</i>&nbsp;	 *             too big).
+<i>775</i>&nbsp;	 * @throws ImagingOpException
+<i>776</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>777</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>778</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>779</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>780</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>781</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>782</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>783</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>784</i>&nbsp;	 *             operations.
+<i>785</i>&nbsp;	 */
+<i>786</i>&nbsp;	public static BufferedImage crop(BufferedImage src, int width, int height,
+<i>787</i>&nbsp;			BufferedImageOp... ops) throws IllegalArgumentException,
+<i>788</i>&nbsp;			ImagingOpException {
+<b class="nc"><i>789</i>&nbsp;		return crop(src, 0, 0, width, height, ops);</b>
+<i>790</i>&nbsp;	}
+<i>791</i>&nbsp;
+<i>792</i>&nbsp;	/**
+<i>793</i>&nbsp;	 * Used to crop the given &lt;code&gt;src&lt;/code&gt; image and apply any optional
+<i>794</i>&nbsp;	 * {@link BufferedImageOp}s to it before returning the result.
+<i>795</i>&nbsp;	 * &lt;p/&gt;
+<i>796</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>797</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>798</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>799</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>800</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>801</i>&nbsp;	 * 
+<i>802</i>&nbsp;	 * @param src
+<i>803</i>&nbsp;	 *            The image to crop.
+<i>804</i>&nbsp;	 * @param x
+<i>805</i>&nbsp;	 *            The x-coordinate of the top-left corner of the bounding box
+<i>806</i>&nbsp;	 *            used for cropping.
+<i>807</i>&nbsp;	 * @param y
+<i>808</i>&nbsp;	 *            The y-coordinate of the top-left corner of the bounding box
+<i>809</i>&nbsp;	 *            used for cropping.
+<i>810</i>&nbsp;	 * @param width
+<i>811</i>&nbsp;	 *            The width of the bounding cropping box.
+<i>812</i>&nbsp;	 * @param height
+<i>813</i>&nbsp;	 *            The height of the bounding cropping box.
+<i>814</i>&nbsp;	 * @param ops
+<i>815</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more ops to apply to the image. If
+<i>816</i>&nbsp;	 *            &lt;code&gt;null&lt;/code&gt; or empty then &lt;code&gt;src&lt;/code&gt; is return
+<i>817</i>&nbsp;	 *            unmodified.
+<i>818</i>&nbsp;	 * 
+<i>819</i>&nbsp;	 * @return a new {@link BufferedImage} representing the cropped region of
+<i>820</i>&nbsp;	 *         the &lt;code&gt;src&lt;/code&gt; image with any optional operations applied
+<i>821</i>&nbsp;	 *         to it.
+<i>822</i>&nbsp;	 * 
+<i>823</i>&nbsp;	 * @throws IllegalArgumentException
+<i>824</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>825</i>&nbsp;	 * @throws IllegalArgumentException
+<i>826</i>&nbsp;	 *             if any coordinates of the bounding crop box is invalid within
+<i>827</i>&nbsp;	 *             the bounds of the &lt;code&gt;src&lt;/code&gt; image (e.g. negative or
+<i>828</i>&nbsp;	 *             too big).
+<i>829</i>&nbsp;	 * @throws ImagingOpException
+<i>830</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>831</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>832</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>833</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>834</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>835</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>836</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>837</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>838</i>&nbsp;	 *             operations.
+<i>839</i>&nbsp;	 */
+<i>840</i>&nbsp;	public static BufferedImage crop(BufferedImage src, int x, int y,
+<i>841</i>&nbsp;			int width, int height, BufferedImageOp... ops)
+<i>842</i>&nbsp;			throws IllegalArgumentException, ImagingOpException {
+<b class="nc"><i>843</i>&nbsp;    long t = -1;</b>
+<b class="nc"><i>844</i>&nbsp;    if (DEBUG)</b>
+<b class="nc"><i>845</i>&nbsp;      t = System.currentTimeMillis();</b>
+<i>846</i>&nbsp;
+<b class="nc"><i>847</i>&nbsp;		if (src == null)</b>
+<b class="nc"><i>848</i>&nbsp;			throw new IllegalArgumentException(&quot;src cannot be null&quot;);</b>
+<b class="nc"><i>849</i>&nbsp;		if (x &lt; 0 || y &lt; 0 || width &lt; 0 || height &lt; 0)</b>
+<b class="nc"><i>850</i>&nbsp;			throw new IllegalArgumentException(&quot;Invalid crop bounds: x [&quot; + x</b>
+<i>851</i>&nbsp;					+ &quot;], y [&quot; + y + &quot;], width [&quot; + width + &quot;] and height [&quot;
+<i>852</i>&nbsp;					+ height + &quot;] must all be &gt;= 0&quot;);
+<i>853</i>&nbsp;
+<b class="nc"><i>854</i>&nbsp;		int srcWidth = src.getWidth();</b>
+<b class="nc"><i>855</i>&nbsp;		int srcHeight = src.getHeight();</b>
+<i>856</i>&nbsp;
+<b class="nc"><i>857</i>&nbsp;		if ((x + width) &gt; srcWidth)</b>
+<b class="nc"><i>858</i>&nbsp;			throw new IllegalArgumentException(</b>
+<i>859</i>&nbsp;					&quot;Invalid crop bounds: x + width [&quot; + (x + width)
+<i>860</i>&nbsp;							+ &quot;] must be &lt;= src.getWidth() [&quot; + srcWidth + &quot;]&quot;);
+<b class="nc"><i>861</i>&nbsp;		if ((y + height) &gt; srcHeight)</b>
+<b class="nc"><i>862</i>&nbsp;			throw new IllegalArgumentException(</b>
+<i>863</i>&nbsp;					&quot;Invalid crop bounds: y + height [&quot; + (y + height)
+<i>864</i>&nbsp;							+ &quot;] must be &lt;= src.getHeight() [&quot; + srcHeight
+<i>865</i>&nbsp;							+ &quot;]&quot;);
+<i>866</i>&nbsp;
+<b class="nc"><i>867</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>868</i>&nbsp;			log(0,</b>
+<i>869</i>&nbsp;					&quot;Cropping Image [width=%d, height=%d] to [x=%d, y=%d, width=%d, height=%d]...&quot;,
+<b class="nc"><i>870</i>&nbsp;					srcWidth, srcHeight, x, y, width, height);</b>
+<i>871</i>&nbsp;
+<i>872</i>&nbsp;		// Create a target image of an optimal type to render into.
+<b class="nc"><i>873</i>&nbsp;		BufferedImage result = createOptimalImage(src, width, height);</b>
+<b class="nc"><i>874</i>&nbsp;		Graphics g = result.getGraphics();</b>
+<i>875</i>&nbsp;
+<i>876</i>&nbsp;		/*
+<i>877</i>&nbsp;		 * Render the region specified by our crop bounds from the src image
+<i>878</i>&nbsp;		 * directly into our result image (which is the exact size of the crop
+<i>879</i>&nbsp;		 * region).
+<i>880</i>&nbsp;		 */
+<b class="nc"><i>881</i>&nbsp;		g.drawImage(src, 0, 0, width, height, x, y, (x + width), (y + height),</b>
+<i>882</i>&nbsp;				null);
+<b class="nc"><i>883</i>&nbsp;		g.dispose();</b>
+<i>884</i>&nbsp;
+<b class="nc"><i>885</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>886</i>&nbsp;			log(0, &quot;Cropped Image in %d ms&quot;, System.currentTimeMillis() - t);</b>
+<i>887</i>&nbsp;
+<i>888</i>&nbsp;		// Apply any optional operations (if specified).
+<b class="nc"><i>889</i>&nbsp;		if (ops != null &amp;&amp; ops.length &gt; 0)</b>
+<b class="nc"><i>890</i>&nbsp;			result = apply(result, ops);</b>
+<i>891</i>&nbsp;
+<b class="nc"><i>892</i>&nbsp;		return result;</b>
+<i>893</i>&nbsp;	}
+<i>894</i>&nbsp;
+<i>895</i>&nbsp;	/**
+<i>896</i>&nbsp;	 * Used to apply padding around the edges of an image using
+<i>897</i>&nbsp;	 * {@link Color#BLACK} to fill the extra padded space and then return the
+<i>898</i>&nbsp;	 * result.
+<i>899</i>&nbsp;	 * &lt;p/&gt;
+<i>900</i>&nbsp;	 * The amount of &lt;code&gt;padding&lt;/code&gt; specified is applied to all sides;
+<i>901</i>&nbsp;	 * more specifically, a &lt;code&gt;padding&lt;/code&gt; of &lt;code&gt;2&lt;/code&gt; would add 2
+<i>902</i>&nbsp;	 * extra pixels of space (filled by the given &lt;code&gt;color&lt;/code&gt;) on the
+<i>903</i>&nbsp;	 * top, bottom, left and right sides of the resulting image causing the
+<i>904</i>&nbsp;	 * result to be 4 pixels wider and 4 pixels taller than the &lt;code&gt;src&lt;/code&gt;
+<i>905</i>&nbsp;	 * image.
+<i>906</i>&nbsp;	 * &lt;p/&gt;
+<i>907</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>908</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>909</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>910</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>911</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>912</i>&nbsp;	 * 
+<i>913</i>&nbsp;	 * @param src
+<i>914</i>&nbsp;	 *            The image the padding will be added to.
+<i>915</i>&nbsp;	 * @param padding
+<i>916</i>&nbsp;	 *            The number of pixels of padding to add to each side in the
+<i>917</i>&nbsp;	 *            resulting image. If this value is &lt;code&gt;0&lt;/code&gt; then
+<i>918</i>&nbsp;	 *            &lt;code&gt;src&lt;/code&gt; is returned unmodified.
+<i>919</i>&nbsp;	 * @param ops
+<i>920</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more ops to apply to the image. If
+<i>921</i>&nbsp;	 *            &lt;code&gt;null&lt;/code&gt; or empty then &lt;code&gt;src&lt;/code&gt; is return
+<i>922</i>&nbsp;	 *            unmodified.
+<i>923</i>&nbsp;	 * 
+<i>924</i>&nbsp;	 * @return a new {@link BufferedImage} representing &lt;code&gt;src&lt;/code&gt; with
+<i>925</i>&nbsp;	 *         the given padding applied to it.
+<i>926</i>&nbsp;	 * 
+<i>927</i>&nbsp;	 * @throws IllegalArgumentException
+<i>928</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>929</i>&nbsp;	 * @throws IllegalArgumentException
+<i>930</i>&nbsp;	 *             if &lt;code&gt;padding&lt;/code&gt; is &amp;lt; &lt;code&gt;1&lt;/code&gt;.
+<i>931</i>&nbsp;	 * @throws ImagingOpException
+<i>932</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>933</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>934</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>935</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>936</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>937</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>938</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>939</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>940</i>&nbsp;	 *             operations.
+<i>941</i>&nbsp;	 */
+<i>942</i>&nbsp;	public static BufferedImage pad(BufferedImage src, int padding,
+<i>943</i>&nbsp;			BufferedImageOp... ops) throws IllegalArgumentException,
+<i>944</i>&nbsp;			ImagingOpException {
+<b class="nc"><i>945</i>&nbsp;		return pad(src, padding, Color.BLACK);</b>
+<i>946</i>&nbsp;	}
+<i>947</i>&nbsp;
+<i>948</i>&nbsp;	/**
+<i>949</i>&nbsp;	 * Used to apply padding around the edges of an image using the given color
+<i>950</i>&nbsp;	 * to fill the extra padded space and then return the result. {@link Color}s
+<i>951</i>&nbsp;	 * using an alpha channel (i.e. transparency) are supported.
+<i>952</i>&nbsp;	 * &lt;p/&gt;
+<i>953</i>&nbsp;	 * The amount of &lt;code&gt;padding&lt;/code&gt; specified is applied to all sides;
+<i>954</i>&nbsp;	 * more specifically, a &lt;code&gt;padding&lt;/code&gt; of &lt;code&gt;2&lt;/code&gt; would add 2
+<i>955</i>&nbsp;	 * extra pixels of space (filled by the given &lt;code&gt;color&lt;/code&gt;) on the
+<i>956</i>&nbsp;	 * top, bottom, left and right sides of the resulting image causing the
+<i>957</i>&nbsp;	 * result to be 4 pixels wider and 4 pixels taller than the &lt;code&gt;src&lt;/code&gt;
+<i>958</i>&nbsp;	 * image.
+<i>959</i>&nbsp;	 * &lt;p/&gt;
+<i>960</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>961</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>962</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>963</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>964</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>965</i>&nbsp;	 * 
+<i>966</i>&nbsp;	 * @param src
+<i>967</i>&nbsp;	 *            The image the padding will be added to.
+<i>968</i>&nbsp;	 * @param padding
+<i>969</i>&nbsp;	 *            The number of pixels of padding to add to each side in the
+<i>970</i>&nbsp;	 *            resulting image. If this value is &lt;code&gt;0&lt;/code&gt; then
+<i>971</i>&nbsp;	 *            &lt;code&gt;src&lt;/code&gt; is returned unmodified.
+<i>972</i>&nbsp;	 * @param color
+<i>973</i>&nbsp;	 *            The color to fill the padded space with. {@link Color}s using
+<i>974</i>&nbsp;	 *            an alpha channel (i.e. transparency) are supported.
+<i>975</i>&nbsp;	 * @param ops
+<i>976</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more ops to apply to the image. If
+<i>977</i>&nbsp;	 *            &lt;code&gt;null&lt;/code&gt; or empty then &lt;code&gt;src&lt;/code&gt; is return
+<i>978</i>&nbsp;	 *            unmodified.
+<i>979</i>&nbsp;	 * 
+<i>980</i>&nbsp;	 * @return a new {@link BufferedImage} representing &lt;code&gt;src&lt;/code&gt; with
+<i>981</i>&nbsp;	 *         the given padding applied to it.
+<i>982</i>&nbsp;	 * 
+<i>983</i>&nbsp;	 * @throws IllegalArgumentException
+<i>984</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>985</i>&nbsp;	 * @throws IllegalArgumentException
+<i>986</i>&nbsp;	 *             if &lt;code&gt;padding&lt;/code&gt; is &amp;lt; &lt;code&gt;1&lt;/code&gt;.
+<i>987</i>&nbsp;	 * @throws IllegalArgumentException
+<i>988</i>&nbsp;	 *             if &lt;code&gt;color&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>989</i>&nbsp;	 * @throws ImagingOpException
+<i>990</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>991</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>992</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>993</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>994</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>995</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>996</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>997</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>998</i>&nbsp;	 *             operations.
+<i>999</i>&nbsp;	 */
+<i>1000</i>&nbsp;	public static BufferedImage pad(BufferedImage src, int padding,
+<i>1001</i>&nbsp;			Color color, BufferedImageOp... ops)
+<i>1002</i>&nbsp;			throws IllegalArgumentException, ImagingOpException {
+<b class="nc"><i>1003</i>&nbsp;    long t = -1;</b>
+<b class="nc"><i>1004</i>&nbsp;    if (DEBUG)</b>
+<b class="nc"><i>1005</i>&nbsp;      t = System.currentTimeMillis();</b>
+<i>1006</i>&nbsp;
+<b class="nc"><i>1007</i>&nbsp;		if (src == null)</b>
+<b class="nc"><i>1008</i>&nbsp;			throw new IllegalArgumentException(&quot;src cannot be null&quot;);</b>
+<b class="nc"><i>1009</i>&nbsp;		if (padding &lt; 1)</b>
+<b class="nc"><i>1010</i>&nbsp;			throw new IllegalArgumentException(&quot;padding [&quot; + padding</b>
+<i>1011</i>&nbsp;					+ &quot;] must be &gt; 0&quot;);
+<b class="nc"><i>1012</i>&nbsp;		if (color == null)</b>
+<b class="nc"><i>1013</i>&nbsp;			throw new IllegalArgumentException(&quot;color cannot be null&quot;);</b>
+<i>1014</i>&nbsp;
+<b class="nc"><i>1015</i>&nbsp;		int srcWidth = src.getWidth();</b>
+<b class="nc"><i>1016</i>&nbsp;		int srcHeight = src.getHeight();</b>
+<i>1017</i>&nbsp;
+<i>1018</i>&nbsp;		/*
+<i>1019</i>&nbsp;		 * Double the padding to account for all sides of the image. More
+<i>1020</i>&nbsp;		 * specifically, if padding is &quot;1&quot; we add 2 pixels to width and 2 to
+<i>1021</i>&nbsp;		 * height, so we have 1 new pixel of padding all the way around our
+<i>1022</i>&nbsp;		 * image.
+<i>1023</i>&nbsp;		 */
+<b class="nc"><i>1024</i>&nbsp;		int sizeDiff = (padding * 2);</b>
+<b class="nc"><i>1025</i>&nbsp;		int newWidth = srcWidth + sizeDiff;</b>
+<b class="nc"><i>1026</i>&nbsp;		int newHeight = srcHeight + sizeDiff;</b>
+<i>1027</i>&nbsp;
+<b class="nc"><i>1028</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>1029</i>&nbsp;			log(0,</b>
+<i>1030</i>&nbsp;					&quot;Padding Image from [originalWidth=%d, originalHeight=%d, padding=%d] to [newWidth=%d, newHeight=%d]...&quot;,
+<b class="nc"><i>1031</i>&nbsp;					srcWidth, srcHeight, padding, newWidth, newHeight);</b>
+<i>1032</i>&nbsp;
+<b class="nc"><i>1033</i>&nbsp;		boolean colorHasAlpha = (color.getAlpha() != 255);</b>
+<b class="nc"><i>1034</i>&nbsp;		boolean imageHasAlpha = (src.getTransparency() != BufferedImage.OPAQUE);</b>
+<i>1035</i>&nbsp;
+<i>1036</i>&nbsp;		BufferedImage result;
+<i>1037</i>&nbsp;
+<i>1038</i>&nbsp;		/*
+<i>1039</i>&nbsp;		 * We need to make sure our resulting image that we render into contains
+<i>1040</i>&nbsp;		 * alpha if either our original image OR the padding color we are using
+<i>1041</i>&nbsp;		 * contain it.
+<i>1042</i>&nbsp;		 */
+<b class="nc"><i>1043</i>&nbsp;		if (colorHasAlpha || imageHasAlpha) {</b>
+<b class="nc"><i>1044</i>&nbsp;			if (DEBUG)</b>
+<b class="nc"><i>1045</i>&nbsp;				log(1,</b>
+<i>1046</i>&nbsp;						&quot;Transparency FOUND in source image or color, using ARGB image type...&quot;);
+<i>1047</i>&nbsp;
+<b class="nc"><i>1048</i>&nbsp;			result = new BufferedImage(newWidth, newHeight,</b>
+<i>1049</i>&nbsp;					BufferedImage.TYPE_INT_ARGB);
+<i>1050</i>&nbsp;		} else {
+<b class="nc"><i>1051</i>&nbsp;			if (DEBUG)</b>
+<b class="nc"><i>1052</i>&nbsp;				log(1,</b>
+<i>1053</i>&nbsp;						&quot;Transparency NOT FOUND in source image or color, using RGB image type...&quot;);
+<i>1054</i>&nbsp;
+<b class="nc"><i>1055</i>&nbsp;			result = new BufferedImage(newWidth, newHeight,</b>
+<i>1056</i>&nbsp;					BufferedImage.TYPE_INT_RGB);
+<i>1057</i>&nbsp;		}
+<i>1058</i>&nbsp;
+<b class="nc"><i>1059</i>&nbsp;		Graphics g = result.getGraphics();</b>
+<i>1060</i>&nbsp;
+<i>1061</i>&nbsp;		// Draw the border of the image in the color specified.
+<b class="nc"><i>1062</i>&nbsp;		g.setColor(color);</b>
+<b class="nc"><i>1063</i>&nbsp;		g.fillRect(0, 0, newWidth, padding);</b>
+<b class="nc"><i>1064</i>&nbsp;		g.fillRect(0, padding, padding, newHeight);</b>
+<b class="nc"><i>1065</i>&nbsp;		g.fillRect(padding, newHeight - padding, newWidth, newHeight);</b>
+<b class="nc"><i>1066</i>&nbsp;		g.fillRect(newWidth - padding, padding, newWidth, newHeight - padding);</b>
+<i>1067</i>&nbsp;
+<i>1068</i>&nbsp;		// Draw the image into the center of the new padded image.
+<b class="nc"><i>1069</i>&nbsp;		g.drawImage(src, padding, padding, null);</b>
+<b class="nc"><i>1070</i>&nbsp;		g.dispose();</b>
+<i>1071</i>&nbsp;
+<b class="nc"><i>1072</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>1073</i>&nbsp;			log(0, &quot;Padding Applied in %d ms&quot;, System.currentTimeMillis() - t);</b>
+<i>1074</i>&nbsp;
+<i>1075</i>&nbsp;		// Apply any optional operations (if specified).
+<b class="nc"><i>1076</i>&nbsp;		if (ops != null &amp;&amp; ops.length &gt; 0)</b>
+<b class="nc"><i>1077</i>&nbsp;			result = apply(result, ops);</b>
+<i>1078</i>&nbsp;
+<b class="nc"><i>1079</i>&nbsp;		return result;</b>
+<i>1080</i>&nbsp;	}
+<i>1081</i>&nbsp;
+<i>1082</i>&nbsp;	/**
+<i>1083</i>&nbsp;	 * Resize a given image (maintaining its original proportion) to a width and
+<i>1084</i>&nbsp;	 * height no bigger than &lt;code&gt;targetSize&lt;/code&gt; and apply the given
+<i>1085</i>&nbsp;	 * {@link BufferedImageOp}s (if any) to the result before returning it.
+<i>1086</i>&nbsp;	 * &lt;p/&gt;
+<i>1087</i>&nbsp;	 * A scaling method of {@link Method#AUTOMATIC} and mode of
+<i>1088</i>&nbsp;	 * {@link Mode#AUTOMATIC} are used.
+<i>1089</i>&nbsp;	 * &lt;p/&gt;
+<i>1090</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>1091</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>1092</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>1093</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>1094</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>1095</i>&nbsp;	 * 
+<i>1096</i>&nbsp;	 * @param src
+<i>1097</i>&nbsp;	 *            The image that will be scaled.
+<i>1098</i>&nbsp;	 * @param targetSize
+<i>1099</i>&nbsp;	 *            The target width and height (square) that you wish the image
+<i>1100</i>&nbsp;	 *            to fit within.
+<i>1101</i>&nbsp;	 * @param ops
+<i>1102</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more optional image operations (e.g.
+<i>1103</i>&nbsp;	 *            sharpen, blur, etc.) that can be applied to the final result
+<i>1104</i>&nbsp;	 *            before returning the image.
+<i>1105</i>&nbsp;	 * 
+<i>1106</i>&nbsp;	 * @return a new {@link BufferedImage} representing the scaled
+<i>1107</i>&nbsp;	 *         &lt;code&gt;src&lt;/code&gt; image.
+<i>1108</i>&nbsp;	 * 
+<i>1109</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1110</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1111</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1112</i>&nbsp;	 *             if &lt;code&gt;targetSize&lt;/code&gt; is &amp;lt; 0.
+<i>1113</i>&nbsp;	 * @throws ImagingOpException
+<i>1114</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>1115</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>1116</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>1117</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>1118</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>1119</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>1120</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>1121</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>1122</i>&nbsp;	 *             operations.
+<i>1123</i>&nbsp;	 */
+<i>1124</i>&nbsp;	public static BufferedImage resize(BufferedImage src, int targetSize,
+<i>1125</i>&nbsp;			BufferedImageOp... ops) throws IllegalArgumentException,
+<i>1126</i>&nbsp;			ImagingOpException {
+<b class="fc"><i>1127</i>&nbsp;		return resize(src, Method.AUTOMATIC, Mode.AUTOMATIC, targetSize,</b>
+<i>1128</i>&nbsp;				targetSize, ops);
+<i>1129</i>&nbsp;	}
+<i>1130</i>&nbsp;
+<i>1131</i>&nbsp;	/**
+<i>1132</i>&nbsp;	 * Resize a given image (maintaining its original proportion) to a width and
+<i>1133</i>&nbsp;	 * height no bigger than &lt;code&gt;targetSize&lt;/code&gt; using the given scaling
+<i>1134</i>&nbsp;	 * method and apply the given {@link BufferedImageOp}s (if any) to the
+<i>1135</i>&nbsp;	 * result before returning it.
+<i>1136</i>&nbsp;	 * &lt;p/&gt;
+<i>1137</i>&nbsp;	 * A mode of {@link Mode#AUTOMATIC} is used.
+<i>1138</i>&nbsp;	 * &lt;p/&gt;
+<i>1139</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>1140</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>1141</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>1142</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>1143</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>1144</i>&nbsp;	 * 
+<i>1145</i>&nbsp;	 * @param src
+<i>1146</i>&nbsp;	 *            The image that will be scaled.
+<i>1147</i>&nbsp;	 * @param scalingMethod
+<i>1148</i>&nbsp;	 *            The method used for scaling the image; preferring speed to
+<i>1149</i>&nbsp;	 *            quality or a balance of both.
+<i>1150</i>&nbsp;	 * @param targetSize
+<i>1151</i>&nbsp;	 *            The target width and height (square) that you wish the image
+<i>1152</i>&nbsp;	 *            to fit within.
+<i>1153</i>&nbsp;	 * @param ops
+<i>1154</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more optional image operations (e.g.
+<i>1155</i>&nbsp;	 *            sharpen, blur, etc.) that can be applied to the final result
+<i>1156</i>&nbsp;	 *            before returning the image.
+<i>1157</i>&nbsp;	 * 
+<i>1158</i>&nbsp;	 * @return a new {@link BufferedImage} representing the scaled
+<i>1159</i>&nbsp;	 *         &lt;code&gt;src&lt;/code&gt; image.
+<i>1160</i>&nbsp;	 * 
+<i>1161</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1162</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1163</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1164</i>&nbsp;	 *             if &lt;code&gt;scalingMethod&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1165</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1166</i>&nbsp;	 *             if &lt;code&gt;targetSize&lt;/code&gt; is &amp;lt; 0.
+<i>1167</i>&nbsp;	 * @throws ImagingOpException
+<i>1168</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>1169</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>1170</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>1171</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>1172</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>1173</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>1174</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>1175</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>1176</i>&nbsp;	 *             operations.
+<i>1177</i>&nbsp;	 * 
+<i>1178</i>&nbsp;	 * @see Method
+<i>1179</i>&nbsp;	 */
+<i>1180</i>&nbsp;	public static BufferedImage resize(BufferedImage src, Method scalingMethod,
+<i>1181</i>&nbsp;			int targetSize, BufferedImageOp... ops)
+<i>1182</i>&nbsp;			throws IllegalArgumentException, ImagingOpException {
+<b class="nc"><i>1183</i>&nbsp;		return resize(src, scalingMethod, Mode.AUTOMATIC, targetSize,</b>
+<i>1184</i>&nbsp;				targetSize, ops);
+<i>1185</i>&nbsp;	}
+<i>1186</i>&nbsp;
+<i>1187</i>&nbsp;	/**
+<i>1188</i>&nbsp;	 * Resize a given image (maintaining its original proportion) to a width and
+<i>1189</i>&nbsp;	 * height no bigger than &lt;code&gt;targetSize&lt;/code&gt; (or fitting the image to
+<i>1190</i>&nbsp;	 * the given WIDTH or HEIGHT explicitly, depending on the {@link Mode}
+<i>1191</i>&nbsp;	 * specified) and apply the given {@link BufferedImageOp}s (if any) to the
+<i>1192</i>&nbsp;	 * result before returning it.
+<i>1193</i>&nbsp;	 * &lt;p/&gt;
+<i>1194</i>&nbsp;	 * A scaling method of {@link Method#AUTOMATIC} is used.
+<i>1195</i>&nbsp;	 * &lt;p/&gt;
+<i>1196</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>1197</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>1198</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>1199</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>1200</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>1201</i>&nbsp;	 * 
+<i>1202</i>&nbsp;	 * @param src
+<i>1203</i>&nbsp;	 *            The image that will be scaled.
+<i>1204</i>&nbsp;	 * @param resizeMode
+<i>1205</i>&nbsp;	 *            Used to indicate how imgscalr should calculate the final
+<i>1206</i>&nbsp;	 *            target size for the image, either fitting the image to the
+<i>1207</i>&nbsp;	 *            given width ({@link Mode#FIT_TO_WIDTH}) or fitting the image
+<i>1208</i>&nbsp;	 *            to the given height ({@link Mode#FIT_TO_HEIGHT}). If
+<i>1209</i>&nbsp;	 *            {@link Mode#AUTOMATIC} is passed in, imgscalr will calculate
+<i>1210</i>&nbsp;	 *            proportional dimensions for the scaled image based on its
+<i>1211</i>&nbsp;	 *            orientation (landscape, square or portrait). Unless you have
+<i>1212</i>&nbsp;	 *            very specific size requirements, most of the time you just
+<i>1213</i>&nbsp;	 *            want to use {@link Mode#AUTOMATIC} to &quot;do the right thing&quot;.
+<i>1214</i>&nbsp;	 * @param targetSize
+<i>1215</i>&nbsp;	 *            The target width and height (square) that you wish the image
+<i>1216</i>&nbsp;	 *            to fit within.
+<i>1217</i>&nbsp;	 * @param ops
+<i>1218</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more optional image operations (e.g.
+<i>1219</i>&nbsp;	 *            sharpen, blur, etc.) that can be applied to the final result
+<i>1220</i>&nbsp;	 *            before returning the image.
+<i>1221</i>&nbsp;	 * 
+<i>1222</i>&nbsp;	 * @return a new {@link BufferedImage} representing the scaled
+<i>1223</i>&nbsp;	 *         &lt;code&gt;src&lt;/code&gt; image.
+<i>1224</i>&nbsp;	 * 
+<i>1225</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1226</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1227</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1228</i>&nbsp;	 *             if &lt;code&gt;resizeMode&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1229</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1230</i>&nbsp;	 *             if &lt;code&gt;targetSize&lt;/code&gt; is &amp;lt; 0.
+<i>1231</i>&nbsp;	 * @throws ImagingOpException
+<i>1232</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>1233</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>1234</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>1235</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>1236</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>1237</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>1238</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>1239</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>1240</i>&nbsp;	 *             operations.
+<i>1241</i>&nbsp;	 * 
+<i>1242</i>&nbsp;	 * @see Mode
+<i>1243</i>&nbsp;	 */
+<i>1244</i>&nbsp;	public static BufferedImage resize(BufferedImage src, Mode resizeMode,
+<i>1245</i>&nbsp;			int targetSize, BufferedImageOp... ops)
+<i>1246</i>&nbsp;			throws IllegalArgumentException, ImagingOpException {
+<b class="nc"><i>1247</i>&nbsp;		return resize(src, Method.AUTOMATIC, resizeMode, targetSize,</b>
+<i>1248</i>&nbsp;				targetSize, ops);
+<i>1249</i>&nbsp;	}
+<i>1250</i>&nbsp;
+<i>1251</i>&nbsp;	/**
+<i>1252</i>&nbsp;	 * Resize a given image (maintaining its original proportion) to a width and
+<i>1253</i>&nbsp;	 * height no bigger than &lt;code&gt;targetSize&lt;/code&gt; (or fitting the image to
+<i>1254</i>&nbsp;	 * the given WIDTH or HEIGHT explicitly, depending on the {@link Mode}
+<i>1255</i>&nbsp;	 * specified) using the given scaling method and apply the given
+<i>1256</i>&nbsp;	 * {@link BufferedImageOp}s (if any) to the result before returning it.
+<i>1257</i>&nbsp;	 * &lt;p/&gt;
+<i>1258</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>1259</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>1260</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>1261</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>1262</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>1263</i>&nbsp;	 * 
+<i>1264</i>&nbsp;	 * @param src
+<i>1265</i>&nbsp;	 *            The image that will be scaled.
+<i>1266</i>&nbsp;	 * @param scalingMethod
+<i>1267</i>&nbsp;	 *            The method used for scaling the image; preferring speed to
+<i>1268</i>&nbsp;	 *            quality or a balance of both.
+<i>1269</i>&nbsp;	 * @param resizeMode
+<i>1270</i>&nbsp;	 *            Used to indicate how imgscalr should calculate the final
+<i>1271</i>&nbsp;	 *            target size for the image, either fitting the image to the
+<i>1272</i>&nbsp;	 *            given width ({@link Mode#FIT_TO_WIDTH}) or fitting the image
+<i>1273</i>&nbsp;	 *            to the given height ({@link Mode#FIT_TO_HEIGHT}). If
+<i>1274</i>&nbsp;	 *            {@link Mode#AUTOMATIC} is passed in, imgscalr will calculate
+<i>1275</i>&nbsp;	 *            proportional dimensions for the scaled image based on its
+<i>1276</i>&nbsp;	 *            orientation (landscape, square or portrait). Unless you have
+<i>1277</i>&nbsp;	 *            very specific size requirements, most of the time you just
+<i>1278</i>&nbsp;	 *            want to use {@link Mode#AUTOMATIC} to &quot;do the right thing&quot;.
+<i>1279</i>&nbsp;	 * @param targetSize
+<i>1280</i>&nbsp;	 *            The target width and height (square) that you wish the image
+<i>1281</i>&nbsp;	 *            to fit within.
+<i>1282</i>&nbsp;	 * @param ops
+<i>1283</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more optional image operations (e.g.
+<i>1284</i>&nbsp;	 *            sharpen, blur, etc.) that can be applied to the final result
+<i>1285</i>&nbsp;	 *            before returning the image.
+<i>1286</i>&nbsp;	 * 
+<i>1287</i>&nbsp;	 * @return a new {@link BufferedImage} representing the scaled
+<i>1288</i>&nbsp;	 *         &lt;code&gt;src&lt;/code&gt; image.
+<i>1289</i>&nbsp;	 * 
+<i>1290</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1291</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1292</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1293</i>&nbsp;	 *             if &lt;code&gt;scalingMethod&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1294</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1295</i>&nbsp;	 *             if &lt;code&gt;resizeMode&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1296</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1297</i>&nbsp;	 *             if &lt;code&gt;targetSize&lt;/code&gt; is &amp;lt; 0.
+<i>1298</i>&nbsp;	 * @throws ImagingOpException
+<i>1299</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>1300</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>1301</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>1302</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>1303</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>1304</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>1305</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>1306</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>1307</i>&nbsp;	 *             operations.
+<i>1308</i>&nbsp;	 * 
+<i>1309</i>&nbsp;	 * @see Method
+<i>1310</i>&nbsp;	 * @see Mode
+<i>1311</i>&nbsp;	 */
+<i>1312</i>&nbsp;	public static BufferedImage resize(BufferedImage src, Method scalingMethod,
+<i>1313</i>&nbsp;			Mode resizeMode, int targetSize, BufferedImageOp... ops)
+<i>1314</i>&nbsp;			throws IllegalArgumentException, ImagingOpException {
+<b class="nc"><i>1315</i>&nbsp;		return resize(src, scalingMethod, resizeMode, targetSize, targetSize,</b>
+<i>1316</i>&nbsp;				ops);
+<i>1317</i>&nbsp;	}
+<i>1318</i>&nbsp;
+<i>1319</i>&nbsp;	/**
+<i>1320</i>&nbsp;	 * Resize a given image (maintaining its original proportion) to the target
+<i>1321</i>&nbsp;	 * width and height and apply the given {@link BufferedImageOp}s (if any) to
+<i>1322</i>&nbsp;	 * the result before returning it.
+<i>1323</i>&nbsp;	 * &lt;p/&gt;
+<i>1324</i>&nbsp;	 * A scaling method of {@link Method#AUTOMATIC} and mode of
+<i>1325</i>&nbsp;	 * {@link Mode#AUTOMATIC} are used.
+<i>1326</i>&nbsp;	 * &lt;p/&gt;
+<i>1327</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: See the class description to understand how this
+<i>1328</i>&nbsp;	 * class handles recalculation of the &lt;code&gt;targetWidth&lt;/code&gt; or
+<i>1329</i>&nbsp;	 * &lt;code&gt;targetHeight&lt;/code&gt; depending on the image&#39;s orientation in order
+<i>1330</i>&nbsp;	 * to maintain the original proportion.
+<i>1331</i>&nbsp;	 * &lt;p/&gt;
+<i>1332</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>1333</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>1334</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>1335</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>1336</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>1337</i>&nbsp;	 * 
+<i>1338</i>&nbsp;	 * @param src
+<i>1339</i>&nbsp;	 *            The image that will be scaled.
+<i>1340</i>&nbsp;	 * @param targetWidth
+<i>1341</i>&nbsp;	 *            The target width that you wish the image to have.
+<i>1342</i>&nbsp;	 * @param targetHeight
+<i>1343</i>&nbsp;	 *            The target height that you wish the image to have.
+<i>1344</i>&nbsp;	 * @param ops
+<i>1345</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more optional image operations (e.g.
+<i>1346</i>&nbsp;	 *            sharpen, blur, etc.) that can be applied to the final result
+<i>1347</i>&nbsp;	 *            before returning the image.
+<i>1348</i>&nbsp;	 * 
+<i>1349</i>&nbsp;	 * @return a new {@link BufferedImage} representing the scaled
+<i>1350</i>&nbsp;	 *         &lt;code&gt;src&lt;/code&gt; image.
+<i>1351</i>&nbsp;	 * 
+<i>1352</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1353</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1354</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1355</i>&nbsp;	 *             if &lt;code&gt;targetWidth&lt;/code&gt; is &amp;lt; 0 or if
+<i>1356</i>&nbsp;	 *             &lt;code&gt;targetHeight&lt;/code&gt; is &amp;lt; 0.
+<i>1357</i>&nbsp;	 * @throws ImagingOpException
+<i>1358</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>1359</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>1360</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>1361</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>1362</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>1363</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>1364</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>1365</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>1366</i>&nbsp;	 *             operations.
+<i>1367</i>&nbsp;	 */
+<i>1368</i>&nbsp;	public static BufferedImage resize(BufferedImage src, int targetWidth,
+<i>1369</i>&nbsp;			int targetHeight, BufferedImageOp... ops)
+<i>1370</i>&nbsp;			throws IllegalArgumentException, ImagingOpException {
+<b class="nc"><i>1371</i>&nbsp;		return resize(src, Method.AUTOMATIC, Mode.AUTOMATIC, targetWidth,</b>
+<i>1372</i>&nbsp;				targetHeight, ops);
+<i>1373</i>&nbsp;	}
+<i>1374</i>&nbsp;
+<i>1375</i>&nbsp;	/**
+<i>1376</i>&nbsp;	 * Resize a given image (maintaining its original proportion) to the target
+<i>1377</i>&nbsp;	 * width and height using the given scaling method and apply the given
+<i>1378</i>&nbsp;	 * {@link BufferedImageOp}s (if any) to the result before returning it.
+<i>1379</i>&nbsp;	 * &lt;p/&gt;
+<i>1380</i>&nbsp;	 * A mode of {@link Mode#AUTOMATIC} is used.
+<i>1381</i>&nbsp;	 * &lt;p/&gt;
+<i>1382</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: See the class description to understand how this
+<i>1383</i>&nbsp;	 * class handles recalculation of the &lt;code&gt;targetWidth&lt;/code&gt; or
+<i>1384</i>&nbsp;	 * &lt;code&gt;targetHeight&lt;/code&gt; depending on the image&#39;s orientation in order
+<i>1385</i>&nbsp;	 * to maintain the original proportion.
+<i>1386</i>&nbsp;	 * &lt;p/&gt;
+<i>1387</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>1388</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>1389</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>1390</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>1391</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>1392</i>&nbsp;	 * 
+<i>1393</i>&nbsp;	 * @param src
+<i>1394</i>&nbsp;	 *            The image that will be scaled.
+<i>1395</i>&nbsp;	 * @param scalingMethod
+<i>1396</i>&nbsp;	 *            The method used for scaling the image; preferring speed to
+<i>1397</i>&nbsp;	 *            quality or a balance of both.
+<i>1398</i>&nbsp;	 * @param targetWidth
+<i>1399</i>&nbsp;	 *            The target width that you wish the image to have.
+<i>1400</i>&nbsp;	 * @param targetHeight
+<i>1401</i>&nbsp;	 *            The target height that you wish the image to have.
+<i>1402</i>&nbsp;	 * @param ops
+<i>1403</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more optional image operations (e.g.
+<i>1404</i>&nbsp;	 *            sharpen, blur, etc.) that can be applied to the final result
+<i>1405</i>&nbsp;	 *            before returning the image.
+<i>1406</i>&nbsp;	 * 
+<i>1407</i>&nbsp;	 * @return a new {@link BufferedImage} representing the scaled
+<i>1408</i>&nbsp;	 *         &lt;code&gt;src&lt;/code&gt; image.
+<i>1409</i>&nbsp;	 * 
+<i>1410</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1411</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1412</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1413</i>&nbsp;	 *             if &lt;code&gt;scalingMethod&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1414</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1415</i>&nbsp;	 *             if &lt;code&gt;targetWidth&lt;/code&gt; is &amp;lt; 0 or if
+<i>1416</i>&nbsp;	 *             &lt;code&gt;targetHeight&lt;/code&gt; is &amp;lt; 0.
+<i>1417</i>&nbsp;	 * @throws ImagingOpException
+<i>1418</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>1419</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>1420</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>1421</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>1422</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>1423</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>1424</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>1425</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>1426</i>&nbsp;	 *             operations.
+<i>1427</i>&nbsp;	 * 
+<i>1428</i>&nbsp;	 * @see Method
+<i>1429</i>&nbsp;	 */
+<i>1430</i>&nbsp;	public static BufferedImage resize(BufferedImage src, Method scalingMethod,
+<i>1431</i>&nbsp;			int targetWidth, int targetHeight, BufferedImageOp... ops) {
+<b class="nc"><i>1432</i>&nbsp;		return resize(src, scalingMethod, Mode.AUTOMATIC, targetWidth,</b>
+<i>1433</i>&nbsp;				targetHeight, ops);
+<i>1434</i>&nbsp;	}
+<i>1435</i>&nbsp;
+<i>1436</i>&nbsp;	/**
+<i>1437</i>&nbsp;	 * Resize a given image (maintaining its original proportion) to the target
+<i>1438</i>&nbsp;	 * width and height (or fitting the image to the given WIDTH or HEIGHT
+<i>1439</i>&nbsp;	 * explicitly, depending on the {@link Mode} specified) and apply the given
+<i>1440</i>&nbsp;	 * {@link BufferedImageOp}s (if any) to the result before returning it.
+<i>1441</i>&nbsp;	 * &lt;p/&gt;
+<i>1442</i>&nbsp;	 * A scaling method of {@link Method#AUTOMATIC} is used.
+<i>1443</i>&nbsp;	 * &lt;p/&gt;
+<i>1444</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: See the class description to understand how this
+<i>1445</i>&nbsp;	 * class handles recalculation of the &lt;code&gt;targetWidth&lt;/code&gt; or
+<i>1446</i>&nbsp;	 * &lt;code&gt;targetHeight&lt;/code&gt; depending on the image&#39;s orientation in order
+<i>1447</i>&nbsp;	 * to maintain the original proportion.
+<i>1448</i>&nbsp;	 * &lt;p/&gt;
+<i>1449</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>1450</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>1451</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>1452</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>1453</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>1454</i>&nbsp;	 * 
+<i>1455</i>&nbsp;	 * @param src
+<i>1456</i>&nbsp;	 *            The image that will be scaled.
+<i>1457</i>&nbsp;	 * @param resizeMode
+<i>1458</i>&nbsp;	 *            Used to indicate how imgscalr should calculate the final
+<i>1459</i>&nbsp;	 *            target size for the image, either fitting the image to the
+<i>1460</i>&nbsp;	 *            given width ({@link Mode#FIT_TO_WIDTH}) or fitting the image
+<i>1461</i>&nbsp;	 *            to the given height ({@link Mode#FIT_TO_HEIGHT}). If
+<i>1462</i>&nbsp;	 *            {@link Mode#AUTOMATIC} is passed in, imgscalr will calculate
+<i>1463</i>&nbsp;	 *            proportional dimensions for the scaled image based on its
+<i>1464</i>&nbsp;	 *            orientation (landscape, square or portrait). Unless you have
+<i>1465</i>&nbsp;	 *            very specific size requirements, most of the time you just
+<i>1466</i>&nbsp;	 *            want to use {@link Mode#AUTOMATIC} to &quot;do the right thing&quot;.
+<i>1467</i>&nbsp;	 * @param targetWidth
+<i>1468</i>&nbsp;	 *            The target width that you wish the image to have.
+<i>1469</i>&nbsp;	 * @param targetHeight
+<i>1470</i>&nbsp;	 *            The target height that you wish the image to have.
+<i>1471</i>&nbsp;	 * @param ops
+<i>1472</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more optional image operations (e.g.
+<i>1473</i>&nbsp;	 *            sharpen, blur, etc.) that can be applied to the final result
+<i>1474</i>&nbsp;	 *            before returning the image.
+<i>1475</i>&nbsp;	 * 
+<i>1476</i>&nbsp;	 * @return a new {@link BufferedImage} representing the scaled
+<i>1477</i>&nbsp;	 *         &lt;code&gt;src&lt;/code&gt; image.
+<i>1478</i>&nbsp;	 * 
+<i>1479</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1480</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1481</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1482</i>&nbsp;	 *             if &lt;code&gt;resizeMode&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1483</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1484</i>&nbsp;	 *             if &lt;code&gt;targetWidth&lt;/code&gt; is &amp;lt; 0 or if
+<i>1485</i>&nbsp;	 *             &lt;code&gt;targetHeight&lt;/code&gt; is &amp;lt; 0.
+<i>1486</i>&nbsp;	 * @throws ImagingOpException
+<i>1487</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>1488</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>1489</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>1490</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>1491</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>1492</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>1493</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>1494</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>1495</i>&nbsp;	 *             operations.
+<i>1496</i>&nbsp;	 * 
+<i>1497</i>&nbsp;	 * @see Mode
+<i>1498</i>&nbsp;	 */
+<i>1499</i>&nbsp;	public static BufferedImage resize(BufferedImage src, Mode resizeMode,
+<i>1500</i>&nbsp;			int targetWidth, int targetHeight, BufferedImageOp... ops)
+<i>1501</i>&nbsp;			throws IllegalArgumentException, ImagingOpException {
+<b class="nc"><i>1502</i>&nbsp;		return resize(src, Method.AUTOMATIC, resizeMode, targetWidth,</b>
+<i>1503</i>&nbsp;				targetHeight, ops);
+<i>1504</i>&nbsp;	}
+<i>1505</i>&nbsp;
+<i>1506</i>&nbsp;	/**
+<i>1507</i>&nbsp;	 * Resize a given image (maintaining its original proportion) to the target
+<i>1508</i>&nbsp;	 * width and height (or fitting the image to the given WIDTH or HEIGHT
+<i>1509</i>&nbsp;	 * explicitly, depending on the {@link Mode} specified) using the given
+<i>1510</i>&nbsp;	 * scaling method and apply the given {@link BufferedImageOp}s (if any) to
+<i>1511</i>&nbsp;	 * the result before returning it.
+<i>1512</i>&nbsp;	 * &lt;p/&gt;
+<i>1513</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: See the class description to understand how this
+<i>1514</i>&nbsp;	 * class handles recalculation of the &lt;code&gt;targetWidth&lt;/code&gt; or
+<i>1515</i>&nbsp;	 * &lt;code&gt;targetHeight&lt;/code&gt; depending on the image&#39;s orientation in order
+<i>1516</i>&nbsp;	 * to maintain the original proportion.
+<i>1517</i>&nbsp;	 * &lt;p/&gt;
+<i>1518</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>1519</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>1520</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>1521</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>1522</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>1523</i>&nbsp;	 * 
+<i>1524</i>&nbsp;	 * @param src
+<i>1525</i>&nbsp;	 *            The image that will be scaled.
+<i>1526</i>&nbsp;	 * @param scalingMethod
+<i>1527</i>&nbsp;	 *            The method used for scaling the image; preferring speed to
+<i>1528</i>&nbsp;	 *            quality or a balance of both.
+<i>1529</i>&nbsp;	 * @param resizeMode
+<i>1530</i>&nbsp;	 *            Used to indicate how imgscalr should calculate the final
+<i>1531</i>&nbsp;	 *            target size for the image, either fitting the image to the
+<i>1532</i>&nbsp;	 *            given width ({@link Mode#FIT_TO_WIDTH}) or fitting the image
+<i>1533</i>&nbsp;	 *            to the given height ({@link Mode#FIT_TO_HEIGHT}). If
+<i>1534</i>&nbsp;	 *            {@link Mode#AUTOMATIC} is passed in, imgscalr will calculate
+<i>1535</i>&nbsp;	 *            proportional dimensions for the scaled image based on its
+<i>1536</i>&nbsp;	 *            orientation (landscape, square or portrait). Unless you have
+<i>1537</i>&nbsp;	 *            very specific size requirements, most of the time you just
+<i>1538</i>&nbsp;	 *            want to use {@link Mode#AUTOMATIC} to &quot;do the right thing&quot;.
+<i>1539</i>&nbsp;	 * @param targetWidth
+<i>1540</i>&nbsp;	 *            The target width that you wish the image to have.
+<i>1541</i>&nbsp;	 * @param targetHeight
+<i>1542</i>&nbsp;	 *            The target height that you wish the image to have.
+<i>1543</i>&nbsp;	 * @param ops
+<i>1544</i>&nbsp;	 *            &lt;code&gt;0&lt;/code&gt; or more optional image operations (e.g.
+<i>1545</i>&nbsp;	 *            sharpen, blur, etc.) that can be applied to the final result
+<i>1546</i>&nbsp;	 *            before returning the image.
+<i>1547</i>&nbsp;	 * 
+<i>1548</i>&nbsp;	 * @return a new {@link BufferedImage} representing the scaled
+<i>1549</i>&nbsp;	 *         &lt;code&gt;src&lt;/code&gt; image.
+<i>1550</i>&nbsp;	 * 
+<i>1551</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1552</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1553</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1554</i>&nbsp;	 *             if &lt;code&gt;scalingMethod&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1555</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1556</i>&nbsp;	 *             if &lt;code&gt;resizeMode&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1557</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1558</i>&nbsp;	 *             if &lt;code&gt;targetWidth&lt;/code&gt; is &amp;lt; 0 or if
+<i>1559</i>&nbsp;	 *             &lt;code&gt;targetHeight&lt;/code&gt; is &amp;lt; 0.
+<i>1560</i>&nbsp;	 * @throws ImagingOpException
+<i>1561</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>1562</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>1563</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>1564</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>1565</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>1566</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>1567</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>1568</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>1569</i>&nbsp;	 *             operations.
+<i>1570</i>&nbsp;	 * 
+<i>1571</i>&nbsp;	 * @see Method
+<i>1572</i>&nbsp;	 * @see Mode
+<i>1573</i>&nbsp;	 */
+<i>1574</i>&nbsp;	public static BufferedImage resize(BufferedImage src, Method scalingMethod,
+<i>1575</i>&nbsp;			Mode resizeMode, int targetWidth, int targetHeight,
+<i>1576</i>&nbsp;			BufferedImageOp... ops) throws IllegalArgumentException,
+<i>1577</i>&nbsp;			ImagingOpException {
+<b class="fc"><i>1578</i>&nbsp;    long t = -1;</b>
+<b class="pc"><i>1579</i>&nbsp;    if (DEBUG)</b>
+<b class="nc"><i>1580</i>&nbsp;      t = System.currentTimeMillis();</b>
+<i>1581</i>&nbsp;
+<b class="pc"><i>1582</i>&nbsp;		if (src == null)</b>
+<b class="nc"><i>1583</i>&nbsp;			throw new IllegalArgumentException(&quot;src cannot be null&quot;);</b>
+<b class="pc"><i>1584</i>&nbsp;		if (targetWidth &lt; 0)</b>
+<b class="nc"><i>1585</i>&nbsp;			throw new IllegalArgumentException(&quot;targetWidth must be &gt;= 0&quot;);</b>
+<b class="pc"><i>1586</i>&nbsp;		if (targetHeight &lt; 0)</b>
+<b class="nc"><i>1587</i>&nbsp;			throw new IllegalArgumentException(&quot;targetHeight must be &gt;= 0&quot;);</b>
+<b class="pc"><i>1588</i>&nbsp;		if (scalingMethod == null)</b>
+<b class="nc"><i>1589</i>&nbsp;			throw new IllegalArgumentException(</b>
+<i>1590</i>&nbsp;					&quot;scalingMethod cannot be null. A good default value is Method.AUTOMATIC.&quot;);
+<b class="pc"><i>1591</i>&nbsp;		if (resizeMode == null)</b>
+<b class="nc"><i>1592</i>&nbsp;			throw new IllegalArgumentException(</b>
+<i>1593</i>&nbsp;					&quot;resizeMode cannot be null. A good default value is Mode.AUTOMATIC.&quot;);
+<i>1594</i>&nbsp;
+<b class="fc"><i>1595</i>&nbsp;		BufferedImage result = null;</b>
+<i>1596</i>&nbsp;
+<b class="fc"><i>1597</i>&nbsp;		int currentWidth = src.getWidth();</b>
+<b class="fc"><i>1598</i>&nbsp;		int currentHeight = src.getHeight();</b>
+<i>1599</i>&nbsp;
+<i>1600</i>&nbsp;		// &lt;= 1 is a square or landscape-oriented image, &gt; 1 is a portrait.
+<b class="fc"><i>1601</i>&nbsp;		float ratio = ((float) currentHeight / (float) currentWidth);</b>
+<i>1602</i>&nbsp;
+<b class="pc"><i>1603</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>1604</i>&nbsp;			log(0,</b>
+<i>1605</i>&nbsp;					&quot;Resizing Image [size=%dx%d, resizeMode=%s, orientation=%s, ratio(H/W)=%f] to [targetSize=%dx%d]&quot;,
+<b class="nc"><i>1606</i>&nbsp;					currentWidth, currentHeight, resizeMode,</b>
+<b class="nc"><i>1607</i>&nbsp;					(ratio &lt;= 1 ? &quot;Landscape/Square&quot; : &quot;Portrait&quot;), ratio,</b>
+<b class="nc"><i>1608</i>&nbsp;					targetWidth, targetHeight);</b>
+<i>1609</i>&nbsp;
+<i>1610</i>&nbsp;		/*
+<i>1611</i>&nbsp;		 * First determine if ANY size calculation needs to be done, in the case
+<i>1612</i>&nbsp;		 * of FIT_EXACT, ignore image proportions and orientation and just use
+<i>1613</i>&nbsp;		 * what the user sent in, otherwise the proportion of the picture must
+<i>1614</i>&nbsp;		 * be honored.
+<i>1615</i>&nbsp;		 * 
+<i>1616</i>&nbsp;		 * The way that is done is to figure out if the image is in a
+<i>1617</i>&nbsp;		 * LANDSCAPE/SQUARE or PORTRAIT orientation and depending on its
+<i>1618</i>&nbsp;		 * orientation, use the primary dimension (width for LANDSCAPE/SQUARE
+<i>1619</i>&nbsp;		 * and height for PORTRAIT) to recalculate the alternative (height and
+<i>1620</i>&nbsp;		 * width respectively) value that adheres to the existing ratio.
+<i>1621</i>&nbsp;		 * 
+<i>1622</i>&nbsp;		 * This helps make life easier for the caller as they don&#39;t need to
+<i>1623</i>&nbsp;		 * pre-compute proportional dimensions before calling the API, they can
+<i>1624</i>&nbsp;		 * just specify the dimensions they would like the image to roughly fit
+<i>1625</i>&nbsp;		 * within and it will do the right thing without mangling the result.
+<i>1626</i>&nbsp;		 */
+<b class="pc"><i>1627</i>&nbsp;		if (resizeMode == Mode.FIT_EXACT) {</b>
+<b class="nc"><i>1628</i>&nbsp;			if (DEBUG)</b>
+<b class="nc"><i>1629</i>&nbsp;				log(1,</b>
+<i>1630</i>&nbsp;						&quot;Resize Mode FIT_EXACT used, no width/height checking or re-calculation will be done.&quot;);
+<b class="pc"><i>1631</i>&nbsp;		} else if (resizeMode == Mode.BEST_FIT_BOTH) {</b>
+<b class="nc"><i>1632</i>&nbsp;			float requestedHeightScaling = ((float) targetHeight / (float) currentHeight);</b>
+<b class="nc"><i>1633</i>&nbsp;			float requestedWidthScaling = ((float) targetWidth / (float) currentWidth);</b>
+<b class="nc"><i>1634</i>&nbsp;			float actualScaling = Math.min(requestedHeightScaling, requestedWidthScaling);</b>
+<i>1635</i>&nbsp;
+<b class="nc"><i>1636</i>&nbsp;			targetHeight = Math.round((float) currentHeight * actualScaling);</b>
+<b class="nc"><i>1637</i>&nbsp;			targetWidth = Math.round((float) currentWidth * actualScaling);</b>
+<i>1638</i>&nbsp;
+<b class="nc"><i>1639</i>&nbsp;			if (targetHeight == currentHeight &amp;&amp; targetWidth == currentWidth)</b>
+<b class="nc"><i>1640</i>&nbsp;				return src;</b>
+<i>1641</i>&nbsp;
+<b class="nc"><i>1642</i>&nbsp;			if (DEBUG)</b>
+<b class="nc"><i>1643</i>&nbsp;				log(1, &quot;Auto-Corrected width and height based on scalingRatio %d.&quot;, actualScaling);</b>
+<b class="nc"><i>1644</i>&nbsp;		} else {</b>
+<b class="pc"><i>1645</i>&nbsp;			if ((ratio &lt;= 1 &amp;&amp; resizeMode == Mode.AUTOMATIC)</b>
+<i>1646</i>&nbsp;					|| (resizeMode == Mode.FIT_TO_WIDTH)) {
+<i>1647</i>&nbsp;				// First make sure we need to do any work in the first place
+<b class="pc"><i>1648</i>&nbsp;				if (targetWidth == src.getWidth())</b>
+<b class="nc"><i>1649</i>&nbsp;					return src;</b>
+<i>1650</i>&nbsp;
+<i>1651</i>&nbsp;				// Save for detailed logging (this is cheap).
+<b class="fc"><i>1652</i>&nbsp;				int originalTargetHeight = targetHeight;</b>
+<i>1653</i>&nbsp;
+<i>1654</i>&nbsp;				/*
+<i>1655</i>&nbsp;				 * Landscape or Square Orientation: Ignore the given height and
+<i>1656</i>&nbsp;				 * re-calculate a proportionally correct value based on the
+<i>1657</i>&nbsp;				 * targetWidth.
+<i>1658</i>&nbsp;				 */
+<b class="fc"><i>1659</i>&nbsp;				targetHeight = (int)Math.ceil((float) targetWidth * ratio);</b>
+<i>1660</i>&nbsp;
+<b class="pc"><i>1661</i>&nbsp;				if (DEBUG &amp;&amp; originalTargetHeight != targetHeight)</b>
+<b class="nc"><i>1662</i>&nbsp;					log(1,</b>
+<i>1663</i>&nbsp;							&quot;Auto-Corrected targetHeight [from=%d to=%d] to honor image proportions.&quot;,
+<b class="nc"><i>1664</i>&nbsp;							originalTargetHeight, targetHeight);</b>
+<b class="fc"><i>1665</i>&nbsp;			} else {</b>
+<i>1666</i>&nbsp;				// First make sure we need to do any work in the first place
+<b class="nc"><i>1667</i>&nbsp;				if (targetHeight == src.getHeight())</b>
+<b class="nc"><i>1668</i>&nbsp;					return src;</b>
+<i>1669</i>&nbsp;
+<i>1670</i>&nbsp;				// Save for detailed logging (this is cheap).
+<b class="nc"><i>1671</i>&nbsp;				int originalTargetWidth = targetWidth;</b>
+<i>1672</i>&nbsp;
+<i>1673</i>&nbsp;				/*
+<i>1674</i>&nbsp;				 * Portrait Orientation: Ignore the given width and re-calculate
+<i>1675</i>&nbsp;				 * a proportionally correct value based on the targetHeight.
+<i>1676</i>&nbsp;				 */
+<b class="nc"><i>1677</i>&nbsp;				targetWidth = Math.round((float) targetHeight / ratio);</b>
+<i>1678</i>&nbsp;
+<b class="nc"><i>1679</i>&nbsp;				if (DEBUG &amp;&amp; originalTargetWidth != targetWidth)</b>
+<b class="nc"><i>1680</i>&nbsp;					log(1,</b>
+<i>1681</i>&nbsp;							&quot;Auto-Corrected targetWidth [from=%d to=%d] to honor image proportions.&quot;,
+<b class="nc"><i>1682</i>&nbsp;							originalTargetWidth, targetWidth);</b>
+<i>1683</i>&nbsp;			}
+<i>1684</i>&nbsp;		}
+<i>1685</i>&nbsp;
+<i>1686</i>&nbsp;		// If AUTOMATIC was specified, determine the real scaling method.
+<b class="pc"><i>1687</i>&nbsp;		if (scalingMethod == Scalr.Method.AUTOMATIC)</b>
+<b class="fc"><i>1688</i>&nbsp;			scalingMethod = determineScalingMethod(targetWidth, targetHeight,</b>
+<i>1689</i>&nbsp;					ratio);
+<i>1690</i>&nbsp;
+<b class="pc"><i>1691</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>1692</i>&nbsp;			log(1, &quot;Using Scaling Method: %s&quot;, scalingMethod);</b>
+<i>1693</i>&nbsp;
+<i>1694</i>&nbsp;		// Now we scale the image
+<b class="pc"><i>1695</i>&nbsp;		if (scalingMethod == Scalr.Method.SPEED) {</b>
+<b class="nc"><i>1696</i>&nbsp;			result = scaleImage(src, targetWidth, targetHeight,</b>
+<i>1697</i>&nbsp;					RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+<b class="pc"><i>1698</i>&nbsp;		} else if (scalingMethod == Scalr.Method.BALANCED) {</b>
+<b class="nc"><i>1699</i>&nbsp;			result = scaleImage(src, targetWidth, targetHeight,</b>
+<i>1700</i>&nbsp;					RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+<b class="pc"><i>1701</i>&nbsp;		} else if (scalingMethod == Scalr.Method.QUALITY</b>
+<i>1702</i>&nbsp;				|| scalingMethod == Scalr.Method.ULTRA_QUALITY) {
+<i>1703</i>&nbsp;			/*
+<i>1704</i>&nbsp;			 * If we are scaling up (in either width or height - since we know
+<i>1705</i>&nbsp;			 * the image will stay proportional we just check if either are
+<i>1706</i>&nbsp;			 * being scaled up), directly using a single BICUBIC will give us
+<i>1707</i>&nbsp;			 * better results then using Chris Campbell&#39;s incremental scaling
+<i>1708</i>&nbsp;			 * operation (and take a lot less time).
+<i>1709</i>&nbsp;			 * 
+<i>1710</i>&nbsp;			 * If we are scaling down, we must use the incremental scaling
+<i>1711</i>&nbsp;			 * algorithm for the best result.
+<i>1712</i>&nbsp;			 */
+<b class="pc"><i>1713</i>&nbsp;			if (targetWidth &gt; currentWidth || targetHeight &gt; currentHeight) {</b>
+<b class="nc"><i>1714</i>&nbsp;				if (DEBUG)</b>
+<b class="nc"><i>1715</i>&nbsp;					log(1,</b>
+<i>1716</i>&nbsp;							&quot;QUALITY scale-up, a single BICUBIC scale operation will be used...&quot;);
+<i>1717</i>&nbsp;
+<i>1718</i>&nbsp;				/*
+<i>1719</i>&nbsp;				 * BILINEAR and BICUBIC look similar the smaller the scale jump
+<i>1720</i>&nbsp;				 * upwards is, if the scale is larger BICUBIC looks sharper and
+<i>1721</i>&nbsp;				 * less fuzzy. But most importantly we have to use BICUBIC to
+<i>1722</i>&nbsp;				 * match the contract of the QUALITY rendering scalingMethod.
+<i>1723</i>&nbsp;				 * This note is just here for anyone reading the code and
+<i>1724</i>&nbsp;				 * wondering how they can speed their own calls up.
+<i>1725</i>&nbsp;				 */
+<b class="nc"><i>1726</i>&nbsp;				result = scaleImage(src, targetWidth, targetHeight,</b>
+<i>1727</i>&nbsp;						RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+<i>1728</i>&nbsp;			} else {
+<b class="pc"><i>1729</i>&nbsp;				if (DEBUG)</b>
+<b class="nc"><i>1730</i>&nbsp;					log(1,</b>
+<i>1731</i>&nbsp;							&quot;QUALITY scale-down, incremental scaling will be used...&quot;);
+<i>1732</i>&nbsp;
+<i>1733</i>&nbsp;				/*
+<i>1734</i>&nbsp;				 * Originally we wanted to use BILINEAR interpolation here
+<i>1735</i>&nbsp;				 * because it takes 1/3rd the time that the BICUBIC
+<i>1736</i>&nbsp;				 * interpolation does, however, when scaling large images down
+<i>1737</i>&nbsp;				 * to most sizes bigger than a thumbnail we witnessed noticeable
+<i>1738</i>&nbsp;				 * &quot;softening&quot; in the resultant image with BILINEAR that would
+<i>1739</i>&nbsp;				 * be unexpectedly annoying to a user expecting a &quot;QUALITY&quot;
+<i>1740</i>&nbsp;				 * scale of their original image. Instead BICUBIC was chosen to
+<i>1741</i>&nbsp;				 * honor the contract of a QUALITY scale of the original image.
+<i>1742</i>&nbsp;				 */
+<b class="fc"><i>1743</i>&nbsp;				result = scaleImageIncrementally(src, targetWidth,</b>
+<i>1744</i>&nbsp;						targetHeight, scalingMethod,
+<i>1745</i>&nbsp;						RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+<i>1746</i>&nbsp;			}
+<i>1747</i>&nbsp;		}
+<i>1748</i>&nbsp;
+<b class="pc"><i>1749</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>1750</i>&nbsp;			log(0, &quot;Resized Image in %d ms&quot;, System.currentTimeMillis() - t);</b>
+<i>1751</i>&nbsp;
+<i>1752</i>&nbsp;		// Apply any optional operations (if specified).
+<b class="pc"><i>1753</i>&nbsp;		if (ops != null &amp;&amp; ops.length &gt; 0)</b>
+<b class="nc"><i>1754</i>&nbsp;			result = apply(result, ops);</b>
+<i>1755</i>&nbsp;
+<b class="fc"><i>1756</i>&nbsp;		return result;</b>
+<i>1757</i>&nbsp;	}
+<i>1758</i>&nbsp;
+<i>1759</i>&nbsp;	/**
+<i>1760</i>&nbsp;	 * Used to apply a {@link Rotation} and then &lt;code&gt;0&lt;/code&gt; or more
+<i>1761</i>&nbsp;	 * {@link BufferedImageOp}s to a given image and return the result.
+<i>1762</i>&nbsp;	 * &lt;p/&gt;
+<i>1763</i>&nbsp;	 * &lt;strong&gt;TIP&lt;/strong&gt;: This operation leaves the original &lt;code&gt;src&lt;/code&gt;
+<i>1764</i>&nbsp;	 * image unmodified. If the caller is done with the &lt;code&gt;src&lt;/code&gt; image
+<i>1765</i>&nbsp;	 * after getting the result of this operation, remember to call
+<i>1766</i>&nbsp;	 * {@link BufferedImage#flush()} on the &lt;code&gt;src&lt;/code&gt; to free up native
+<i>1767</i>&nbsp;	 * resources and make it easier for the GC to collect the unused image.
+<i>1768</i>&nbsp;	 * 
+<i>1769</i>&nbsp;	 * @param src
+<i>1770</i>&nbsp;	 *            The image that will have the rotation applied to it.
+<i>1771</i>&nbsp;	 * @param rotation
+<i>1772</i>&nbsp;	 *            The rotation that will be applied to the image.
+<i>1773</i>&nbsp;	 * @param ops
+<i>1774</i>&nbsp;	 *            Zero or more optional image operations (e.g. sharpen, blur,
+<i>1775</i>&nbsp;	 *            etc.) that can be applied to the final result before returning
+<i>1776</i>&nbsp;	 *            the image.
+<i>1777</i>&nbsp;	 * 
+<i>1778</i>&nbsp;	 * @return a new {@link BufferedImage} representing &lt;code&gt;src&lt;/code&gt; rotated
+<i>1779</i>&nbsp;	 *         by the given amount and any optional ops applied to it.
+<i>1780</i>&nbsp;	 * 
+<i>1781</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1782</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1783</i>&nbsp;	 * @throws IllegalArgumentException
+<i>1784</i>&nbsp;	 *             if &lt;code&gt;rotation&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>1785</i>&nbsp;	 * @throws ImagingOpException
+<i>1786</i>&nbsp;	 *             if one of the given {@link BufferedImageOp}s fails to apply.
+<i>1787</i>&nbsp;	 *             These exceptions bubble up from the inside of most of the
+<i>1788</i>&nbsp;	 *             {@link BufferedImageOp} implementations and are explicitly
+<i>1789</i>&nbsp;	 *             defined on the imgscalr API to make it easier for callers to
+<i>1790</i>&nbsp;	 *             catch the exception (if they are passing along optional ops
+<i>1791</i>&nbsp;	 *             to be applied). imgscalr takes detailed steps to avoid the
+<i>1792</i>&nbsp;	 *             most common pitfalls that will cause {@link BufferedImageOp}s
+<i>1793</i>&nbsp;	 *             to fail, even when using straight forward JDK-image
+<i>1794</i>&nbsp;	 *             operations.
+<i>1795</i>&nbsp;	 * 
+<i>1796</i>&nbsp;	 * @see Rotation
+<i>1797</i>&nbsp;	 */
+<i>1798</i>&nbsp;	public static BufferedImage rotate(BufferedImage src, Rotation rotation,
+<i>1799</i>&nbsp;			BufferedImageOp... ops) throws IllegalArgumentException,
+<i>1800</i>&nbsp;			ImagingOpException {
+<b class="nc"><i>1801</i>&nbsp;    long t = -1;</b>
+<b class="nc"><i>1802</i>&nbsp;    if (DEBUG)</b>
+<b class="nc"><i>1803</i>&nbsp;      t = System.currentTimeMillis();</b>
+<i>1804</i>&nbsp;
+<b class="nc"><i>1805</i>&nbsp;		if (src == null)</b>
+<b class="nc"><i>1806</i>&nbsp;			throw new IllegalArgumentException(&quot;src cannot be null&quot;);</b>
+<b class="nc"><i>1807</i>&nbsp;		if (rotation == null)</b>
+<b class="nc"><i>1808</i>&nbsp;			throw new IllegalArgumentException(&quot;rotation cannot be null&quot;);</b>
+<i>1809</i>&nbsp;
+<b class="nc"><i>1810</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>1811</i>&nbsp;			log(0, &quot;Rotating Image [%s]...&quot;, rotation);</b>
+<i>1812</i>&nbsp;
+<i>1813</i>&nbsp;		/*
+<i>1814</i>&nbsp;		 * Setup the default width/height values from our image.
+<i>1815</i>&nbsp;		 * 
+<i>1816</i>&nbsp;		 * In the case of a 90 or 270 (-90) degree rotation, these two values
+<i>1817</i>&nbsp;		 * flip-flop and we will correct those cases down below in the switch
+<i>1818</i>&nbsp;		 * statement.
+<i>1819</i>&nbsp;		 */
+<b class="nc"><i>1820</i>&nbsp;		int newWidth = src.getWidth();</b>
+<b class="nc"><i>1821</i>&nbsp;		int newHeight = src.getHeight();</b>
+<i>1822</i>&nbsp;
+<i>1823</i>&nbsp;		/*
+<i>1824</i>&nbsp;		 * We create a transform per operation request as (oddly enough) it ends
+<i>1825</i>&nbsp;		 * up being faster for the VM to create, use and destroy these instances
+<i>1826</i>&nbsp;		 * than it is to re-use a single AffineTransform per-thread via the
+<i>1827</i>&nbsp;		 * AffineTransform.setTo(...) methods which was my first choice (less
+<i>1828</i>&nbsp;		 * object creation); after benchmarking this explicit case and looking
+<i>1829</i>&nbsp;		 * at just how much code gets run inside of setTo() I opted for a new AT
+<i>1830</i>&nbsp;		 * for every rotation.
+<i>1831</i>&nbsp;		 * 
+<i>1832</i>&nbsp;		 * Besides the performance win, trying to safely reuse AffineTransforms
+<i>1833</i>&nbsp;		 * via setTo(...) would have required ThreadLocal instances to avoid
+<i>1834</i>&nbsp;		 * race conditions where two or more resize threads are manipulating the
+<i>1835</i>&nbsp;		 * same transform before applying it.
+<i>1836</i>&nbsp;		 * 
+<i>1837</i>&nbsp;		 * Misusing ThreadLocals are one of the #1 reasons for memory leaks in
+<i>1838</i>&nbsp;		 * server applications and since we have no nice way to hook into the
+<i>1839</i>&nbsp;		 * init/destroy Servlet cycle or any other initialization cycle for this
+<i>1840</i>&nbsp;		 * library to automatically call ThreadLocal.remove() to avoid the
+<i>1841</i>&nbsp;		 * memory leak, it would have made using this library *safely* on the
+<i>1842</i>&nbsp;		 * server side much harder.
+<i>1843</i>&nbsp;		 * 
+<i>1844</i>&nbsp;		 * So we opt for creating individual transforms per rotation op and let
+<i>1845</i>&nbsp;		 * the VM clean them up in a GC. I only clarify all this reasoning here
+<i>1846</i>&nbsp;		 * for anyone else reading this code and being tempted to reuse the AT
+<i>1847</i>&nbsp;		 * instances of performance gains; there aren&#39;t any AND you get a lot of
+<i>1848</i>&nbsp;		 * pain along with it.
+<i>1849</i>&nbsp;		 */
+<b class="nc"><i>1850</i>&nbsp;		AffineTransform tx = new AffineTransform();</b>
+<i>1851</i>&nbsp;
+<b class="nc"><i>1852</i>&nbsp;		switch (rotation) {</b>
+<i>1853</i>&nbsp;		case CW_90:
+<i>1854</i>&nbsp;			/*
+<i>1855</i>&nbsp;			 * A 90 or -90 degree rotation will cause the height and width to
+<i>1856</i>&nbsp;			 * flip-flop from the original image to the rotated one.
+<i>1857</i>&nbsp;			 */
+<b class="nc"><i>1858</i>&nbsp;			newWidth = src.getHeight();</b>
+<b class="nc"><i>1859</i>&nbsp;			newHeight = src.getWidth();</b>
+<i>1860</i>&nbsp;
+<i>1861</i>&nbsp;			// Reminder: newWidth == result.getHeight() at this point
+<b class="nc"><i>1862</i>&nbsp;			tx.translate(newWidth, 0);</b>
+<b class="nc"><i>1863</i>&nbsp;			tx.quadrantRotate(1);</b>
+<i>1864</i>&nbsp;
+<b class="nc"><i>1865</i>&nbsp;			break;</b>
+<i>1866</i>&nbsp;
+<i>1867</i>&nbsp;		case CW_270:
+<i>1868</i>&nbsp;			/*
+<i>1869</i>&nbsp;			 * A 90 or -90 degree rotation will cause the height and width to
+<i>1870</i>&nbsp;			 * flip-flop from the original image to the rotated one.
+<i>1871</i>&nbsp;			 */
+<b class="nc"><i>1872</i>&nbsp;			newWidth = src.getHeight();</b>
+<b class="nc"><i>1873</i>&nbsp;			newHeight = src.getWidth();</b>
+<i>1874</i>&nbsp;
+<i>1875</i>&nbsp;			// Reminder: newHeight == result.getWidth() at this point
+<b class="nc"><i>1876</i>&nbsp;			tx.translate(0, newHeight);</b>
+<b class="nc"><i>1877</i>&nbsp;			tx.quadrantRotate(3);</b>
+<b class="nc"><i>1878</i>&nbsp;			break;</b>
+<i>1879</i>&nbsp;
+<i>1880</i>&nbsp;		case CW_180:
+<b class="nc"><i>1881</i>&nbsp;			tx.translate(newWidth, newHeight);</b>
+<b class="nc"><i>1882</i>&nbsp;			tx.quadrantRotate(2);</b>
+<b class="nc"><i>1883</i>&nbsp;			break;</b>
+<i>1884</i>&nbsp;
+<i>1885</i>&nbsp;		case FLIP_HORZ:
+<b class="nc"><i>1886</i>&nbsp;			tx.translate(newWidth, 0);</b>
+<b class="nc"><i>1887</i>&nbsp;			tx.scale(-1.0, 1.0);</b>
+<b class="nc"><i>1888</i>&nbsp;			break;</b>
+<i>1889</i>&nbsp;
+<i>1890</i>&nbsp;		case FLIP_VERT:
+<b class="nc"><i>1891</i>&nbsp;			tx.translate(0, newHeight);</b>
+<b class="nc"><i>1892</i>&nbsp;			tx.scale(1.0, -1.0);</b>
+<i>1893</i>&nbsp;			break;
+<i>1894</i>&nbsp;		}
+<i>1895</i>&nbsp;
+<i>1896</i>&nbsp;		// Create our target image we will render the rotated result to.
+<b class="nc"><i>1897</i>&nbsp;		BufferedImage result = createOptimalImage(src, newWidth, newHeight);</b>
+<b class="nc"><i>1898</i>&nbsp;		Graphics2D g2d = (Graphics2D) result.createGraphics();</b>
+<i>1899</i>&nbsp;
+<i>1900</i>&nbsp;		/*
+<i>1901</i>&nbsp;		 * Render the resultant image to our new rotatedImage buffer, applying
+<i>1902</i>&nbsp;		 * the AffineTransform that we calculated above during rendering so the
+<i>1903</i>&nbsp;		 * pixels from the old position are transposed to the new positions in
+<i>1904</i>&nbsp;		 * the resulting image correctly.
+<i>1905</i>&nbsp;		 */
+<b class="nc"><i>1906</i>&nbsp;		g2d.drawImage(src, tx, null);</b>
+<b class="nc"><i>1907</i>&nbsp;		g2d.dispose();</b>
+<i>1908</i>&nbsp;
+<b class="nc"><i>1909</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>1910</i>&nbsp;			log(0, &quot;Rotation Applied in %d ms, result [width=%d, height=%d]&quot;,</b>
+<b class="nc"><i>1911</i>&nbsp;					System.currentTimeMillis() - t, result.getWidth(),</b>
+<b class="nc"><i>1912</i>&nbsp;					result.getHeight());</b>
+<i>1913</i>&nbsp;
+<i>1914</i>&nbsp;		// Apply any optional operations (if specified).
+<b class="nc"><i>1915</i>&nbsp;		if (ops != null &amp;&amp; ops.length &gt; 0)</b>
+<b class="nc"><i>1916</i>&nbsp;			result = apply(result, ops);</b>
+<i>1917</i>&nbsp;
+<b class="nc"><i>1918</i>&nbsp;		return result;</b>
+<i>1919</i>&nbsp;	}
+<i>1920</i>&nbsp;
+<i>1921</i>&nbsp;	/**
+<i>1922</i>&nbsp;	 * Used to write out a useful and well-formatted log message by any piece of
+<i>1923</i>&nbsp;	 * code inside of the imgscalr library.
+<i>1924</i>&nbsp;	 * &lt;p/&gt;
+<i>1925</i>&nbsp;	 * If a message cannot be logged (logging is disabled) then this method
+<i>1926</i>&nbsp;	 * returns immediately.
+<i>1927</i>&nbsp;	 * &lt;p/&gt;
+<i>1928</i>&nbsp;	 * &lt;strong&gt;NOTE&lt;/strong&gt;: Because Java will auto-box primitive arguments
+<i>1929</i>&nbsp;	 * into Objects when building out the &lt;code&gt;params&lt;/code&gt; array, care should
+<i>1930</i>&nbsp;	 * be taken not to call this method with primitive values unless
+<i>1931</i>&nbsp;	 * {@link Scalr#DEBUG} is &lt;code&gt;true&lt;/code&gt;; otherwise the VM will be
+<i>1932</i>&nbsp;	 * spending time performing unnecessary auto-boxing calculations.
+<i>1933</i>&nbsp;	 * 
+<i>1934</i>&nbsp;	 * @param depth
+<i>1935</i>&nbsp;	 *            The indentation level of the log message.
+<i>1936</i>&nbsp;	 * @param message
+<i>1937</i>&nbsp;	 *            The log message in &lt;a href=
+<i>1938</i>&nbsp;	 *            &quot;http://download.oracle.com/javase/6/docs/api/java/util/Formatter.html#syntax&quot;
+<i>1939</i>&nbsp;	 *            &gt;format string syntax&lt;/a&gt; that will be logged.
+<i>1940</i>&nbsp;	 * @param params
+<i>1941</i>&nbsp;	 *            The parameters that will be swapped into all the place holders
+<i>1942</i>&nbsp;	 *            in the original messages before being logged.
+<i>1943</i>&nbsp;	 * 
+<i>1944</i>&nbsp;	 * @see Scalr#LOG_PREFIX
+<i>1945</i>&nbsp;	 * @see Scalr#LOG_PREFIX_PROPERTY_NAME
+<i>1946</i>&nbsp;	 */
+<i>1947</i>&nbsp;	protected static void log(int depth, String message, Object... params) {
+<b class="pc"><i>1948</i>&nbsp;		if (Scalr.DEBUG) {</b>
+<b class="nc"><i>1949</i>&nbsp;			System.out.print(Scalr.LOG_PREFIX);</b>
+<i>1950</i>&nbsp;
+<b class="nc"><i>1951</i>&nbsp;			for (int i = 0; i &lt; depth; i++)</b>
+<b class="nc"><i>1952</i>&nbsp;				System.out.print(&quot;\t&quot;);</b>
+<i>1953</i>&nbsp;
+<b class="nc"><i>1954</i>&nbsp;			System.out.printf(message, params);</b>
+<b class="nc"><i>1955</i>&nbsp;			System.out.println();</b>
+<i>1956</i>&nbsp;		}
+<i>1957</i>&nbsp;	}
+<i>1958</i>&nbsp;
+<i>1959</i>&nbsp;	/**
+<i>1960</i>&nbsp;	 * Used to create a {@link BufferedImage} with the most optimal RGB TYPE (
+<i>1961</i>&nbsp;	 * {@link BufferedImage#TYPE_INT_RGB} or {@link BufferedImage#TYPE_INT_ARGB}
+<i>1962</i>&nbsp;	 * ) capable of being rendered into from the given &lt;code&gt;src&lt;/code&gt;. The
+<i>1963</i>&nbsp;	 * width and height of both images will be identical.
+<i>1964</i>&nbsp;	 * &lt;p/&gt;
+<i>1965</i>&nbsp;	 * This does not perform a copy of the image data from &lt;code&gt;src&lt;/code&gt; into
+<i>1966</i>&nbsp;	 * the result image; see {@link #copyToOptimalImage(BufferedImage)} for
+<i>1967</i>&nbsp;	 * that.
+<i>1968</i>&nbsp;	 * &lt;p/&gt;
+<i>1969</i>&nbsp;	 * We force all rendering results into one of these two types, avoiding the
+<i>1970</i>&nbsp;	 * case where a source image is of an unsupported (or poorly supported)
+<i>1971</i>&nbsp;	 * format by Java2D causing the rendering result to end up looking terrible
+<i>1972</i>&nbsp;	 * (common with GIFs) or be totally corrupt (e.g. solid black image).
+<i>1973</i>&nbsp;	 * &lt;p/&gt;
+<i>1974</i>&nbsp;	 * Originally reported by Magnus Kvalheim from Movellas when scaling certain
+<i>1975</i>&nbsp;	 * GIF and PNG images.
+<i>1976</i>&nbsp;	 * 
+<i>1977</i>&nbsp;	 * @param src
+<i>1978</i>&nbsp;	 *            The source image that will be analyzed to determine the most
+<i>1979</i>&nbsp;	 *            optimal image type it can be rendered into.
+<i>1980</i>&nbsp;	 * 
+<i>1981</i>&nbsp;	 * @return a new {@link BufferedImage} representing the most optimal target
+<i>1982</i>&nbsp;	 *         image type that &lt;code&gt;src&lt;/code&gt; can be rendered into.
+<i>1983</i>&nbsp;	 * 
+<i>1984</i>&nbsp;	 * @see &lt;a
+<i>1985</i>&nbsp;	 *      href=&quot;http://www.mail-archive.com/java2d-interest@capra.eng.sun.com/msg05621.html&quot;&gt;How
+<i>1986</i>&nbsp;	 *      Java2D handles poorly supported image types&lt;/a&gt;
+<i>1987</i>&nbsp;	 * @see &lt;a
+<i>1988</i>&nbsp;	 *      href=&quot;http://code.google.com/p/java-image-scaling/source/browse/trunk/src/main/java/com/mortennobel/imagescaling/MultiStepRescaleOp.java&quot;&gt;Thanks
+<i>1989</i>&nbsp;	 *      to Morten Nobel for implementation hint&lt;/a&gt;
+<i>1990</i>&nbsp;	 */
+<i>1991</i>&nbsp;	protected static BufferedImage createOptimalImage(BufferedImage src) {
+<b class="nc"><i>1992</i>&nbsp;		return createOptimalImage(src, src.getWidth(), src.getHeight());</b>
+<i>1993</i>&nbsp;	}
+<i>1994</i>&nbsp;
+<i>1995</i>&nbsp;	/**
+<i>1996</i>&nbsp;	 * Used to create a {@link BufferedImage} with the given dimensions and the
+<i>1997</i>&nbsp;	 * most optimal RGB TYPE ( {@link BufferedImage#TYPE_INT_RGB} or
+<i>1998</i>&nbsp;	 * {@link BufferedImage#TYPE_INT_ARGB} ) capable of being rendered into from
+<i>1999</i>&nbsp;	 * the given &lt;code&gt;src&lt;/code&gt;.
+<i>2000</i>&nbsp;	 * &lt;p/&gt;
+<i>2001</i>&nbsp;	 * This does not perform a copy of the image data from &lt;code&gt;src&lt;/code&gt; into
+<i>2002</i>&nbsp;	 * the result image; see {@link #copyToOptimalImage(BufferedImage)} for
+<i>2003</i>&nbsp;	 * that.
+<i>2004</i>&nbsp;	 * &lt;p/&gt;
+<i>2005</i>&nbsp;	 * We force all rendering results into one of these two types, avoiding the
+<i>2006</i>&nbsp;	 * case where a source image is of an unsupported (or poorly supported)
+<i>2007</i>&nbsp;	 * format by Java2D causing the rendering result to end up looking terrible
+<i>2008</i>&nbsp;	 * (common with GIFs) or be totally corrupt (e.g. solid black image).
+<i>2009</i>&nbsp;	 * &lt;p/&gt;
+<i>2010</i>&nbsp;	 * Originally reported by Magnus Kvalheim from Movellas when scaling certain
+<i>2011</i>&nbsp;	 * GIF and PNG images.
+<i>2012</i>&nbsp;	 * 
+<i>2013</i>&nbsp;	 * @param src
+<i>2014</i>&nbsp;	 *            The source image that will be analyzed to determine the most
+<i>2015</i>&nbsp;	 *            optimal image type it can be rendered into.
+<i>2016</i>&nbsp;	 * @param width
+<i>2017</i>&nbsp;	 *            The width of the newly created resulting image.
+<i>2018</i>&nbsp;	 * @param height
+<i>2019</i>&nbsp;	 *            The height of the newly created resulting image.
+<i>2020</i>&nbsp;	 * 
+<i>2021</i>&nbsp;	 * @return a new {@link BufferedImage} representing the most optimal target
+<i>2022</i>&nbsp;	 *         image type that &lt;code&gt;src&lt;/code&gt; can be rendered into.
+<i>2023</i>&nbsp;	 * 
+<i>2024</i>&nbsp;	 * @throws IllegalArgumentException
+<i>2025</i>&nbsp;	 *             if &lt;code&gt;width&lt;/code&gt; or &lt;code&gt;height&lt;/code&gt; are &amp;lt; 0.
+<i>2026</i>&nbsp;	 * 
+<i>2027</i>&nbsp;	 * @see &lt;a
+<i>2028</i>&nbsp;	 *      href=&quot;http://www.mail-archive.com/java2d-interest@capra.eng.sun.com/msg05621.html&quot;&gt;How
+<i>2029</i>&nbsp;	 *      Java2D handles poorly supported image types&lt;/a&gt;
+<i>2030</i>&nbsp;	 * @see &lt;a
+<i>2031</i>&nbsp;	 *      href=&quot;http://code.google.com/p/java-image-scaling/source/browse/trunk/src/main/java/com/mortennobel/imagescaling/MultiStepRescaleOp.java&quot;&gt;Thanks
+<i>2032</i>&nbsp;	 *      to Morten Nobel for implementation hint&lt;/a&gt;
+<i>2033</i>&nbsp;	 */
+<i>2034</i>&nbsp;	protected static BufferedImage createOptimalImage(BufferedImage src,
+<i>2035</i>&nbsp;			int width, int height) throws IllegalArgumentException {
+<b class="pc"><i>2036</i>&nbsp;		if (width &lt;= 0 || height &lt;= 0)</b>
+<b class="nc"><i>2037</i>&nbsp;			throw new IllegalArgumentException(&quot;width [&quot; + width</b>
+<i>2038</i>&nbsp;					+ &quot;] and height [&quot; + height + &quot;] must be &gt; 0&quot;);
+<i>2039</i>&nbsp;
+<b class="fc"><i>2040</i>&nbsp;		return new BufferedImage(</b>
+<i>2041</i>&nbsp;				width,
+<i>2042</i>&nbsp;				height,
+<b class="pc"><i>2043</i>&nbsp;				(src.getTransparency() == Transparency.OPAQUE ? BufferedImage.TYPE_INT_RGB</b>
+<i>2044</i>&nbsp;						: BufferedImage.TYPE_INT_ARGB));
+<i>2045</i>&nbsp;	}
+<i>2046</i>&nbsp;
+<i>2047</i>&nbsp;	/**
+<i>2048</i>&nbsp;	 * Used to copy a {@link BufferedImage} from a non-optimal type into a new
+<i>2049</i>&nbsp;	 * {@link BufferedImage} instance of an optimal type (RGB or ARGB). If
+<i>2050</i>&nbsp;	 * &lt;code&gt;src&lt;/code&gt; is already of an optimal type, then it is returned
+<i>2051</i>&nbsp;	 * unmodified.
+<i>2052</i>&nbsp;	 * &lt;p/&gt;
+<i>2053</i>&nbsp;	 * This method is meant to be used by any calling code (imgscalr&#39;s or
+<i>2054</i>&nbsp;	 * otherwise) to convert any inbound image from a poorly supported image
+<i>2055</i>&nbsp;	 * type into the 2 most well-supported image types in Java2D (
+<i>2056</i>&nbsp;	 * {@link BufferedImage#TYPE_INT_RGB} or {@link BufferedImage#TYPE_INT_ARGB}
+<i>2057</i>&nbsp;	 * ) in order to ensure all subsequent graphics operations are performed as
+<i>2058</i>&nbsp;	 * efficiently and correctly as possible.
+<i>2059</i>&nbsp;	 * &lt;p/&gt;
+<i>2060</i>&nbsp;	 * When using Java2D to work with image types that are not well supported,
+<i>2061</i>&nbsp;	 * the results can be anything from exceptions bubbling up from the depths
+<i>2062</i>&nbsp;	 * of Java2D to images being completely corrupted and just returned as solid
+<i>2063</i>&nbsp;	 * black.
+<i>2064</i>&nbsp;	 * 
+<i>2065</i>&nbsp;	 * @param src
+<i>2066</i>&nbsp;	 *            The image to copy (if necessary) into an optimally typed
+<i>2067</i>&nbsp;	 *            {@link BufferedImage}.
+<i>2068</i>&nbsp;	 * 
+<i>2069</i>&nbsp;	 * @return a representation of the &lt;code&gt;src&lt;/code&gt; image in an optimally
+<i>2070</i>&nbsp;	 *         typed {@link BufferedImage}, otherwise &lt;code&gt;src&lt;/code&gt; if it was
+<i>2071</i>&nbsp;	 *         already of an optimal type.
+<i>2072</i>&nbsp;	 * 
+<i>2073</i>&nbsp;	 * @throws IllegalArgumentException
+<i>2074</i>&nbsp;	 *             if &lt;code&gt;src&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt;.
+<i>2075</i>&nbsp;	 */
+<i>2076</i>&nbsp;	protected static BufferedImage copyToOptimalImage(BufferedImage src)
+<i>2077</i>&nbsp;			throws IllegalArgumentException {
+<b class="nc"><i>2078</i>&nbsp;		if (src == null)</b>
+<b class="nc"><i>2079</i>&nbsp;			throw new IllegalArgumentException(&quot;src cannot be null&quot;);</b>
+<i>2080</i>&nbsp;
+<i>2081</i>&nbsp;		// Calculate the type depending on the presence of alpha.
+<b class="nc"><i>2082</i>&nbsp;		int type = (src.getTransparency() == Transparency.OPAQUE ? BufferedImage.TYPE_INT_RGB</b>
+<i>2083</i>&nbsp;				: BufferedImage.TYPE_INT_ARGB);
+<b class="nc"><i>2084</i>&nbsp;		BufferedImage result = new BufferedImage(src.getWidth(),</b>
+<b class="nc"><i>2085</i>&nbsp;				src.getHeight(), type);</b>
+<i>2086</i>&nbsp;
+<i>2087</i>&nbsp;		// Render the src image into our new optimal source.
+<b class="nc"><i>2088</i>&nbsp;		Graphics g = result.getGraphics();</b>
+<b class="nc"><i>2089</i>&nbsp;		g.drawImage(src, 0, 0, null);</b>
+<b class="nc"><i>2090</i>&nbsp;		g.dispose();</b>
+<i>2091</i>&nbsp;
+<b class="nc"><i>2092</i>&nbsp;		return result;</b>
+<i>2093</i>&nbsp;	}
+<i>2094</i>&nbsp;
+<i>2095</i>&nbsp;	/**
+<i>2096</i>&nbsp;	 * Used to determine the scaling {@link Method} that is best suited for
+<i>2097</i>&nbsp;	 * scaling the image to the targeted dimensions.
+<i>2098</i>&nbsp;	 * &lt;p/&gt;
+<i>2099</i>&nbsp;	 * This method is intended to be used to select a specific scaling
+<i>2100</i>&nbsp;	 * {@link Method} when a {@link Method#AUTOMATIC} method is specified. This
+<i>2101</i>&nbsp;	 * method utilizes the {@link Scalr#THRESHOLD_QUALITY_BALANCED} and
+<i>2102</i>&nbsp;	 * {@link Scalr#THRESHOLD_BALANCED_SPEED} thresholds when selecting which
+<i>2103</i>&nbsp;	 * method should be used by comparing the primary dimension (width or
+<i>2104</i>&nbsp;	 * height) against the threshold and seeing where the image falls. The
+<i>2105</i>&nbsp;	 * primary dimension is determined by looking at the orientation of the
+<i>2106</i>&nbsp;	 * image: landscape or square images use their width and portrait-oriented
+<i>2107</i>&nbsp;	 * images use their height.
+<i>2108</i>&nbsp;	 * 
+<i>2109</i>&nbsp;	 * @param targetWidth
+<i>2110</i>&nbsp;	 *            The target width for the scaled image.
+<i>2111</i>&nbsp;	 * @param targetHeight
+<i>2112</i>&nbsp;	 *            The target height for the scaled image.
+<i>2113</i>&nbsp;	 * @param ratio
+<i>2114</i>&nbsp;	 *            A height/width ratio used to determine the orientation of the
+<i>2115</i>&nbsp;	 *            image so the primary dimension (width or height) can be
+<i>2116</i>&nbsp;	 *            selected to test if it is greater than or less than a
+<i>2117</i>&nbsp;	 *            particular threshold.
+<i>2118</i>&nbsp;	 * 
+<i>2119</i>&nbsp;	 * @return the fastest {@link Method} suited for scaling the image to the
+<i>2120</i>&nbsp;	 *         specified dimensions while maintaining a good-looking result.
+<i>2121</i>&nbsp;	 */
+<i>2122</i>&nbsp;	protected static Method determineScalingMethod(int targetWidth,
+<i>2123</i>&nbsp;			int targetHeight, float ratio) {
+<i>2124</i>&nbsp;		// Get the primary dimension based on the orientation of the image
+<b class="pc"><i>2125</i>&nbsp;		int length = (ratio &lt;= 1 ? targetWidth : targetHeight);</b>
+<i>2126</i>&nbsp;
+<i>2127</i>&nbsp;		// Default to speed
+<b class="fc"><i>2128</i>&nbsp;		Method result = Method.SPEED;</b>
+<i>2129</i>&nbsp;
+<i>2130</i>&nbsp;		// Figure out which scalingMethod should be used
+<b class="pc"><i>2131</i>&nbsp;		if (length &lt;= Scalr.THRESHOLD_QUALITY_BALANCED)</b>
+<b class="fc"><i>2132</i>&nbsp;			result = Method.QUALITY;</b>
+<b class="nc"><i>2133</i>&nbsp;		else if (length &lt;= Scalr.THRESHOLD_BALANCED_SPEED)</b>
+<b class="nc"><i>2134</i>&nbsp;			result = Method.BALANCED;</b>
+<i>2135</i>&nbsp;
+<b class="pc"><i>2136</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>2137</i>&nbsp;			log(2, &quot;AUTOMATIC scaling method selected: %s&quot;, result.name());</b>
+<i>2138</i>&nbsp;
+<b class="fc"><i>2139</i>&nbsp;		return result;</b>
+<i>2140</i>&nbsp;	}
+<i>2141</i>&nbsp;
+<i>2142</i>&nbsp;	/**
+<i>2143</i>&nbsp;	 * Used to implement a straight-forward image-scaling operation using Java
+<i>2144</i>&nbsp;	 * 2D.
+<i>2145</i>&nbsp;	 * &lt;p/&gt;
+<i>2146</i>&nbsp;	 * This method uses the Oracle-encouraged method of
+<i>2147</i>&nbsp;	 * &lt;code&gt;Graphics2D.drawImage(...)&lt;/code&gt; to scale the given image with the
+<i>2148</i>&nbsp;	 * given interpolation hint.
+<i>2149</i>&nbsp;	 * 
+<i>2150</i>&nbsp;	 * @param src
+<i>2151</i>&nbsp;	 *            The image that will be scaled.
+<i>2152</i>&nbsp;	 * @param targetWidth
+<i>2153</i>&nbsp;	 *            The target width for the scaled image.
+<i>2154</i>&nbsp;	 * @param targetHeight
+<i>2155</i>&nbsp;	 *            The target height for the scaled image.
+<i>2156</i>&nbsp;	 * @param interpolationHintValue
+<i>2157</i>&nbsp;	 *            The {@link RenderingHints} interpolation value used to
+<i>2158</i>&nbsp;	 *            indicate the method that {@link Graphics2D} should use when
+<i>2159</i>&nbsp;	 *            scaling the image.
+<i>2160</i>&nbsp;	 * 
+<i>2161</i>&nbsp;	 * @return the result of scaling the original &lt;code&gt;src&lt;/code&gt; to the given
+<i>2162</i>&nbsp;	 *         dimensions using the given interpolation method.
+<i>2163</i>&nbsp;	 */
+<i>2164</i>&nbsp;	protected static BufferedImage scaleImage(BufferedImage src,
+<i>2165</i>&nbsp;			int targetWidth, int targetHeight, Object interpolationHintValue) {
+<i>2166</i>&nbsp;		// Setup the rendering resources to match the source image&#39;s
+<b class="fc"><i>2167</i>&nbsp;		BufferedImage result = createOptimalImage(src, targetWidth,</b>
+<i>2168</i>&nbsp;				targetHeight);
+<b class="fc"><i>2169</i>&nbsp;		Graphics2D resultGraphics = result.createGraphics();</b>
+<i>2170</i>&nbsp;
+<i>2171</i>&nbsp;		// Scale the image to the new buffer using the specified rendering hint.
+<b class="fc"><i>2172</i>&nbsp;		resultGraphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION,</b>
+<i>2173</i>&nbsp;				interpolationHintValue);
+<b class="fc"><i>2174</i>&nbsp;		resultGraphics.drawImage(src, 0, 0, targetWidth, targetHeight, null);</b>
+<i>2175</i>&nbsp;
+<i>2176</i>&nbsp;		// Just to be clean, explicitly dispose our temporary graphics object
+<b class="fc"><i>2177</i>&nbsp;		resultGraphics.dispose();</b>
+<i>2178</i>&nbsp;
+<i>2179</i>&nbsp;		// Return the scaled image to the caller.
+<b class="fc"><i>2180</i>&nbsp;		return result;</b>
+<i>2181</i>&nbsp;	}
+<i>2182</i>&nbsp;
+<i>2183</i>&nbsp;	/**
+<i>2184</i>&nbsp;	 * Used to implement Chris Campbell&#39;s incremental-scaling algorithm: &lt;a
+<i>2185</i>&nbsp;	 * href=&quot;http://today.java.net/pub/a/today/2007/04/03/perils
+<i>2186</i>&nbsp;	 * -of-image-getscaledinstance
+<i>2187</i>&nbsp;	 * .html&quot;&gt;http://today.java.net/pub/a/today/2007/04/03/perils
+<i>2188</i>&nbsp;	 * -of-image-getscaledinstance.html&lt;/a&gt;.
+<i>2189</i>&nbsp;	 * &lt;p/&gt;
+<i>2190</i>&nbsp;	 * Modifications to the original algorithm are variable names and comments
+<i>2191</i>&nbsp;	 * added for clarity and the hard-coding of using BICUBIC interpolation as
+<i>2192</i>&nbsp;	 * well as the explicit &quot;flush()&quot; operation on the interim BufferedImage
+<i>2193</i>&nbsp;	 * instances to avoid resource leaking.
+<i>2194</i>&nbsp;	 * 
+<i>2195</i>&nbsp;	 * @param src
+<i>2196</i>&nbsp;	 *            The image that will be scaled.
+<i>2197</i>&nbsp;	 * @param targetWidth
+<i>2198</i>&nbsp;	 *            The target width for the scaled image.
+<i>2199</i>&nbsp;	 * @param targetHeight
+<i>2200</i>&nbsp;	 *            The target height for the scaled image.
+<i>2201</i>&nbsp;	 * @param scalingMethod
+<i>2202</i>&nbsp;	 *            The scaling method specified by the user (or calculated by
+<i>2203</i>&nbsp;	 *            imgscalr) to use for this incremental scaling operation.
+<i>2204</i>&nbsp;	 * @param interpolationHintValue
+<i>2205</i>&nbsp;	 *            The {@link RenderingHints} interpolation value used to
+<i>2206</i>&nbsp;	 *            indicate the method that {@link Graphics2D} should use when
+<i>2207</i>&nbsp;	 *            scaling the image.
+<i>2208</i>&nbsp;	 * 
+<i>2209</i>&nbsp;	 * @return an image scaled to the given dimensions using the given rendering
+<i>2210</i>&nbsp;	 *         hint.
+<i>2211</i>&nbsp;	 */
+<i>2212</i>&nbsp;	protected static BufferedImage scaleImageIncrementally(BufferedImage src,
+<i>2213</i>&nbsp;			int targetWidth, int targetHeight, Method scalingMethod,
+<i>2214</i>&nbsp;			Object interpolationHintValue) {
+<b class="fc"><i>2215</i>&nbsp;		boolean hasReassignedSrc = false;</b>
+<b class="fc"><i>2216</i>&nbsp;		int incrementCount = 0;</b>
+<b class="fc"><i>2217</i>&nbsp;		int currentWidth = src.getWidth();</b>
+<b class="fc"><i>2218</i>&nbsp;		int currentHeight = src.getHeight();</b>
+<i>2219</i>&nbsp;
+<i>2220</i>&nbsp;		/*
+<i>2221</i>&nbsp;		 * The original QUALITY mode, representing Chris Campbell&#39;s algorithm,
+<i>2222</i>&nbsp;		 * is to step down by 1/2s every time when scaling the image
+<i>2223</i>&nbsp;		 * incrementally. Users pointed out that using this method to scale
+<i>2224</i>&nbsp;		 * images with noticeable straight lines left them really jagged in
+<i>2225</i>&nbsp;		 * smaller thumbnail format.
+<i>2226</i>&nbsp;		 * 
+<i>2227</i>&nbsp;		 * After investigation it was discovered that scaling incrementally by
+<i>2228</i>&nbsp;		 * smaller increments was the ONLY way to make the thumbnail sized
+<i>2229</i>&nbsp;		 * images look less jagged and more accurate; almost matching the
+<i>2230</i>&nbsp;		 * accuracy of Mac&#39;s built in thumbnail generation which is the highest
+<i>2231</i>&nbsp;		 * quality resize I&#39;ve come across (better than GIMP Lanczos3 and
+<i>2232</i>&nbsp;		 * Windows 7).
+<i>2233</i>&nbsp;		 * 
+<i>2234</i>&nbsp;		 * A divisor of 7 was chose as using 5 still left some jaggedness in the
+<i>2235</i>&nbsp;		 * image while a divisor of 8 or higher made the resulting thumbnail too
+<i>2236</i>&nbsp;		 * soft; like our OP_ANTIALIAS convolve op had been forcibly applied to
+<i>2237</i>&nbsp;		 * the result even if the user didn&#39;t want it that soft.
+<i>2238</i>&nbsp;		 * 
+<i>2239</i>&nbsp;		 * Using a divisor of 7 for the ULTRA_QUALITY seemed to be the sweet
+<i>2240</i>&nbsp;		 * spot.
+<i>2241</i>&nbsp;		 * 
+<i>2242</i>&nbsp;		 * NOTE: Below when the actual fraction is used to calculate the small
+<i>2243</i>&nbsp;		 * portion to subtract from the current dimension, this is a
+<i>2244</i>&nbsp;		 * progressively smaller and smaller chunk. When the code was changed to
+<i>2245</i>&nbsp;		 * do a linear reduction of the image of equal steps for each
+<i>2246</i>&nbsp;		 * incremental resize (e.g. say 50px each time) the result was
+<i>2247</i>&nbsp;		 * significantly worse than the progressive approach used below; even
+<i>2248</i>&nbsp;		 * when a very high number of incremental steps (13) was tested.
+<i>2249</i>&nbsp;		 */
+<b class="pc"><i>2250</i>&nbsp;		int fraction = (scalingMethod == Method.ULTRA_QUALITY ? 7 : 2);</b>
+<i>2251</i>&nbsp;
+<i>2252</i>&nbsp;		do {
+<b class="fc"><i>2253</i>&nbsp;			int prevCurrentWidth = currentWidth;</b>
+<b class="fc"><i>2254</i>&nbsp;			int prevCurrentHeight = currentHeight;</b>
+<i>2255</i>&nbsp;
+<i>2256</i>&nbsp;			/*
+<i>2257</i>&nbsp;			 * If the current width is bigger than our target, cut it in half
+<i>2258</i>&nbsp;			 * and sample again.
+<i>2259</i>&nbsp;			 */
+<b class="pc"><i>2260</i>&nbsp;			if (currentWidth &gt; targetWidth) {</b>
+<b class="fc"><i>2261</i>&nbsp;				currentWidth -= (currentWidth / fraction);</b>
+<i>2262</i>&nbsp;
+<i>2263</i>&nbsp;				/*
+<i>2264</i>&nbsp;				 * If we cut the width too far it means we are on our last
+<i>2265</i>&nbsp;				 * iteration. Just set it to the target width and finish up.
+<i>2266</i>&nbsp;				 */
+<b class="fc"><i>2267</i>&nbsp;				if (currentWidth &lt; targetWidth)</b>
+<b class="fc"><i>2268</i>&nbsp;					currentWidth = targetWidth;</b>
+<i>2269</i>&nbsp;			}
+<i>2270</i>&nbsp;
+<i>2271</i>&nbsp;			/*
+<i>2272</i>&nbsp;			 * If the current height is bigger than our target, cut it in half
+<i>2273</i>&nbsp;			 * and sample again.
+<i>2274</i>&nbsp;			 */
+<i>2275</i>&nbsp;
+<b class="pc"><i>2276</i>&nbsp;			if (currentHeight &gt; targetHeight) {</b>
+<b class="fc"><i>2277</i>&nbsp;				currentHeight -= (currentHeight / fraction);</b>
+<i>2278</i>&nbsp;
+<i>2279</i>&nbsp;				/*
+<i>2280</i>&nbsp;				 * If we cut the height too far it means we are on our last
+<i>2281</i>&nbsp;				 * iteration. Just set it to the target height and finish up.
+<i>2282</i>&nbsp;				 */
+<i>2283</i>&nbsp;
+<b class="fc"><i>2284</i>&nbsp;				if (currentHeight &lt; targetHeight)</b>
+<b class="fc"><i>2285</i>&nbsp;					currentHeight = targetHeight;</b>
+<i>2286</i>&nbsp;			}
+<i>2287</i>&nbsp;
+<i>2288</i>&nbsp;			/*
+<i>2289</i>&nbsp;			 * Stop when we cannot incrementally step down anymore.
+<i>2290</i>&nbsp;			 * 
+<i>2291</i>&nbsp;			 * This used to use a || condition, but that would cause problems
+<i>2292</i>&nbsp;			 * when using FIT_EXACT such that sometimes the width OR height
+<i>2293</i>&nbsp;			 * would not change between iterations, but the other dimension
+<i>2294</i>&nbsp;			 * would (e.g. resizing 500x500 to 500x250).
+<i>2295</i>&nbsp;			 * 
+<i>2296</i>&nbsp;			 * Now changing this to an &amp;&amp; condition requires that both
+<i>2297</i>&nbsp;			 * dimensions do not change between a resize iteration before we
+<i>2298</i>&nbsp;			 * consider ourselves done.
+<i>2299</i>&nbsp;			 */
+<b class="pc"><i>2300</i>&nbsp;			if (prevCurrentWidth == currentWidth</b>
+<i>2301</i>&nbsp;					&amp;&amp; prevCurrentHeight == currentHeight)
+<b class="nc"><i>2302</i>&nbsp;				break;</b>
+<i>2303</i>&nbsp;
+<b class="pc"><i>2304</i>&nbsp;			if (DEBUG)</b>
+<b class="nc"><i>2305</i>&nbsp;				log(2, &quot;Scaling from [%d x %d] to [%d x %d]&quot;, prevCurrentWidth,</b>
+<b class="nc"><i>2306</i>&nbsp;						prevCurrentHeight, currentWidth, currentHeight);</b>
+<i>2307</i>&nbsp;
+<i>2308</i>&nbsp;			// Render the incremental scaled image.
+<b class="fc"><i>2309</i>&nbsp;			BufferedImage incrementalImage = scaleImage(src, currentWidth,</b>
+<i>2310</i>&nbsp;					currentHeight, interpolationHintValue);
+<i>2311</i>&nbsp;
+<i>2312</i>&nbsp;			/*
+<i>2313</i>&nbsp;			 * Before re-assigning our interim (partially scaled)
+<i>2314</i>&nbsp;			 * incrementalImage to be the new src image before we iterate around
+<i>2315</i>&nbsp;			 * again to process it down further, we want to flush() the previous
+<i>2316</i>&nbsp;			 * src image IF (and only IF) it was one of our own temporary
+<i>2317</i>&nbsp;			 * BufferedImages created during this incremental down-sampling
+<i>2318</i>&nbsp;			 * cycle. If it wasn&#39;t one of ours, then it was the original
+<i>2319</i>&nbsp;			 * caller-supplied BufferedImage in which case we don&#39;t want to
+<i>2320</i>&nbsp;			 * flush() it and just leave it alone.
+<i>2321</i>&nbsp;			 */
+<b class="fc"><i>2322</i>&nbsp;			if (hasReassignedSrc)</b>
+<b class="fc"><i>2323</i>&nbsp;				src.flush();</b>
+<i>2324</i>&nbsp;
+<i>2325</i>&nbsp;			/*
+<i>2326</i>&nbsp;			 * Now treat our incremental partially scaled image as the src image
+<i>2327</i>&nbsp;			 * and cycle through our loop again to do another incremental
+<i>2328</i>&nbsp;			 * scaling of it (if necessary).
+<i>2329</i>&nbsp;			 */
+<b class="fc"><i>2330</i>&nbsp;			src = incrementalImage;</b>
+<i>2331</i>&nbsp;
+<i>2332</i>&nbsp;			/*
+<i>2333</i>&nbsp;			 * Keep track of us re-assigning the original caller-supplied source
+<i>2334</i>&nbsp;			 * image with one of our interim BufferedImages so we know when to
+<i>2335</i>&nbsp;			 * explicitly flush the interim &quot;src&quot; on the next cycle through.
+<i>2336</i>&nbsp;			 */
+<b class="fc"><i>2337</i>&nbsp;			hasReassignedSrc = true;</b>
+<i>2338</i>&nbsp;
+<i>2339</i>&nbsp;			// Track how many times we go through this cycle to scale the image.
+<b class="fc"><i>2340</i>&nbsp;			incrementCount++;</b>
+<b class="pc"><i>2341</i>&nbsp;		} while (currentWidth != targetWidth || currentHeight != targetHeight);</b>
+<i>2342</i>&nbsp;
+<b class="pc"><i>2343</i>&nbsp;		if (DEBUG)</b>
+<b class="nc"><i>2344</i>&nbsp;			log(2, &quot;Incrementally Scaled Image in %d steps.&quot;, incrementCount);</b>
+<i>2345</i>&nbsp;
+<i>2346</i>&nbsp;		/*
+<i>2347</i>&nbsp;		 * Once the loop has exited, the src image argument is now our scaled
+<i>2348</i>&nbsp;		 * result image that we want to return.
+<i>2349</i>&nbsp;		 */
+<b class="fc"><i>2350</i>&nbsp;		return src;</b>
+<i>2351</i>&nbsp;	}
+<i>2352</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-10-02 00:09</div>
+</div>
+</body>
+</html>

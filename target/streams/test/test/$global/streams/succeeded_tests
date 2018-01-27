@@ -1,0 +1,10 @@
+#Successful Tests
+#Sun Oct 08 14:31:38 CDT 2017
+org.imgscalr.ScalrCropTest=1507491086542
+org.imgscalr.ScalrRotateTest=1507491087972
+org.imgscalr.AsyncScalrSingleThreadTest=1507491098918
+org.imgscalr.ScalrResizeTest=1507491088631
+org.imgscalr.ScalrApplyTest=1507491086319
+org.imgscalr.ScalrPadTest=1507491087310
+org.imgscalr.AsyncScalrMultiThreadTest=1507491093146
+org.imgscalr.AllTests=1507491085092

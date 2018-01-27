@@ -1,0 +1,14 @@
+[info] Test run started
+[info] Test org.imgscalr.ScalrRotateTest.testRotate180 started
+[debug] Test org.imgscalr.ScalrRotateTest.testRotate180 finished, took 0.446 sec
+[info] Test org.imgscalr.ScalrRotateTest.testRotate270 started
+[debug] Test org.imgscalr.ScalrRotateTest.testRotate270 finished, took 0.717 sec
+[info] Test org.imgscalr.ScalrRotateTest.testRotate90 started
+[debug] Test org.imgscalr.ScalrRotateTest.testRotate90 finished, took 0.262 sec
+[info] Test org.imgscalr.ScalrRotateTest.testRotateEX started
+[debug] Test org.imgscalr.ScalrRotateTest.testRotateEX finished, took 0.002 sec
+[info] Test org.imgscalr.ScalrRotateTest.testRotateFlipH started
+[debug] Test org.imgscalr.ScalrRotateTest.testRotateFlipH finished, took 0.366 sec
+[info] Test org.imgscalr.ScalrRotateTest.testRotateFlipV started
+[debug] Test org.imgscalr.ScalrRotateTest.testRotateFlipV finished, took 0.213 sec
+[info] Test run finished: 0 failed, 0 ignored, 6 total, 2.851s

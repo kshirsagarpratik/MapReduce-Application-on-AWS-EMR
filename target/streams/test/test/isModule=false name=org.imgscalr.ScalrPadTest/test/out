@@ -1,0 +1,10 @@
+[info] Test run started
+[info] Test org.imgscalr.ScalrPadTest.testPad started
+[debug] Test org.imgscalr.ScalrPadTest.testPad finished, took 0.413 sec
+[info] Test org.imgscalr.ScalrPadTest.testPadEX started
+[debug] Test org.imgscalr.ScalrPadTest.testPadEX finished, took 0.004 sec
+[info] Test org.imgscalr.ScalrPadTest.testPadAlpha started
+[debug] Test org.imgscalr.ScalrPadTest.testPadAlpha finished, took 0.607 sec
+[info] Test org.imgscalr.ScalrPadTest.testPadColor started
+[debug] Test org.imgscalr.ScalrPadTest.testPadColor finished, took 0.168 sec
+[info] Test run finished: 0 failed, 0 ignored, 4 total, 2.189s

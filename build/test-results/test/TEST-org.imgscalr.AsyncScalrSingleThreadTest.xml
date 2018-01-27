@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.imgscalr.AsyncScalrSingleThreadTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-08T19:26:42" hostname="Pratiks-MBP.hsd1.il.comcast.net" time="5.541">
+  <properties/>
+  <testcase name="test" classname="org.imgscalr.AsyncScalrSingleThreadTest" time="5.541"/>
+  <system-out><![CDATA[Scale Iteration 0
+Scale Iteration 100
+Scale Iteration 200
+Scale Iteration 300
+Scale Iteration 400
+Scale Iteration 500
+Scale Iteration 600
+Scale Iteration 700
+Scale Iteration 800
+Scale Iteration 900
+Scale Iteration 1000
+Scale Iteration 1100
+Scale Iteration 1200
+Scale Iteration 1300
+Scale Iteration 1400
+Scale Iteration 1500
+Scale Iteration 1600
+Scale Iteration 1700
+Scale Iteration 1800
+Scale Iteration 1900
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,354 @@
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/AsyncScalrMultiThreadTest.java:22:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] import junit.framework.Assert;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:18:1: cannot find symbol
+[error]   symbol:   class Scalr
+[error]   location: package org.imgscalr
+[error] import static org.imgscalr.Scalr.OP_ANTIALIAS;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:18:1: static import only from classes and interfaces
+[error] import static org.imgscalr.Scalr.OP_ANTIALIAS;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:19:1: cannot find symbol
+[error]   symbol:   class Scalr
+[error]   location: package org.imgscalr
+[error] import static org.imgscalr.Scalr.OP_BRIGHTER;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:19:1: static import only from classes and interfaces
+[error] import static org.imgscalr.Scalr.OP_BRIGHTER;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:20:1: cannot find symbol
+[error]   symbol:   class Scalr
+[error]   location: package org.imgscalr
+[error] import static org.imgscalr.Scalr.OP_DARKER;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:20:1: static import only from classes and interfaces
+[error] import static org.imgscalr.Scalr.OP_DARKER;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:21:1: cannot find symbol
+[error]   symbol:   class Scalr
+[error]   location: package org.imgscalr
+[error] import static org.imgscalr.Scalr.OP_GRAYSCALE;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:21:1: static import only from classes and interfaces
+[error] import static org.imgscalr.Scalr.OP_GRAYSCALE;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:22:1: cannot find symbol
+[error]   symbol:   class Scalr
+[error]   location: package org.imgscalr
+[error] import static org.imgscalr.Scalr.apply;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:22:1: static import only from classes and interfaces
+[error] import static org.imgscalr.Scalr.apply;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrCropTest.java:18:1: cannot find symbol
+[error]   symbol:   class Scalr
+[error]   location: package org.imgscalr
+[error] import static org.imgscalr.Scalr.crop;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrCropTest.java:18:1: static import only from classes and interfaces
+[error] import static org.imgscalr.Scalr.crop;
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:20:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] import junit.framework.Assert;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:22:1: package org.imgscalr.Scalr does not exist
+[error] import org.imgscalr.Scalr.Method;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:23:1: package org.imgscalr.Scalr does not exist
+[error] import org.imgscalr.Scalr.Mode;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:18:1: package org.imgscalr.Scalr does not exist
+[error] import org.imgscalr.Scalr.Rotation;
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/AsyncScalrMultiThreadTest.java:36:1: cannot find symbol
+[error]   symbol:   variable AsyncScalr
+[error]   location: class org.imgscalr.AsyncScalrMultiThreadTest
+[error] 		System.setProperty(AsyncScalr.THREAD_COUNT_PROPERTY_NAME, "1");
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/AsyncScalrMultiThreadTest.java:68:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 		Assert.assertTrue(true);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/AsyncScalrMultiThreadTest.java:75:1: cannot find symbol
+[error]   symbol:   variable AsyncScalr
+[error]   location: class org.imgscalr.AsyncScalrMultiThreadTest.ScaleThread
+[error] 				AsyncScalr.resize(ORIG, 125).get();
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/AsyncScalrSingleThreadTest.java:34:1: cannot find symbol
+[error]   symbol:   variable AsyncScalr
+[error]   location: class org.imgscalr.AsyncScalrSingleThreadTest
+[error] 		System.setProperty(AsyncScalr.THREAD_COUNT_PROPERTY_NAME, "1");
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/AsyncScalrSingleThreadTest.java:62:1: cannot find symbol
+[error]   symbol:   variable AsyncScalr
+[error]   location: class org.imgscalr.AsyncScalrSingleThreadTest.ScaleThread
+[error] 				AsyncScalr.resize(ORIG, 125).get();
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:33:1: cannot find symbol
+[error]   symbol:   method apply(java.awt.image.BufferedImage,java.awt.image.BufferedImageOp[])
+[error]   location: class org.imgscalr.ScalrApplyTest
+[error] 			apply(src, (BufferedImageOp[]) null);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrApplyTest.java:42:1: cannot find symbol
+[error]   symbol:   variable OP_ANTIALIAS
+[error]   location: class org.imgscalr.ScalrApplyTest
+[error] 		assertEquals(load("time-square-apply-1.png"), apply(src, OP_ANTIALIAS));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrCropTest.java:27:1: cannot find symbol
+[error]   symbol:   method crop(java.awt.image.BufferedImage,int,int)
+[error]   location: class org.imgscalr.ScalrCropTest
+[error] 			crop(src, 3200, 2400);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrCropTest.java:34:1: cannot find symbol
+[error]   symbol:   method crop(java.awt.image.BufferedImage,int,int,int,int)
+[error]   location: class org.imgscalr.ScalrCropTest
+[error] 			crop(src, -8, -10, 100, 100);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrCropTest.java:41:1: cannot find symbol
+[error]   symbol:   method crop(java.awt.image.BufferedImage,int,int,int,int)
+[error]   location: class org.imgscalr.ScalrCropTest
+[error] 			crop(src, -100, -200, -4, -4);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrCropTest.java:50:1: cannot find symbol
+[error]   symbol:   method crop(java.awt.image.BufferedImage,int,int)
+[error]   location: class org.imgscalr.ScalrCropTest
+[error] 		assertEquals(load("time-square-crop-wh.png"), crop(src, 320, 240));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrCropTest.java:56:1: cannot find symbol
+[error]   symbol:   method crop(java.awt.image.BufferedImage,int,int,int,int)
+[error]   location: class org.imgscalr.ScalrCropTest
+[error] 				crop(src, 100, 100, 320, 240));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrPadTest.java:31:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrPadTest
+[error] 			Scalr.pad(src, -1);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrPadTest.java:38:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrPadTest
+[error] 			Scalr.pad(src, 0);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrPadTest.java:47:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrPadTest
+[error] 		assertEquals(load("time-square-pad-8.png"), Scalr.pad(src, pad));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrPadTest.java:53:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrPadTest
+[error] 				Scalr.pad(src, pad, Color.RED));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrPadTest.java:59:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrPadTest
+[error] 				Scalr.pad(src, pad, alpha));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:30:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, -1);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:31:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(false);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:42:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(true);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:37:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, 240, -1);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:38:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(false);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:40:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(true);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:44:1: cannot find symbol
+[error]   symbol:   class Method
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, (Method) null, 240);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:44:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, (Method) null, 240);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:45:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(false);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:47:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(true);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:51:1: cannot find symbol
+[error]   symbol:   class Mode
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, (Mode) null, 240);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:51:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, (Mode) null, 240);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:52:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(false);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:54:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(true);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:58:1: cannot find symbol
+[error]   symbol:   class Method
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, (Method) null, 240, 240);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:58:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, (Method) null, 240, 240);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:59:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(false);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:61:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(true);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:65:1: cannot find symbol
+[error]   symbol:   class Mode
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, (Mode) null, 240, 240);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:65:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, (Mode) null, 240, 240);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:66:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(false);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:68:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(true);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:72:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, null, null, 240);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:73:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(false);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:75:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(true);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:79:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 			Scalr.resize(src, null, null, 240, 240);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:80:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(false);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:82:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 			Assert.assertTrue(true);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:88:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 		assertEquals(load("time-square-resize-320.png"), Scalr.resize(src, 320));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:94:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, 640, 480));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:100:1: cannot find symbol
+[error]   symbol:   variable Method
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Method.SPEED, 320));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:100:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Method.SPEED, 320));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:106:1: cannot find symbol
+[error]   symbol:   variable Method
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Method.SPEED, 640, 480));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:106:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Method.SPEED, 640, 480));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:111:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 		System.setProperty(Scalr.DEBUG_PROPERTY_NAME, "true");
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:113:1: cannot find symbol
+[error]   symbol:   variable Mode
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Mode.FIT_EXACT, 320));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:113:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Mode.FIT_EXACT, 320));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:119:1: cannot find symbol
+[error]   symbol:   variable Mode
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Mode.FIT_EXACT, 640, 640));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:119:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Mode.FIT_EXACT, 640, 640));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:125:1: cannot find symbol
+[error]   symbol:   variable Method
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Method.SPEED, Mode.FIT_EXACT, 320));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:125:1: cannot find symbol
+[error]   symbol:   variable Mode
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Method.SPEED, Mode.FIT_EXACT, 320));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:125:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Method.SPEED, Mode.FIT_EXACT, 320));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:131:1: cannot find symbol
+[error]   symbol:   variable Method
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Method.SPEED, Mode.FIT_EXACT, 640, 640));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:131:1: cannot find symbol
+[error]   symbol:   variable Mode
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Method.SPEED, Mode.FIT_EXACT, 640, 640));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:131:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 				Scalr.resize(src, Method.SPEED, Mode.FIT_EXACT, 640, 640));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:136:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 		System.setProperty(Scalr.DEBUG_PROPERTY_NAME, "true");
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:138:1: cannot find symbol
+[error]   symbol:   variable Method
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 		Scalr.resize(i, Method.ULTRA_QUALITY, 1);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:138:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 		Scalr.resize(i, Method.ULTRA_QUALITY, 1);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:143:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 		Assert.assertTrue(true);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:149:1: cannot find symbol
+[error]   symbol:   variable Mode
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 		BufferedImage i2 = Scalr.resize(i, Mode.FIT_EXACT, 500, 250);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:149:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error] 		BufferedImage i2 = Scalr.resize(i, Mode.FIT_EXACT, 500, 250);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:151:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 		Assert.assertEquals(i2.getWidth(), 500);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:152:1: junit.framework.Assert in junit.framework has been deprecated
+[warn] 		Assert.assertEquals(i2.getHeight(), 250);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:197:1: cannot find symbol
+[error]   symbol:   variable Mode
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error]         BufferedImage auto = Scalr.resize(i, Mode.AUTOMATIC, targetWidth, targetHeight);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:197:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error]         BufferedImage auto = Scalr.resize(i, Mode.AUTOMATIC, targetWidth, targetHeight);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:198:1: cannot find symbol
+[error]   symbol:   variable Mode
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error]         BufferedImage fitBoth = Scalr.resize(i, Mode.BEST_FIT_BOTH, targetWidth, targetHeight);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:198:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrResizeTest
+[error]         BufferedImage fitBoth = Scalr.resize(i, Mode.BEST_FIT_BOTH, targetWidth, targetHeight);
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:200:1: junit.framework.Assert in junit.framework has been deprecated
+[warn]         Assert.assertEquals (autoWidth, auto.getWidth());
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:201:1: junit.framework.Assert in junit.framework has been deprecated
+[warn]         Assert.assertEquals(autoHeight, auto.getHeight());
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:203:1: junit.framework.Assert in junit.framework has been deprecated
+[warn]         Assert.assertEquals(fitBothWidth, fitBoth.getWidth());
+[warn] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrResizeTest.java:204:1: junit.framework.Assert in junit.framework has been deprecated
+[warn]         Assert.assertEquals(fitBothHeight, fitBoth.getHeight());
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:26:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 			Scalr.rotate(src, null);
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:36:1: cannot find symbol
+[error]   symbol:   variable Rotation
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 				Scalr.rotate(load("time-square.png"), Rotation.CW_90));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:36:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 				Scalr.rotate(load("time-square.png"), Rotation.CW_90));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:42:1: cannot find symbol
+[error]   symbol:   variable Rotation
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 				Scalr.rotate(load("time-square.png"), Rotation.CW_180));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:42:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 				Scalr.rotate(load("time-square.png"), Rotation.CW_180));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:48:1: cannot find symbol
+[error]   symbol:   variable Rotation
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 				Scalr.rotate(load("time-square.png"), Rotation.CW_270));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:48:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 				Scalr.rotate(load("time-square.png"), Rotation.CW_270));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:54:1: cannot find symbol
+[error]   symbol:   variable Rotation
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 				Scalr.rotate(load("time-square.png"), Rotation.FLIP_HORZ));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:54:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 				Scalr.rotate(load("time-square.png"), Rotation.FLIP_HORZ));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:60:1: cannot find symbol
+[error]   symbol:   variable Rotation
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 				Scalr.rotate(load("time-square.png"), Rotation.FLIP_VERT));
+[error] /Users/pratikkshirsagar/Desktop/Cloud/Pratik_Kshirsagar_hw2/pratik_kshirsagar_hw2/src/test/java/org/imgscalr/ScalrRotateTest.java:60:1: cannot find symbol
+[error]   symbol:   variable Scalr
+[error]   location: class org.imgscalr.ScalrRotateTest
+[error] 				Scalr.rotate(load("time-square.png"), Rotation.FLIP_VERT));

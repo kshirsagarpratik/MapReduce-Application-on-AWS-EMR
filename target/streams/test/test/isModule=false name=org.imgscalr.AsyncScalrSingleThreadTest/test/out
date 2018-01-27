@@ -1,0 +1,4 @@
+[info] Test run started
+[info] Test org.imgscalr.AsyncScalrSingleThreadTest.test started
+[debug] Test org.imgscalr.AsyncScalrSingleThreadTest.test finished, took 11.889 sec
+[info] Test run finished: 0 failed, 0 ignored, 1 total, 12.354s
