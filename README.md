@@ -1,4 +1,3 @@
-YouTube link for Amazon EMR Deployment movie: https://youtu.be/xvPofa1GKYs
 
 The source code is in /src/main/java/org/imgscalr
 
